@@ -5,10 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   before_action :configure_permitted_parameters
 
-
   protected
   def configure_permitted_parameters
+    # 新規登録用
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    # アカウント更新用
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
   # GET /resource/sign_up
