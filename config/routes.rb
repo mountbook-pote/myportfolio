@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
   devise_scope :user do
+    get 'users/edit', to: 'users/registrations#edit'
     post 'users/guest_login', to: 'users/sessions#guest_login'
   end
   resources :users, only: [:show]
