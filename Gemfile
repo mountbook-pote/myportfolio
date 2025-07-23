@@ -32,6 +32,16 @@ gem 'concurrent-ruby', '1.3.4'
 
 gem 'psych', '~> 3.1' #webpackerインストールに必要なコード
 
+gem 'devise' #ログイン/ログアウトなどの認証機能を提供するgem
+
+gem 'rails-i18n' #railsのよく使われる翻訳一式
+
+gem 'devise-i18n' #deviseのよく使われる翻訳一式
+
+gem 'bigdecimal' #db:migrate時の一部エラー対策用
+
+gem 'mutex_m'  #db:migrate時の一部エラー対策用
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
