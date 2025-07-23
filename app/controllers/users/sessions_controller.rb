@@ -3,6 +3,12 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def guest_login
+    guest_user = User.guest
+    sign_in guest_user
+    redirect_to root_path, notice:'ゲストとしてログインしました'
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
