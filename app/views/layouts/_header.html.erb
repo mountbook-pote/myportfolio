@@ -3,7 +3,7 @@
     <div><%= link_to "My_portfolio(仮)", root_path, class: "toppage_link"%></div>
     <div class="login_and_signup_buttons">
       <% if user_signed_in? %>
-        <%= render "shared/navigation_bar"%>
+
       <% else %>
         <div><%= link_to "ログイン", new_user_session_path, class: "btn btn-light", style:"color: black;" %></div>
         <div><%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary", style:"color: white;" %></div>
