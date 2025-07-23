@@ -1,7 +1,6 @@
+<!-- devise用意のエラー -->
 <% if resource.errors.any? %>
   <ul>
-  <!--ビューファイル側のパーシャルで「attribute: :値」を消すと、全てのエラーが表示される -->
-  <!--リレーション関係にあるモデルのidがない時とかが、上を消すと表示される。 -->
     <% if defined?(attribute) && attribute %>
       <% resource.errors.full_messages_for(attribute).each do |message| %>
         <li><%= message %></li>
