@@ -1,5 +1,8 @@
 require 'httparty'
 
+# MetObjectテーブルを初期化する
+MetObject.delete_all
+
 # メトロポリタン美術館APIのDepartment(ジャンル)に割り当てられたIDとその名称
 MET_DEPARTMENT_IDS = {
   11 => "European Paintings",
