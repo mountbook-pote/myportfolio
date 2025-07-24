@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :configure_permitted_parameters
+  before_action :check_guest, only: [:edit, :update, :destroy]
 
   protected
   def configure_permitted_parameters
@@ -11,6 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     # アカウント更新用
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image])
+  end
+
+  private
+  def check_guest
+    if resource.guest?
+      redirect_to root_path, alert: 'ゲストユーザはアカウントの設定はできません'
+    end
   end
 
   # GET /resource/sign_up

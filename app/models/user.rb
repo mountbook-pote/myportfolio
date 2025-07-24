@@ -5,11 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, length: { maximum: 10 }
 
+  # ゲストユーザ用のコード
+  GUEST_USER_EMAIL = 'guest@example.com'.freeze
+  GUEST_USER_NAME = 'ゲスト'.freeze
+
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = 'ゲスト'
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.name = GUEST_USER_NAME
       user.password = SecureRandom.urlsafe_base64
     end
+  end
+
+  def guest?
+    email == GUEST_USER_EMAIL
   end
 
   # アイコン画像用のコード
