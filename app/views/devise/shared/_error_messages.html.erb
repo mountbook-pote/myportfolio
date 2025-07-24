@@ -1,0 +1,14 @@
+<!-- devise用意のエラー -->
+<% if resource.errors.any? %>
+  <ul>
+    <% if defined?(attribute) && attribute %>
+      <% resource.errors.full_messages_for(attribute).each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% else %>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

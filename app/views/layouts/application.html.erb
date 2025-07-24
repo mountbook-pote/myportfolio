@@ -5,8 +5,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header', user: @user %>
 
     <%= yield %>
+
+    <%= render "devise/shared/flash_message" %>
   </body>
 </html>
