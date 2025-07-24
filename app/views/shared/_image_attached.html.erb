@@ -1,0 +1,7 @@
+<% width = local_assigns[:size] || 40 %>
+
+<% if user.image.attached? %>
+  <%= image_tag user.image.variant(resize_to_limit: [width, width]), class:"rounded-circle" %>
+  <% else %>
+    <%= image_tag "default_avatar.png", class: "rounded-circle", size: "#{width}x#{width}" %>
+<% end %>

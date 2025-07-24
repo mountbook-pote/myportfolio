@@ -42,6 +42,10 @@ gem 'bigdecimal' #db:migrate時の一部エラー対策用
 
 gem 'mutex_m'  #db:migrate時の一部エラー対策用
 
+gem "image_processing", "~> 1.2" #画像処理を行うためのgem
+
+gem 'mini_magick'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
