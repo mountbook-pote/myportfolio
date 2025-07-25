@@ -1,2 +1,14 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<h1>おすすめ作品</h1>
+
+<div class="artwork-grid">
+  <% @met_objects.each do |artwork| %>
+    <div class="artwork-card">
+      <img src="<%= artwork[:image] %>" alt="<%= artwork[:title] %>" width="300" style="height: auto;" loading="lazy">
+      <h4><%= artwork[:title] %></h4>
+      <p><strong>作家:</strong> <%= artwork[:artist].presence || '不明' %></p>
+      <p><strong>制作年:</strong> <%= artwork[:object_date] %></p>
+      <p><strong>ジャンル:</strong> <%= artwork[:department] %></p>
+      <p><strong>リンク:</strong> <%= artwork[:object_URL] %></p>
+    </div>
+  <% end %>
+</div>
