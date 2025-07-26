@@ -1,14 +1,8 @@
-<h1>おすすめ作品</h1>
+<h1>わき道美術館</h1>
 
-<div class="artwork-grid">
-  <% @met_works.each do |work| %>
-    <div class="artwork-card">
-      <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" width="300" >
-      <h4><%= work.title %></h4>
-      <p><strong>作家:</strong> <%= work.artist_display_name.presence || '不明' %></p>
-      <p><strong>制作年:</strong> <%= work.object_date %></p>
-      <p><strong>ジャンル:</strong> <%= work.department %></p>
-      <p><strong>リンク:</strong> <%= work.object_url %></p>
-    </div>
-  <% end %>
+<div>
+  <div><%= link_to "入口", departments_all_works_path, class: "btn btn-light", style:"color: black;" %></div>
+  <div><%= link_to "ヨーロッパ絵画", departments_european_paintings_path, class: "btn btn-light", style:"color: black;" %></div>
+  <div><%= link_to "中世ヨーロッパ美術", departments_medieval_art_path, class: "btn btn-light", style:"color: black;" %></div>
+  <div><%= link_to "古代エジプト美術", departments_egyptian_art_path, class: "btn btn-light", style:"color: black;" %></div>
 </div>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   #department
   get 'departments/all_works', to: 'departments#all_works'
+  get 'departments/european_paintings', to: 'departments#european_paintings'
   get 'departments/medieval_art', to: 'departments#medieval_art'
   get 'departments/egyptian_art', to: 'departments#egyptian_art'
 
