@@ -10,15 +10,7 @@ class MetObject < ApplicationRecord
       selected = []
       records.each do |record|
         next if record.primary_image_small.blank?
-        selected << {
-          work_object_id: record.object_id,
-          work_title: record.title,
-          work_artist: record.artist_display_name,
-          work_image: record.primary_image_small,
-          work_date: record.object_date,
-          work_met_url: record.object_url,
-          work_department: record.department
-        }
+        selected << record
         break if selected.size >= fetch_number
       end
       met_works += selected
