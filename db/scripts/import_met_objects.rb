@@ -39,8 +39,9 @@ MET_DEPARTMENT_IDS.each do |department_id, department_name|
     detail_url = "https://collectionapi.metmuseum.org/public/collection/v1/objects/#{selected_id}"
     object_details_response = HTTParty.get(detail_url)
     object_detail = object_details_response.parsed_response
-    next if object_detail["department"] != department_name # 万が一指定したジャンルと作品のジャンルが異なれば飛ばす
-    next if object_detail["primaryImageSmall"].blank? # 画像URLがなければ飛ばす
+    # 万が一作品のジャンルが指定したジャンルと異なる場合や、画像URLがない場合は飛ばす
+    next if object_detail["department"] != department_name || 
+    object_detail["primaryImageSmall"].blank? 
     
     # 作品の詳細情報のうち必要なものをDBに保存
     MetObject.find_or_create_by(object_id: object_detail["objectID"]) do |obj|
