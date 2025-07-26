@@ -1,14 +1,12 @@
 class HomesController < ApplicationController
-  DEPARTMENT_NAMES = [
+  ALL_DEPARTMENT_NAMES = [
     "European Paintings",
     "Medieval Art",
     "Egyptian Art",
   ].freeze
-  FETCH_NUMBER = 3
+  FETCH_EACH_NUMBER = 3
 
   def top
-    @user = current_user
-    @met_works = MetObject.
-      fetch_met_objects_at_random(DEPARTMENT_NAMES, FETCH_NUMBER)
+    @met_works = MetObject.fetch_all_departments_works_at_random(ALL_DEPARTMENT_NAMES, FETCH_EACH_NUMBER)
   end
 end
