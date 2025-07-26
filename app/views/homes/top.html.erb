@@ -3,7 +3,7 @@
 <div class="artwork-grid">
   <% @met_objects.each do |artwork| %>
     <div class="artwork-card">
-      <img src="<%= artwork[:image] %>" alt="<%= artwork[:title] %>" width="300" style="height: auto;" loading="lazy">
+      <img src="<%= artwork[:image] %>" alt="<%= artwork[:title] %>" width="300" >
       <h4><%= artwork[:title] %></h4>
       <p><strong>作家:</strong> <%= artwork[:artist].presence || '不明' %></p>
       <p><strong>制作年:</strong> <%= artwork[:object_date] %></p>

@@ -9,6 +9,7 @@ class MetObject < ApplicationRecord
 
       selected = []
       records.each do |record|
+        next if record.primary_image_small.blank?
         selected << {
           object_id: record.object_id,
           title: record.title,
