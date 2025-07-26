@@ -44,7 +44,9 @@ gem 'mutex_m'  #db:migrate時の一部エラー対策用
 
 gem "image_processing", "~> 1.2" #画像処理を行うためのgem
 
-gem 'mini_magick'
+gem 'mini_magick' #画像処理を行うためのgem
+
+gem 'httparty' # 外部webAPIを取得に使用するgem
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
