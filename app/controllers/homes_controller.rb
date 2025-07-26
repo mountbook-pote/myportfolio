@@ -8,7 +8,7 @@ class HomesController < ApplicationController
 
   def top
     @user = current_user
-    @met_objects = MetObject.
+    @met_works = MetObject.
       fetch_met_objects_at_random(DEPARTMENT_NAMES, FETCH_NUMBER)
   end
 end

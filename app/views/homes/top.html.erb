@@ -1,14 +1,14 @@
 <h1>おすすめ作品</h1>
 
 <div class="artwork-grid">
-  <% @met_objects.each do |artwork| %>
+  <% @met_works.each do |work| %>
     <div class="artwork-card">
-      <img src="<%= artwork[:image] %>" alt="<%= artwork[:title] %>" width="300" >
-      <h4><%= artwork[:title] %></h4>
-      <p><strong>作家:</strong> <%= artwork[:artist].presence || '不明' %></p>
-      <p><strong>制作年:</strong> <%= artwork[:object_date] %></p>
-      <p><strong>ジャンル:</strong> <%= artwork[:department] %></p>
-      <p><strong>リンク:</strong> <%= artwork[:object_URL] %></p>
+      <img src="<%= work[:work_image] %>" alt="<%= work[:work_title] %>" width="300" >
+      <h4><%= work[:work_title] %></h4>
+      <p><strong>作家:</strong> <%= work[:work_artist].presence || '不明' %></p>
+      <p><strong>制作年:</strong> <%= work[:work_date] %></p>
+      <p><strong>ジャンル:</strong> <%= work[:work_department] %></p>
+      <p><strong>リンク:</strong> <%= work[:work_met_URL] %></p>
     </div>
   <% end %>
 </div>
