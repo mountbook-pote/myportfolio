@@ -5,10 +5,7 @@ Rails.application.routes.draw do
   get 'homes/top'
 
   #department
-  get 'departments/all_works', to: 'departments#all_works'
-  get 'departments/european_paintings', to: 'departments#european_paintings'
-  get 'departments/medieval_art', to: 'departments#medieval_art'
-  get 'departments/egyptian_art', to: 'departments#egyptian_art'
+  resources :departments, only: [:show]
 
   # user
   devise_for :users, controllers: {
@@ -18,7 +15,6 @@ Rails.application.routes.draw do
     post 'users/guest_login', to: 'users/sessions#guest_login'
   end
   resources :users, only: [:show]
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
