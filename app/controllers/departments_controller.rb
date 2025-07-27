@@ -1,25 +1,24 @@
 class DepartmentsController < ApplicationController
-  ALL_DEPARTMENT_NAMES = [
-    "European Paintings",
-    "Medieval Art",
-    "Egyptian Art",
-  ].freeze
-  FETCH_EACH_NUMBER = 3
-  FETCH_NUMBER = 8
+  DEPARTMENT_IDS = {
+    0 => "All Departments",
+    1 => "European Paintings",
+    2 => "Medieval Art",
+    3 => "Egyptian Art",
+  }.freeze
 
-  def all_works
-    @met_works = MetObject.fetch_all_departments_works_at_random(ALL_DEPARTMENT_NAMES, FETCH_EACH_NUMBER)
-  end
+  FETCH_EACH_DEPARTMENT_NUMBER = 3
+  FETCH_NUMBER = 9
 
-  def european_paintings
-    @met_works = MetObject.fetch_department_works_at_random("European Paintings", FETCH_NUMBER)
-  end
-
-  def medieval_art
-    @met_works = MetObject.fetch_department_works_at_random("Medieval Art", FETCH_NUMBER)
-  end
-
-  def egyptian_art
-    @met_works = MetObject.fetch_department_works_at_random("Egyptian Art", FETCH_NUMBER)
+  def show
+    department_id = params[:id].to_i
+    @department_name = DEPARTMENT_IDS[department_id]
+    
+    if department_id == 0
+      @met_works = MetObject.
+        fetch_all_departments_works_at_random(DEPARTMENT_IDS, FETCH_EACH_DEPARTMENT_NUMBER)
+    else
+      @met_works = MetObject.
+        fetch_department_works_at_random(DEPARTMENT_IDS[department_id], FETCH_NUMBER)
+    end
   end
 end

@@ -1,8 +1,10 @@
 <h1>わき道美術館</h1>
 
 <div>
-  <div><%= link_to "入口", departments_all_works_path, class: "btn btn-light", style:"color: black;" %></div>
-  <div><%= link_to "ヨーロッパ絵画", departments_european_paintings_path, class: "btn btn-light", style:"color: black;" %></div>
-  <div><%= link_to "中世ヨーロッパ美術", departments_medieval_art_path, class: "btn btn-light", style:"color: black;" %></div>
-  <div><%= link_to "古代エジプト美術", departments_egyptian_art_path, class: "btn btn-light", style:"color: black;" %></div>
+  <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
+    <div><%= link_to "#{information[:name]}", 
+      department_path(information[:department_id]), 
+      class: "btn btn-light", style:"color: black;" %>
+    </div>
+  <% end %>
 </div>
