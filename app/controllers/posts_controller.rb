@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:met_object, user: { image_attachment: :blob })
   end
 
   def new
