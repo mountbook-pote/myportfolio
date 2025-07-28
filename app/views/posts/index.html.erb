@@ -13,6 +13,10 @@
       <%= render "shared/user_icon_attached", user: post.user %>
       <p><strong>ユーザ名:</strong> <%= post.user.name %></p>
       <p><strong>コメント:</strong> <%= post.comment %></p>
+      <p><strong>投稿日:</strong> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+      <% if current_user == post.user %>
+        <div><%= link_to "編集", edit_post_path(post.id) %></div>
+      <% end %>
     </div> 
   <% end %>
 </div>

@@ -4,3 +4,22 @@
 <h3><%= @user.name %>のマイページ</h3>
 
 <h3>ユーザ名、アイコン、投稿、いいねを表示</h3>
+
+<h3><%= @user.name%>の投稿</h3>
+<% @posts.each do |post| %>
+  <div class="artwork-card">
+    <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300" >
+    <h4><%= post.met_object.title %></h4>
+    <p><strong>ジャンル:</strong> <%= post.met_object.department %></p>
+    <p><strong>作家:</strong> <%= post.met_object.artist_display_name.presence || '不明' %></p>
+    <p><strong>制作年:</strong> <%= post.met_object.object_date || '不明' %></p>
+    <p><strong>リンク:</strong> <%= post.met_object.object_url %></p>
+    <%= render "shared/user_icon_attached", user: post.user %>
+    <p><strong>ユーザ名:</strong> <%= post.user.name %></p>
+    <p><strong>コメント:</strong> <%= post.comment %></p>
+    <p><strong>投稿日:</strong> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+    <% if current_user == post.user %>
+      <div><%= link_to "編集", edit_post_path(post.id) %></div>
+    <% end %>
+  </div> 
+<% end %>

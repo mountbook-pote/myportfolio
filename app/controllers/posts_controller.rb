@@ -28,6 +28,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @post.update(params.require(:post).permit(:comment))
+      redirect_to user_path(current_user), notice: "投稿内容を更新しました"
+    else
+      flash.now[:alert] = "投稿内容の更新に失敗しました"
+      render "edit"
+    end
   end
 
   def destroy
@@ -38,7 +44,7 @@ class PostsController < ApplicationController
     @user = current_user
   end
 
-  def set_room
+  def set_post
     @post = Post.find(params[:id])
   end
 

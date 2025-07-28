@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>投稿の編集</h2>
+
+    <img src="<%= @post.met_object.primary_image_small %>" alt="<%= @post.met_object.title %>" width="300">
+    <p><strong>タイトル:</strong> <%= @post.met_object.title %></p>
+    <p><strong>作家:</strong> <%= @post.met_object.artist_display_name || '不明' %></p>
+    <p><strong>制作年:</strong> <%= @post.met_object.object_date || '不明' %></p>
+    <p><strong>ジャンル:</strong> <%= @post.met_object.department %></p>
+    <p><strong>リンク:</strong> <%= @post.met_object.object_url %></p>
+
+    <%= form_with model: @post do |f| %>
+      <div class="field row mb-3">
+        <div class= "col-md-4"><%= f.label :comment, "コメント<span style='color: red;'>*</span>".html_safe %></div>
+        <div class= "col-md-8">
+          <div><%= f.text_area :comment, placeholder: "コメントを入力",class: "w-100"  %></div>
+          <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @post, attribute: :comment %></div>
+        </div>
+      </div>
+
+      <div class="cancelsave-buttons">
+          <p><%= f.submit "保存", class: "btn btn-save w-100" %></p>
+          <p><%= link_to "キャンセル", :back, class: "btn btn-outline-secondary w-100" %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
