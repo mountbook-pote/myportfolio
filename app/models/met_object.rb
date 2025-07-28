@@ -1,4 +1,5 @@
 class MetObject < ApplicationRecord
+  has_many :posts, dependent: :destroy
   EXTRA_FETCH_NUMBER = 2
 
   def self.fetch_all_departments_works_at_random(all_department_names = [], fetch_each_number)

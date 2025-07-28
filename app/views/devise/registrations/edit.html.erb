@@ -6,7 +6,7 @@
       <div class="field row py-2 border-bottom w-100">
         <div class="field row py-2 align-items-center border-bottom">
           <div class= "col-sm-3 fw-bold text-nowrap mb-2"><%= f.label "アイコン画像" %></div>
-          <div class= "col-sm-2"><%= render "shared/image_attached",user: @user, size: 100 %></div>        
+          <div class= "col-sm-2"><%= render "shared/user_icon_attached",user: @user, size: 100 %></div>        
           <div class= "col-sm-7"><%= f.file_field :image %></div>
         </div>
 

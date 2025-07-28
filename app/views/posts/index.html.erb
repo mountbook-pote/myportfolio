@@ -1,2 +1,18 @@
-<h1>Posts#index</h1>
+<h1>投稿一覧</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
+<div class="artwork-grid">
+  <% @posts.each do |post| %>
+    <div class="artwork-card">
+      <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300" >
+      <h4><%= post.met_object.title %></h4>
+      <p><strong>ジャンル:</strong> <%= post.met_object.department %></p>
+      <p><strong>作家:</strong> <%= post.met_object.artist_display_name.presence || '不明' %></p>
+      <p><strong>制作年:</strong> <%= post.met_object.object_date || '不明' %></p>
+      <p><strong>リンク:</strong> <%= post.met_object.object_url %></p>
+      <%= render "shared/user_icon_attached", user: post.user %>
+      <p><strong>ユーザ名:</strong> <%= post.user.name %></p>
+      <p><strong>コメント:</strong> <%= post.comment %></p>
+    </div> 
+  <% end %>
+</div>

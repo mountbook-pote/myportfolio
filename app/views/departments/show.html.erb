@@ -11,6 +11,7 @@
       <p><strong>作家:</strong> <%= work.artist_display_name.presence || '不明' %></p>
       <p><strong>制作年:</strong> <%= work.object_date || '不明' %></p>
       <p><strong>リンク:</strong> <%= work.object_url %></p>
+      <p><%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), class: "post-button" %></p>
     </div>
   <% end %>
 </div>
