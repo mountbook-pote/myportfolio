@@ -1,6 +1,16 @@
 <header>
   <div class="header_contents">
     <div><%= link_to "My_portfolio(仮)", root_path, class: "toppage_link"%></div>
+
+    <div style="display: flex">
+      <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
+        <div><%= link_to "#{information[:name]}", 
+          department_path(information[:department_id]), 
+          class: "btn btn-light", style:"color: black;" %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="login_and_signup_buttons">
       <% if user_signed_in? %>
         <%= render "layouts/navigation_bar", user: user %>
