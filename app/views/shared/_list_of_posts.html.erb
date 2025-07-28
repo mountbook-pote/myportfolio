@@ -1,12 +1,14 @@
 <div class="artwork-grid">
   <% posts.each do |post| %>
     <div class="artwork-card">
-      <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300" >
+      <%= link_to post.met_object.primary_image_small, target: "_blank", rel: "noopener" do %>
+        <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300">
+      <% end %>
       <h4><%= post.met_object.title %></h4>
       <p><strong>ジャンル:</strong> <%= post.met_object.department %></p>
       <p><strong>作家:</strong> <%= post.met_object.artist_display_name || '不明' %></p>
       <p><strong>制作年:</strong> <%= post.met_object.object_date.presence || '不明' %></p>
-      <p><strong>リンク:</strong> <%= post.met_object.object_url %></p>
+      <p><%= link_to 'メトロポリタン美術館で見る', post.met_object.object_url, target: "_blank", rel: "noopener", class: "post-button" %></p>
       <%= render "shared/user_icon_attached", user: post.user %>
       <p><strong>ユーザ名:</strong> <%= post.user.name %></p>
       <p><strong>コメント:</strong> <%= post.comment %></p>

@@ -3,14 +3,16 @@
 <div class="artwork-grid">
   <% @met_works.each do |work| %>
     <div class="artwork-card">
-      <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" width="300" >
+      <%= link_to work.primary_image_small, target: "_blank", rel: "noopener" do %>
+        <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" width="300">
+      <% end %>
       <h4><%= work.title %></h4>
       <% if @department_name == "All Departments" %>
         <p><strong>ジャンル:</strong> <%= work.department %></p>
       <% end %>
       <p><strong>作家:</strong> <%= work.artist_display_name.presence || '不明' %></p>
       <p><strong>制作年:</strong> <%= work.object_date || '不明' %></p>
-      <p><strong>リンク:</strong> <%= work.object_url %></p>
+      <p><%= link_to 'メトロポリタン美術館で見る', work.object_url, target: "_blank", rel: "noopener", class: "post-button" %></p>
       <p><%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), class: "post-button" %></p>
     </div>
   <% end %>
