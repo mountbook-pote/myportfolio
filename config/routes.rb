@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
+  get 'posts/index'
   root 'homes#top'
 
   # home
   get 'homes/top'
 
-  #department
-  resources :departments, only: [:show]
-
-  # user
+  # users
   devise_for :users, controllers: {
   registrations: 'users/registrations'
   }
@@ -15,6 +13,12 @@ Rails.application.routes.draw do
     post 'users/guest_login', to: 'users/sessions#guest_login'
   end
   resources :users, only: [:show]
+
+  #departments
+  resources :departments, only: [:show]
+
+  #posts
+  resources :posts
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
