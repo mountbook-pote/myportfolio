@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(params.require(:post).permit(:comment, :met_object_id))
     if @post.save
-      redirect_to posts_index_path, notice: "投稿しました"
+      redirect_to user_path(current_user), notice: "投稿しました"
     else
       flash.now[:alert] = "投稿に失敗しました"
       render "new"
@@ -37,6 +37,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_path(current_user), notice: "投稿を削除しました"
   end
 
   private

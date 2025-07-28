@@ -12,7 +12,7 @@
       <div class="field row mb-3">
         <div class= "col-md-4"><%= f.label :comment, "コメント<span style='color: red;'>*</span>".html_safe %></div>
         <div class= "col-md-8">
-          <div><%= f.text_area :comment, placeholder: "コメントを入力",class: "w-100"  %></div>
+          <div><%= f.text_area :comment, placeholder: "コメントを入力",autofocus: false, class: "w-100"  %></div>
           <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @post, attribute: :comment %></div>
         </div>
       </div>
