@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     favorite.save
 
     respond_to do |format|
-      format.js  # create.js.erbを返す
+      format.js  # HTMLのリダイレクトの代わりにcreate.js.erbを返す
     end
   end
 
@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
     respond_to do |format|
-      format.js  # create.js.erbを返す
+      format.js  # HTMLのリダイレクトの代わりにdestroy.js.erbを返す
     end
   end
 

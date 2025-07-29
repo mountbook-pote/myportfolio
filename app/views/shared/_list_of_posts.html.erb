@@ -9,8 +9,10 @@
       <p>製作者: <%= post.met_object.artist_display_name || '不明' %></p>
       <p>制作年: <%= post.met_object.object_date.presence || '不明' %></p>
       <p><%= link_to 'メトロポリタン美術館で見る', post.met_object.object_url, target: "_blank", rel: "noopener", class: "post-button" %></p>
-      <%= render "shared/user_icon_attached", user: post.user %>
-      <p>投稿者: <%= post.user.name %></p>
+      <%= link_to user_path(post.user) do %>
+        <%= render "shared/user_icon_attached", user: post.user %>
+        <p>投稿者: <%= post.user.name %></p>
+      <% end %>
       <p>コメント: <%= post.comment %></p>
       <p>投稿日時: <%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
 
