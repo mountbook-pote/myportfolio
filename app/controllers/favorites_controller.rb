@@ -7,16 +7,14 @@ class FavoritesController < ApplicationController
 
     if @favorite.present?
       @favorite.destroy
-      notice = 'いいねを取り消しました。'
     else
       @favorite = current_user.favorites.new(post: @post)
-      if @favorite.save
-        notice = 'いいねしました！'
-      else
-        notice = 'いいねできませんでした。'
-      end
+      @favorite.save
     end
-    redirect_to posts_path(params[:post_id]), notice: notice
+    # create.js.erbを探して実行するコード
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
