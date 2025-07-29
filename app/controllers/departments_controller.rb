@@ -11,14 +11,17 @@ class DepartmentsController < ApplicationController
 
   def show
     department_id = params[:id].to_i
-    @department_name = DEPARTMENT_IDS[department_id]
     
     if department_id == 0
       @met_works = MetObject.
-        fetch_all_departments_works_at_random(DEPARTMENT_IDS, FETCH_EACH_DEPARTMENT_NUMBER)
+        fetch_all_departments_works_at_random(
+          DEPARTMENT_IDS.values.reject { |name| name == "All Departments" }, 
+          FETCH_EACH_DEPARTMENT_NUMBER
+        )
     else
       @met_works = MetObject.
         fetch_department_works_at_random(DEPARTMENT_IDS[department_id], FETCH_NUMBER)
     end
+    @department_name = DEPARTMENT_IDS[department_id]
   end
 end
