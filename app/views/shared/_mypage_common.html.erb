@@ -1,0 +1,17 @@
+<h3><%= user.name %>のマイページ</h3>
+<div class="col-lg-8">
+  <div class="field row py-2 align-items-center border-bottom">
+    <div class= "col-sm-3 fw-bold text-nowrap mb-2">アイコン</div>
+    <div class= "col-sm-9">
+      <%= render "shared/user_icon_attached", user: user, size: 100 %>
+    </div>
+  </div>
+
+  <div class="field row py-2 border-bottom">
+    <div class= "col-sm-3 fw-bold text-nowrap mb-2">ユーザ名</div>
+    <div class= "col-sm-9"><%= user.name %></div>
+  </div>
+</div>
+
+<h4><%= link_to '投稿', user_path(user) %></h4>
+<h4><%= link_to 'いいね', favorites_user_path(user) %></h4>

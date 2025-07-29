@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_login', to: 'users/sessions#guest_login'
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      get :favorites
+    end
+  end
 
   #departments
   resources :departments, only: :show

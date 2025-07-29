@@ -5,5 +5,5 @@
   <% else %>
     <%= button_to '🤍', post_favorite_path(post), method: :post, remote: true %>
   <% end %>
-  <%= post.favorites.count %>
+  <%= post.favorites.size %>
 </div>
