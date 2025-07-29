@@ -3,17 +3,19 @@ class FavoritesController < ApplicationController
   before_action :set_post
 
   def create
-    @favorite = current_user.favorites.find_by(post_id: @post.id)
+    favorite = current_user.favorites.new(post_id: @post.id)
+    favorite.save
 
-    if @favorite.present?
-      @favorite.destroy
-    else
-      @favorite = current_user.favorites.new(post: @post)
-      @favorite.save
-    end
-    # create.js.erbを探して実行するコード
     respond_to do |format|
-      format.js
+      format.js  # create.js.erbを返す
+    end
+  end
+
+  def destroy
+    favorite = current_user.favorites.find_by(post_id: @post.id)
+    favorite.destroy
+    respond_to do |format|
+      format.js  # create.js.erbを返す
     end
   end
 

@@ -1,7 +1,7 @@
 <div id="favorite_buttons_<%= post.id %>">
   <% if current_user.favorite_posts.exists?(post.id) %>
     <!-- remote: trueでjavascriptのリクエストになる -->
-    <%= button_to '❤️', post_favorite_path(post), method: :post, remote: true %> 
+    <%= button_to '❤️', post_favorite_path(post), method: :delete, remote: true %> 
   <% else %>
     <%= button_to '🤍', post_favorite_path(post), method: :post, remote: true %>
   <% end %>
