@@ -13,7 +13,11 @@
       <p>製作者: <%= work.artist_display_name.presence || '不明' %></p>
       <p>制作年: <%= work.object_date || '不明' %></p>
       <p><%= link_to 'メトロポリタン美術館で見る', work.object_url, target: "_blank", rel: "noopener", class: "post-button" %></p>
-      <p><%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), class: "post-button" %></p>
+      <% if current_user %>
+        <p><%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), class: "post-button" %></p>
+      <% else %>
+        <p><%= link_to 'この作品を投稿', new_user_session_path(alert: 'アカウント登録もしくはログインしてください') %></p>
+      <% end %>
     </div>
   <% end %>
 </div>

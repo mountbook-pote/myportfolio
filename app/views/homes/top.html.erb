@@ -8,3 +8,7 @@
     </div>
   <% end %>
 </div>
+
+<h1>新着投稿</h1>
+<%= render 'shared/list_of_posts', posts: @posts%>
+<%= link_to '投稿をもっと見る', posts_path, class: "btn btn-light", style:"color: black;" %>

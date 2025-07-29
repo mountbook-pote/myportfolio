@@ -6,7 +6,7 @@ class DepartmentsController < ApplicationController
     3 => "Egyptian Art",
   }.freeze
 
-  EXCLUDE_CONTENTS = 'All Departments'.freeze
+  NOT_FETCH_CONTENTS = 'All Departments'.freeze
   FETCH_EACH_DEPARTMENT_NUMBER = 3
   FETCH_NUMBER = 9
 
@@ -16,7 +16,7 @@ class DepartmentsController < ApplicationController
     if department_id == 0
       @met_works = MetObject.
         fetch_all_departments_works_at_random(
-          DEPARTMENT_IDS.values.reject { |name| name == EXCLUDE_CONTENTS }, 
+          DEPARTMENT_IDS.values.reject { |name| name == NOT_FETCH_CONTENTS }, 
           FETCH_EACH_DEPARTMENT_NUMBER
         )
     else
