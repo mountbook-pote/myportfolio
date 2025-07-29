@@ -18,6 +18,7 @@
       <% else %>
         <%= button_to '🤍', post_favorite_path(post), method: :post %>
       <% end %>
+      <%= post.favorites.count %>
       <% if current_user == post.user %>
         <div><%= link_to "編集", edit_post_path(post.id) %></div>
         <div><%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" } %></div>
