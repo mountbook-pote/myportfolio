@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'homes#top'
 
   # home
-  get 'homes/top'
+  get 'top', to: 'homes#top'
+  get 'terms', to: 'homes#terms'
+  get 'policy', to: 'homes#policy'
 
   # users
   devise_for :users, controllers: {

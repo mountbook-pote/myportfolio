@@ -6,4 +6,10 @@ class HomesController < ApplicationController
       order(created_at: :desc).
       limit(FETCH_NUMBER)
   end
+
+  def terms
+  end
+
+  def policy
+  end
 end

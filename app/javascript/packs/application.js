@@ -14,3 +14,7 @@ window.jQuery = $
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function () {
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+});
