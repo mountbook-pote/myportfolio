@@ -48,6 +48,8 @@ gem 'mini_magick' #画像処理を行うためのgem
 
 gem 'httparty' # 外部webAPIを取得に使用するgem
 
+gem 'ransack'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

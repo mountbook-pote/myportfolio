@@ -1,0 +1,10 @@
+<div class=" text-center">
+  <div>
+    <h5>投稿を検索する</h5>
+    <%= search_form_for @q do |f| %>
+      <!--*_contは、あいまい検索を指定-->
+      <%= f.text_field :comment_cont, placeholder: "コメントを入力" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+</div>
