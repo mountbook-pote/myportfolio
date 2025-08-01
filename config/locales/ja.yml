@@ -27,16 +27,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-      room:
-        #追加したモデルのカラムに日本語名を当てる
-        name: 施設名
-        content: 施設詳細
-        price: 料金
-        adress: 住所
-      reservation:
-        check_in: チェックイン
-        check_out: チェックアウト
-        number_of_people: 人数
     models:
       user: ユーザー
   devise:
@@ -153,3 +143,8 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+  departments:
+    All Departments: "全てのジャンル"
+    European Paintings: "ヨーロッパ絵画"
+    Medieval Art: "中世美術"
+    Egyptian Art: "古代エジプト美術"

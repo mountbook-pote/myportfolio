@@ -9,6 +9,7 @@
       <div>
         <% # 全てのジャンルの配列 %>
         <% departments = ["European Paintings", "Medieval Art", "Egyptian Art"] %>
+        <% # 初期状態ではparams...はnilに、入力なしで一度でも検索すると空要素を含む「ハッシュ」が渡るためfalseになる%>
         <% if f.object.met_object_department_in.blank? && params[:q].blank? %>
           <% f.object.met_object_department_in = departments %>
         <% end %>
@@ -16,7 +17,7 @@
         <% departments.each do |department| %>
           <label>
             <%= f.check_box :met_object_department_in, { multiple: true }, department, nil %>
-            <%= department %>
+            <%= ja_translated_name(department) %>
           </label><br>
         <% end %>
       </div>
