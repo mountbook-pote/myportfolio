@@ -1,0 +1,7 @@
+<% if resources.empty? %>
+  <p>検索結果：0件</p>
+<% elsif params[:q].present? %>
+  <p>検索結果：<%= resources.size %>件</p>
+<% else %>
+  <p>全ての投稿：<%= resources.size %>件</p>
+<% end %>

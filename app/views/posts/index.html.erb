@@ -1,5 +1,6 @@
 <% content_for :title, "投稿一覧" %>
 
-<h1>投稿一覧</h1>
+<%= render "shared/search_form" %>
 
-<%= render 'shared/list_of_posts', posts: @posts%>
+<%= render 'shared/num_of_searches', resources: @posts %>
+<%= render 'shared/list_of_posts', posts: @posts %>

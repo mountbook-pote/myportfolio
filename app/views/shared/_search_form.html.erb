@@ -1,0 +1,27 @@
+<div class=" text-center">
+  <div>
+    <h5>投稿を検索</h5>
+    <%= search_form_for @q do |f| %>
+      <!--*_contは、あいまい検索を指定-->
+      <% # 初期値=nil、空で検索すると""になる %>
+      <%= f.text_field :user_name_cont, placeholder: "投稿者" %>
+
+      <div>
+        <% # 全てのジャンルの配列 %>
+        <% departments = ["European Paintings", "Medieval Art", "Egyptian Art"] %>
+        <% # 初期状態ではparams...はnilに、入力なしで一度でも検索すると空要素を含む「ハッシュ」が渡るためfalseになる%>
+        <% if f.object.met_object_department_in.blank? && params[:q].blank? %>
+          <% f.object.met_object_department_in = departments %>
+        <% end %>
+        
+        <% departments.each do |department| %>
+          <label>
+            <%= f.check_box :met_object_department_in, { multiple: true }, department, nil %>
+            <%= ja_translated_name(department) %>
+          </label><br>
+        <% end %>
+      </div>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+</div>

@@ -5,7 +5,7 @@
         <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300">
       <% end %>
       <h4><%= post.met_object.title %></h4>
-      <p>ジャンル: <%= post.met_object.department %></p>
+      <p>ジャンル: <%= ja_translated_name(post.met_object.department) %></p>
       <p>製作者: <%= post.met_object.artist_display_name || '不明' %></p>
       <p>制作年: <%= post.met_object.object_date.presence || '不明' %></p>
       <p><%= link_to 'メトロポリタン美術館で見る', post.met_object.object_url, target: "_blank", rel: "noopener", class: "post-button" %></p>

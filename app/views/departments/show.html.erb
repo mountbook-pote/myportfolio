@@ -1,7 +1,8 @@
-<% content_for :title, @department_name %>
+<% content_for :title, ja_translated_name(@department_name) %>
 
-<h2><%= @department_name %></h2>
+<h2><%= ja_translated_name(@department_name) %></h2>
 
+<p><%= ja_translated_name("European Paintings") %></p>
 <div class="artwork-grid">
   <% @met_works.each do |work| %>
     <div class="artwork-card">
