@@ -7,6 +7,9 @@ class HomesController < ApplicationController
       limit(FETCH_NUMBER)
   end
 
+  def about
+  end
+
   def terms
   end
 

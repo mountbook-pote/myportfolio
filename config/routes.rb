@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # home
   get 'top', to: 'homes#top'
+  get 'about', to: 'homes#about'
   get 'terms', to: 'homes#terms'
   get 'policy', to: 'homes#policy'
 
