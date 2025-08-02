@@ -3,13 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
 
   validates :name, presence: true, length: { maximum: 10 }
-
 
   # ゲストユーザ用のコード
   GUEST_USER_EMAIL = 'guest@example.com'.freeze
@@ -31,9 +30,10 @@ class User < ApplicationRecord
   validate :image_content_type
   validate :image_size
 
-  private 
+  private
+
   def image_content_type
-    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif])
+    if image.attached? && !image.content_type.in?(%w(image/jpeg image/png image/gif))
       errors.add(:image, '：ファイル形式が、JPEG, PNG, GIF以外になってます。ファイル形式をご確認ください。')
     end
   end

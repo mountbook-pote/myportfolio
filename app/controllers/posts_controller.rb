@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_current_user   #postアクションで、常に@user = current_userを渡す
+  before_action :set_current_user # postアクションで、常に@user = current_userを渡す
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
@@ -47,6 +47,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def set_current_user
     @user = current_user
   end

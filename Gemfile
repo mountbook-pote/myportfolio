@@ -30,21 +30,21 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'concurrent-ruby', '1.3.4'
 
-gem 'psych', '~> 3.1' #webpackerインストールに必要なコード
+gem 'psych', '~> 3.1' # webpackerインストールに必要なコード
 
-gem 'devise' #ログイン/ログアウトなどの認証機能を提供するgem
+gem 'devise' # ログイン/ログアウトなどの認証機能を提供するgem
 
-gem 'rails-i18n' #railsのよく使われる翻訳一式
+gem 'rails-i18n' # railsのよく使われる翻訳一式
 
-gem 'devise-i18n' #deviseのよく使われる翻訳一式
+gem 'devise-i18n' # deviseのよく使われる翻訳一式
 
-gem 'bigdecimal' #db:migrate時の一部エラー対策用
+gem 'bigdecimal' # db:migrate時の一部エラー対策用
 
-gem 'mutex_m'  #db:migrate時の一部エラー対策用
+gem 'mutex_m' # db:migrate時の一部エラー対策用
 
-gem "image_processing", "~> 1.2" #画像処理を行うためのgem
+gem "image_processing", "~> 1.2" # 画像処理を行うためのgem
 
-gem 'mini_magick' #画像処理を行うためのgem
+gem 'mini_magick' # 画像処理を行うためのgem
 
 gem 'httparty' # 外部webAPIを取得に使用するgem
 
@@ -53,6 +53,7 @@ gem 'ransack'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rubocop-airbnb'
 end
 
 group :development do
@@ -63,7 +64,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '4.2.1' #rails gコマンドのエラー対策用。元々あったものにバージョンを指定
+  gem 'spring', '4.2.1' # rails gコマンドのエラー対策用。元々あったものにバージョンを指定
 end
 
 group :test do
