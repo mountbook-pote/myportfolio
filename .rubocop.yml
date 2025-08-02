@@ -1,0 +1,5 @@
+require: rubocop-airbnb
+plugins:
+  - rubocop-airbnb
+
+inherit_from: .rubocop_airbnb.yml
