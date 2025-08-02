@@ -2,7 +2,7 @@ class MetObject < ApplicationRecord
   has_many :posts, dependent: :destroy
   EXTRA_FETCH_NUMBER = 2
 
-  def self.fetch_all_departments_works_at_random(all_department_names = [], fetch_each_number)
+  def self.fetch_all_departments_works_at_random(all_department_names, fetch_each_number)
     total_met_works = []
 
     all_department_names.each do |department_name|
