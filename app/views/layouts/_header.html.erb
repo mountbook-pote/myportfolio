@@ -1,19 +1,21 @@
 <header>
-  <div class="header_contents">
-    <div><%= link_to "Side Gallery", root_path, class: "toppage_link"%></div>
-
-    <div style="display: flex">
-      <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
-        <div><%= link_to "#{information[:name]}", 
-          department_path(information[:department_id]), 
-          class: "btn btn-light", style:"color: black;" %>
-        </div>
-      <% end %>
+  <div class="header-container">
+    <div class="navigationbar__menus">
+      <div><%= link_to "Side Gallery", root_path, class: "app-name" %></div>
       <div><%= link_to "投稿一覧", posts_path, class: "btn btn-light", style:"color: black;" %></div>
+      <div class="department-selectbox">
+        <select id="department-id" class="form-control">
+          <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
+            <option value="<%= information[:department_id] %>" <%= "selected" if information[:department_id] == params[:id].to_i %>>
+              <%= information[:name] %>
+            </option>
+          <% end %>
+        </select>
+        <button id="select-department-button" type="button" class="btn btn-primary">表示</button>
+      </div>
     </div>
 
-
-    <div class="login_and_signup_buttons">
+    <div class="navigationbar__users">
       <% if user_signed_in? %>
         <%= render "layouts/navigation_bar", user: user %>
       <% else %>

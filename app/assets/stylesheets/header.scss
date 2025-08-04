@@ -1,0 +1,42 @@
+@import "./_break-points.scss";
+
+/*header要素*/
+header{
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigationbar{
+  display: flex;
+  &__menus{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+  }
+  &__users{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.app-name{
+  color: white;
+  text-decoration: none;
+  font-size: 170%;
+}
+
+.department-selectbox{
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
