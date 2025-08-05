@@ -1,18 +1,9 @@
 <header>
   <div class="header-container">
     <div class="navigationbar__menus">
-      <div><%= link_to "Side Gallery", root_path, class: "app-name" %></div>
+      <div><%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, class: "app-name" %></div>
       <div><%= link_to "投稿一覧", posts_path, class: "btn btn-light", style:"color: black;" %></div>
-      <div class="department-selectbox">
-        <select id="department-id" class="form-control">
-          <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
-            <option value="<%= information[:department_id] %>" <%= "selected" if information[:department_id] == params[:id].to_i %>>
-              <%= information[:name] %>
-            </option>
-          <% end %>
-        </select>
-        <button id="select-department-button" type="button" class="btn btn-primary">表示</button>
-      </div>
+     
     </div>
 
     <div class="navigationbar__users">

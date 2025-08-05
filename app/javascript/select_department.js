@@ -1,10 +1,10 @@
 function goToDepartment() {
-  const select = document.getElementById('department-id');
-  const id = select.value;
-    window.location.href = `/departments/${id}`;
+  const selectDepartmentName = document.getElementById('department-id');
+  const departmentID = selectDepartmentName.value;
+    window.location.href = `/departments/${departmentID}`;
 }
 
 document.addEventListener('turbolinks:load', () => {
-  const button = document.getElementById('select-department-button');
-  button.addEventListener('click', goToDepartment);
+  const selectDepartmentButton = document.getElementById('select-department-button');
+  selectDepartmentButton.addEventListener('click', goToDepartment);
 });

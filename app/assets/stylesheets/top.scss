@@ -1,0 +1,65 @@
+@import "./_break-points.scss";
+
+.top-background{
+  background-color: #322419;
+  color: white;
+}  
+
+.image-container{
+  display: flex;
+}
+
+.center-column{
+  width: 54%;
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+
+.left-column{
+  width: 23%;
+  @include xs-device-or-less {
+    display: none;
+  }
+}
+
+.right-column{
+  width: 23%;
+  @include xs-device-or-less {
+    display: none;
+  }
+}
+
+.sub-image-contents{
+  margin-bottom: 40px;
+  &__image{
+    display: flex;
+    margin: 0 auto 5px auto;
+    width: 85%;
+
+    border: 9px solid;
+    border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 9px;
+    box-shadow: 3px 3px 5px black;
+  }
+  &__title{
+    text-align: center;
+  }
+}
+
+.main-image{
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+.main-overlay{
+  position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px;
+}
+
