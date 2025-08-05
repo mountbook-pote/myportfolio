@@ -1,4 +1,12 @@
-const TRIM_HEIGHT = 140;
+  function getTrimHeight() {
+  if (window.innerWidth < 768) {
+    return 0;         // スマホサイズ
+  } else if (window.innerWidth < 1152) {
+    return 60;        // タブレットサイズ
+  } else {
+    return 120;       // PCサイズ
+  }
+}
 
 document.addEventListener('turbolinks:load', () => {
   const image = document.querySelector('.main-image');
@@ -6,7 +14,7 @@ document.addEventListener('turbolinks:load', () => {
 
   function adjustHeightBasedOnDisplayedSize() {
     const displayedHeight = image.clientHeight;
-    const adjustedHeight = displayedHeight - TRIM_HEIGHT;
+    const adjustedHeight = displayedHeight - getTrimHeight();
     centerColumn.style.height = adjustedHeight + 'px';
   }
 
@@ -19,6 +27,6 @@ window.addEventListener('resize', () => {
   const centerColumn = document.querySelector('.center-column');
 
   const displayedHeight = image.clientHeight;
-  const adjustedHeight = displayedHeight - TRIM_HEIGHT;
+  const adjustedHeight = displayedHeight - getTrimHeight();
   centerColumn.style.height = adjustedHeight + 'px';
 });

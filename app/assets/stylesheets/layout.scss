@@ -21,6 +21,6 @@
   }
 
   @include xs-device-or-less {
-    width: calc(100% - 16px * 2);
+    width: 100%;
   }
 }
