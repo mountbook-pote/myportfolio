@@ -1,6 +1,8 @@
-<% images.each do |information| %>
-  <div class="sub-image-contents">
-    <%= image_tag information[:image], class: "sub-image-contents__image" %>
-    <p class="sub-image-contents__title"><%= information[:title] %></p>
-  </div>
-<% end %>
+<div class="sub-image-contents">
+  <% images.each do |information| %>
+    <div>
+      <%= image_tag information[:image], class: "sub-image-contents__image" %>
+      <p class="sub-image-contents__title"><%= information[:title] %></p>
+    </div>
+  <% end %>
+</div>

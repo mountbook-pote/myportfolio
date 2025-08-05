@@ -31,7 +31,9 @@
 }
 
 .sub-image-contents{
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   &__image{
     display: flex;
     margin: 0 auto 5px auto;
@@ -51,6 +53,8 @@
   margin: 0 auto;
   width: 100%;
   position: relative;
+  clip-path: inset(50px 0 90px 0);
+  top: -50px;
 }
 
 .main-overlay{
@@ -63,3 +67,10 @@
     padding: 10px;
 }
 
+.post-container{
+  margin-top: 30px;
+  padding-top: 20px;
+
+  border: 2px solid black;
+    border-top: 3px white solid;
+}
