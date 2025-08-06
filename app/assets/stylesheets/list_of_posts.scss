@@ -23,16 +23,38 @@
   padding-bottom: 20px;
   border-bottom: 1px solid black;
   display: flex;
+    @include xs-device-or-less {
+    display: block;
+  }
 
-    .image-section{
+  .image-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
     width: 35%;
-    border-right: 1px solid #322419;
+    border-right: 1px dotted #322419;
+    @include sm-device-or-less {
+      width: 50%;
+    }
+    @include xs-device-or-less {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px dotted #322419;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
   }
   .description-section{
     width: 65%;
     text-align: left;
     line-height: 1;
     padding-left: 3%;
+    @include sm-device-or-less {
+      width: 50%;
+    }
+    @include xs-device-or-less {
+      width: 100%;
+    }
 
     .met-description-space{
       margin-bottom: 5px;
@@ -57,6 +79,17 @@
         display: flex;
         gap: 25px;
         align-items: center;
+        @include sm-device {
+          gap: 20px;
+        }
+      }
+
+      .posted-date{
+        text-align: right;
+        overflow-wrap: break-word;
+        @include sm-device {
+          font-size: 0.9rem;
+        }
       }
     }
   }
