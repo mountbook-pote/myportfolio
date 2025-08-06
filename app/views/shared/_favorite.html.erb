@@ -1,7 +1,6 @@
-<div id="favorite_buttons_<%= post.id %>">
+<div id="favorite_buttons_<%= post.id %>" class="favorite-buttons">
   <% if current_user %>
     <% if current_user.favorite_posts.exists?(post.id) %>
-      <!-- remote: trueでjavascriptのリクエストになる -->
       <%= button_to '❤️', post_favorite_path(post), method: :delete, remote: true %> 
     <% else %>
       <%= button_to '🤍', post_favorite_path(post), method: :post, remote: true %>
@@ -9,5 +8,5 @@
   <% else %>
     <%= link_to '🤍', new_user_session_path(alert: 'アカウント登録もしくはログインしてください') %>
   <% end %>
-  <%= post.favorites.size %>
+  <span><%= post.favorites.size if post.favorites.size > 0 %></span>
 </div>

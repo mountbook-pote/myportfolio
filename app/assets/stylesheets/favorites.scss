@@ -1,3 +1,7 @@
-// Place all the styles related to the favorites controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./_break-points.scss";
+
+.favorite-buttons{
+  display: flex;
+  align-items: center;
+  width: 70px;
+}

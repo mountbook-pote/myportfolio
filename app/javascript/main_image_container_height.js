@@ -1,15 +1,15 @@
   function getTrimHeight() {
   if (window.innerWidth < 768) {
-    return 0;         // スマホサイズ
+    return 0;
   } else if (window.innerWidth < 1152) {
-    return 60;        // タブレットサイズ
+    return 60; //sm-device-or-lessのトリミング分(px)
   } else {
-    return 120;       // PCサイズ
+    return 120; //それ以外のトリミング分(px)
   }
 }
 
 document.addEventListener('turbolinks:load', () => {
-  const image = document.querySelector('.main-image');
+  const image = document.querySelector('.center-column-image');
   const centerColumn = document.querySelector('.center-column');
 
   function adjustHeightBasedOnDisplayedSize() {
@@ -23,7 +23,7 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 window.addEventListener('resize', () => {
-  const image = document.querySelector('.main-image');
+  const image = document.querySelector('.center-column-image');
   const centerColumn = document.querySelector('.center-column');
 
   const displayedHeight = image.clientHeight;

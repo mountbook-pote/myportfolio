@@ -1,0 +1,73 @@
+@import "./_break-points.scss";
+
+.column-section{
+  display: flex;
+}
+
+.left-column, .right-column{
+  width: 23%;
+  @include xs-device-or-less {
+    display: none;
+  }
+}
+
+.both-column-images{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 50px;
+  &__image{
+    display: flex;
+    margin: 0 auto 2px auto;
+    width: 85%;
+
+    /*額縁のスタイル*/
+    border: 9px solid;
+    border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 9px;
+    box-shadow: 3px 3px 8px black;
+  }
+  &__title{
+    display: inline-block;
+    padding: 0em 0.5em;
+    max-width: 80%;
+    font-size: 0.8rem;
+
+  }
+}
+
+.center-column{
+  width: 54%;
+  @include sm-device-or-less {
+    margin-bottom: 20px;
+  }
+  @include xs-device-or-less {
+    width: 100%;
+  }
+}
+
+.center-column-image{
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  /* 画像のトリミング設定 */
+  clip-path: inset(50px 0 90px 0);
+  top: -50px;
+  @include sm-device-or-less {
+    clip-path: inset(20px 0 40px 0);
+    top: -20px;
+  }
+  @include xs-device-or-less {
+    clip-path: none;
+    top: 0px;
+  }
+  &__overlay{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px;
+  }
+}

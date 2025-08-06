@@ -12,7 +12,7 @@ window.$ = $
 window.jQuery = $
 
 import '../select_department'
-import '../change_image-containar_height'
+import '../main_image_container_height'
 
 Rails.start()
 Turbolinks.start()

@@ -2,5 +2,4 @@
 
 <%= render 'shared/mypage_common', user: @user%>
 
-<h3><%= @user.name%>の投稿</h3>
-<%= render 'shared/list_of_posts', posts: @posts%>
+<%= render 'shared/list_of_posts', title: "#{@user.name}の投稿", posts: @posts%>

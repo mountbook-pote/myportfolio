@@ -1,0 +1,59 @@
+@import "./_break-points.scss";
+
+.post-section{
+  margin-bottom: 20px;
+  padding: 20px 0;
+  text-align: center;
+
+  border-top: 1px black solid;
+  background-color: #F2EFEC;
+  color: black;
+  border-radius: 5px;
+}
+
+.add-top-border{
+  border-top: 1px solid black;
+  padding-top: 20px;
+}
+
+.post-container{
+  width: 95%;
+  margin: 0 auto 20px auto;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+
+    .image-section{
+    width: 35%;
+    border-right: 1px solid black;
+  }
+  .description-section{
+    width: 65%;
+    text-align: left;
+    line-height: 1;
+    padding-left: 3%;
+
+    .met-description-space{
+      margin-bottom: 5px;
+      border-bottom: 1px solid black;
+
+    }
+    .user-space{
+      margin-bottom: 5px;
+      border-bottom: 1px solid black;
+    }
+    .other-space{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+
+      .other-contents{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+    }
+  }
+}
