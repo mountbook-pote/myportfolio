@@ -8,3 +8,20 @@ body{
   background-color: #322419;
   color: white;
 }
+
+.link-default{
+  color: black !important;
+  text-decoration: none;
+  box-shadow: none !important;
+}
+.link-default:hover{
+  text-decoration: underline;
+}
+
+.link-user{
+  font-size: 18px;
+}
+
+.bi {
+  font-size: 22px;
+}

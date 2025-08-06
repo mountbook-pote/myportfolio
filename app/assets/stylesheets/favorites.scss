@@ -3,5 +3,14 @@
 .favorite-buttons{
   display: flex;
   align-items: center;
+  gap: 5px;
   width: 70px;
+}
+
+.change-favorite-sizecolor{
+  color: #d70035;
+}
+
+.bi-balloon-heart-fill{
+  color: #d70035;
 }

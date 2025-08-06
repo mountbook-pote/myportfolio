@@ -16,20 +16,32 @@
         </div>
   
         <div class="user-space">
-          <%= link_to user_path(post.user) do %>
-            <%= render "shared/user_icon_attached", user: post.user %>
-            <span><%= post.user.name %></span>
+          <%= link_to user_path(post.user), class: "link-default" do %>
+            <%= render "shared/user_icon_attached", user: post.user, size: 50 %>
+            <span class="link-default link-user"><%= post.user.name %></span>
           <% end %>
-          <p>コメント: <%= post.comment %></p>
+          <p class="post-comment"><%= post.comment %></p>
         </div>
   
         <div class="other-space">
           <div class="other-contents">
             <% if current_user == post.user %>
-              <div><%= link_to "編集", edit_post_path(post.id) %></div>
-              <div><%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" } %></div>
+              <div>
+                <%= link_to edit_post_path(post.id), class: "link-default" do %>
+                  <i class="bi bi-pencil" title="編集"></i>
+                <% end %>
+              </div>
+              <div>
+                <%= link_to post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: "link-default" do %>
+                  <i class="bi bi-trash" title="削除"></i>
+                <% end %>
+              </div>
             <% end %>
-            <%= link_to 'メトロポリタン美術館で見る', post.met_object.object_url, target: "_blank", rel: "noopener", class: "post-button" %>
+            <div>
+              <%= link_to post.met_object.object_url, target: "_blank", rel: "noopener", class: "link-default" do %>
+                <i class="bi bi-bank" title="メトロポリタン美術館で見る"></i>
+              <% end %>
+            </div>
             <%= render "shared/favorite", post: post %>
           </div>
           <div class="posted-date">

@@ -1,12 +1,21 @@
 <div id="favorite_buttons_<%= post.id %>" class="favorite-buttons">
   <% if current_user %>
     <% if current_user.favorite_posts.exists?(post.id) %>
-      <%= button_to '❤️', post_favorite_path(post), method: :delete, remote: true %> 
+      <%= link_to post_favorite_path(post), method: :delete, remote: true, class: "link-default" do %>
+        <i class="bi bi-balloon-heart-fill" title="いいね解除"></i>
+      <% end %>
     <% else %>
-      <%= button_to '🤍', post_favorite_path(post), method: :post, remote: true %>
+      <%= link_to post_favorite_path(post), method: :post, remote: true, class: "link-default" do %>
+        <i class="bi bi-balloon-heart" title="いいねする"></i>
+      <% end %>
     <% end %>
   <% else %>
-    <%= link_to '🤍', new_user_session_path(alert: 'アカウント登録もしくはログインしてください') %>
+    <%= link_to new_user_session_path(alert: 'アカウント登録もしくはログインしてください'),class: "link-default" do %>
+      <i class="bi bi-balloon-heart" title="いいねする"></i>
+    <% end %>
   <% end %>
-  <span><%= post.favorites.size if post.favorites.size > 0 %></span>
+  
+  <span class="<%= 'change-favorite-sizecolor' if current_user && current_user.favorite_posts.exists?(post.id) %>">
+    <%= post.favorites.size if post.favorites.size > 0 %>
+  </span>
 </div>

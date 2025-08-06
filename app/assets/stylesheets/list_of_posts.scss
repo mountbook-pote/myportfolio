@@ -26,7 +26,7 @@
 
     .image-section{
     width: 35%;
-    border-right: 1px solid black;
+    border-right: 1px solid #322419;
   }
   .description-section{
     width: 65%;
@@ -36,12 +36,16 @@
 
     .met-description-space{
       margin-bottom: 5px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px dotted #322419;
 
     }
     .user-space{
       margin-bottom: 5px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px dotted #322419;
+
+      .post-comment{
+        margin-top: 5px;
+      }
     }
     .other-space{
       display: flex;
@@ -51,7 +55,7 @@
 
       .other-contents{
         display: flex;
-        gap: 20px;
+        gap: 25px;
         align-items: center;
       }
     }
