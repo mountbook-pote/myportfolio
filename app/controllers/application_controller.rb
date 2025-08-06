@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_flash_from_params
-    flash[:alert] = params[:alert] if params[:alert].present?
-    flash[:notice] = params[:notice] if params[:notice].present?
+    flash.now[:alert] = params[:alert] if params[:alert].present?
+    flash.now[:notice] = params[:notice] if params[:notice].present?
   end
 end
