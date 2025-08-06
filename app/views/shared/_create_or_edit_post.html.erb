@@ -3,7 +3,7 @@
   <p>タイトル: <%= post.met_object.title %></p>
   <p>製作者: <%= post.met_object.artist_display_name || '不明' %></p>
   <p>制作年:</strong> <%= post.met_object.object_date || '不明' %></p>
-  <p>ジャンル: <%= post.met_object.department %></p>
+  <p>ジャンル: <%= ja_translated_name(post.met_object.department) %></p>
   <p>リンク: <%= post.met_object.object_url %></p>
 
   <%= form_with model: post do |f| %>
