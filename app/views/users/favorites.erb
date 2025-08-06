@@ -1,5 +1,6 @@
 <% content_for :title, @user.name %>
 
-<%= render 'shared/mypage_common', user: @user%>
-
-<%= render 'shared/list_of_posts', title: "いいねした投稿", posts: @favorite_posts %>
+<div class="container">
+  <%= render 'shared/mypage_common', user: @user%>
+  <%= render 'shared/list_of_posts', title: "#{@user.name}のいいね", posts: @favorite_posts %>
+</div>
