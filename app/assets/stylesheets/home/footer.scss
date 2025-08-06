@@ -1,8 +1,22 @@
 footer{
-  background-color: black;
-  color: white;
   width: 100%;
   padding: 10px;
-  margin: 0;
+  margin: 0 auto;
   z-index: 100;
+  background-color: black;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.footer-container{
+  width: 95%;
+}
+
+.footer-contents{
+  display: flex;
+  justify-content: right;
+  gap: 15px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #322419;
 }
