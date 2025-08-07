@@ -50,3 +50,12 @@
   color: #c82c55;
   font-size: 0.85rem;
 }
+
+.remember-space{
+  display: flex;
+  gap: 10px;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}

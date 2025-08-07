@@ -9,6 +9,10 @@
   color: black;
   border-radius: 5px;
 }
+.create-flame{
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .add-top-border{
   border-top: 1px solid black;
@@ -30,11 +34,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;  
-    width: 35%;
+    align-items: center;
+    width: 50%;
     border-right: 1px dotted #322419;
-    @include sm-device-or-less {
-      width: 50%;
-    }
     @include xs-device-or-less {
       width: 100%;
       border-right: none;
@@ -44,13 +46,10 @@
     }
   }
   .description-section{
-    width: 65%;
+    width: 50%;
     text-align: left;
     line-height: 1;
     padding-left: 3%;
-    @include sm-device-or-less {
-      width: 50%;
-    }
     @include xs-device-or-less {
       width: 100%;
     }
@@ -66,6 +65,22 @@
 
       .post-comment{
         margin-top: 5px;
+      }
+      &__create-post{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .input-comment{
+        width: 100%;
+        padding-bottom: 30px;
+        margin-bottom: 10px;
+        background-color: #F2EFEC;
+        border-color: #322419;
+      }
+      .input-comment:focus{
+        outline: none;
       }
     }
     .other-space{
@@ -90,6 +105,14 @@
           font-size: 0.9rem;
         }
       }
+    }
+    .submit-space{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .submit-space > div > .btn{
+      width: 100%;
     }
   }
 }
