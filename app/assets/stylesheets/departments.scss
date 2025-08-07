@@ -1,3 +1,14 @@
-// Place all the styles related to the departments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./_break-points.scss";
+
+.department-selectbox-section{
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px 0;
+
+
+}
+.department-selectbox-container{
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
