@@ -5,13 +5,14 @@
   </head>
 
   <body>
-    <!-- ヘッダーは常にcurrent_userにする(@userとしない) -->
-    <%= render 'layouts/header', user: current_user %>
+    <div class="footer-fixed">
+      <!-- ヘッダーは常にcurrent_userにする(@userとしない) -->
+      <%= render 'layouts/header', user: current_user %>
 
-    <%= yield %>
+      <%= yield %>
 
-    <%= render 'layouts/footer' %>
-
+      <%= render 'layouts/footer' %>
+    </div>
     <%= render "devise/shared/flash_message" %>
 
     <%= yield :scripts %>
