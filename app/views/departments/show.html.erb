@@ -1,18 +1,17 @@
 <% content_for :title, ja_translated_name(@department_name) %>
-
+<div class="container">
   <div class="department-selectbox-section">
     <%= render 'shared/department_selectbox' %>
   </div>
-
-
-<h2><%= ja_translated_name(@department_name) %></h2>
-<div class="container">
-  <div class="artwork-grid">
+  <div class="artworks-section">
+    <h2><%= ja_translated_name(@department_name) %></h2>
     <% @met_works.each do |work| %>
-      <div class="artwork-card">
+      <div>
         <%= link_to work.primary_image_small, target: "_blank", rel: "noopener" do %>
-          <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" width="300">
+          <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" class="artworks-image">
         <% end %>
+      </div>
+      <div class>
         <h4><%= work.title %></h4>
         <% if @department_name == "All Departments" %>
           <p>ジャンル: <%= ja_translated_name(work.department) %></p>

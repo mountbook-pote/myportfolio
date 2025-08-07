@@ -1,5 +1,9 @@
 @import "./_break-points.scss";
 
+body.departments{
+    background-color: #241a08;
+}
+
 .department-selectbox-section{
   width: 50%;
   margin: 0 auto;
@@ -11,4 +15,19 @@
   display: flex;
   gap: 10px;
   white-space: nowrap;
+}
+
+.artworks-section{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.artworks-image{
+  width: 400px;
+  border: 15px solid;
+  border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 15px;
+  box-shadow: 8px 8px 12px black;
 }
