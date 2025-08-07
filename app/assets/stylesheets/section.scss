@@ -11,8 +11,9 @@
   border-radius: 5px;
 }
 
-  /*新規登録・ログインに適用*/
-  .sign h2{
+  /*新規登録・ログイン・アカウント設定に適用*/
+  .sign h2,
+  .edit h2{
     text-align:center
   }
 
@@ -39,6 +40,34 @@
   input{
     width: 100%;
   }
+}
+
+.form-section.edit{
+  @include xs-device-or-less {
+    width: 85%;
+  }
+}
+
+.icon-form{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.update-space{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.update-space .btn{
+  width: 100%;
+}
+
+.delete-space{
+  margin-top: 20px;
+}
+.delete-space .btn{
+   width: 100%;
 }
 
 .form-error{
