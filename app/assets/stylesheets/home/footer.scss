@@ -3,16 +3,18 @@
 .footer-fixed{
   min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
   position: relative;
-  padding-bottom: 60px; /* ←フッターの高さを指定 */
+  padding-bottom: 90px; /* ←フッターの高さを指定 */
+  margin: 0;
 }
 
 footer{
   position: absolute;
   bottom: 0;
   left: 0;
+  height: 90px; /*footer-fixedのpadding-bottomに合わせる*/
   width: 100%;
+  margin: 0 auto 0 auto;
   padding: 10px;
-  margin: 0 auto;
   z-index: 100;
   background-color: black;
   color: #F2EFEC;
