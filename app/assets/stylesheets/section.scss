@@ -1,0 +1,52 @@
+@import "./_break-points.scss";
+
+/*基本の表示フォーム*/
+.default-section{
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+
+  background-color: #F2EFEC;
+  color: black;
+  border-radius: 5px;
+}
+
+  /*新規登録・ログインに適用*/
+  .sign h2{
+    text-align:center
+  }
+
+  /*利用規約・プライバシーポリシーに適用*/
+  .terms-policy{
+    font-size: 0.9rem;
+  }
+
+  .terms-policy h4 {
+    text-align: center;
+  }
+
+  .terms-policy h5 {
+    padding-top: 5px;
+  }
+
+/*入力フォーム用*/
+.form-section{
+  width: 60%;
+  margin: 0 auto;
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
+  input{
+    width: 100%;
+  }
+}
+
+.form-error{
+  display: inline;
+  color: #c82c55;
+}
+
+.required-field{
+  color: #c82c55;
+  font-size: 0.85rem;
+}
