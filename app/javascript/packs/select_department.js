@@ -6,5 +6,6 @@ function goToDepartment() {
 
 document.addEventListener('turbolinks:load', () => {
   const selectDepartmentButton = document.getElementById('select-department-button');
+  if (!selectDepartmentButton) return;
   selectDepartmentButton.addEventListener('click', goToDepartment);
 });

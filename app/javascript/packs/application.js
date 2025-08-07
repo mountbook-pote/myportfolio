@@ -11,9 +11,6 @@ import $ from 'jquery'
 window.$ = $
 window.jQuery = $
 
-import '../select_department'
-import '../main_image_container_height'
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

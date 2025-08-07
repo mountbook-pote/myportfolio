@@ -12,6 +12,8 @@ document.addEventListener('turbolinks:load', () => {
   const image = document.querySelector('.center-column-image');
   const centerColumn = document.querySelector('.center-column');
 
+  if (!image || !centerColumn) return;
+
   function adjustHeightBasedOnDisplayedSize() {
     const displayedHeight = image.clientHeight;
     const adjustedHeight = displayedHeight - getTrimHeight();
