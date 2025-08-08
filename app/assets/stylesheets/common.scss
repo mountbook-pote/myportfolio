@@ -1,0 +1,60 @@
+@import "./_break-points.scss";
+*{
+  box-sizing: border-box; 
+} 
+
+body{
+  background-color: #322419;
+  color: #F2EFEC;
+}
+
+/*フラッシュメッセージ*/
+.flash{
+  border-radius: 4px;
+  position: fixed;
+  left: 50%; /* 親幅の中央に配置 */
+  transform: translateX(-50%); /* 自身の幅の半分左へ移動して中央寄せ */
+  z-index: 1000;
+  bottom: 2%;
+
+  padding: 10px 20px;
+
+  text-align: center;
+  white-space: nowrap;
+}
+.flash.notice{
+  background-color: #043c78;
+  color: white;
+}
+.flash.alert{
+  background-color: #c82c55;
+  color: white;
+}
+
+/*リンク*/
+.link-default{
+  color: black !important;
+  text-decoration: none;
+  box-shadow: none !important;
+}
+
+.link-user{
+  font-size: 18px;
+}
+
+.link-footer{
+  color: #0d6efd !important;
+  text-decoration: none;
+  box-shadow: none !important;
+
+}
+
+.link-default:hover,
+.link-footer:hover{
+  text-decoration: underline;
+}
+
+
+.bi {
+  font-size: 22px;
+}

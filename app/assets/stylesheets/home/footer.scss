@@ -1,0 +1,35 @@
+@import "./_break-points.scss";
+
+.footer-fixed{
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;
+  padding-bottom: 110px; /* ←フッターの高さを指定 */
+  margin: 0;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 110px; /*footer-fixedのpadding-bottomに合わせる*/
+  width: 100%;
+  margin: 0 auto 0 auto;
+  padding: 10px;
+  z-index: 100;
+  background-color: black;
+  color: #F2EFEC;
+  font-size: 0.75rem;
+}
+
+.footer-container{
+  width: 95%;
+}
+
+.footer-contents{
+  display: flex;
+  justify-content: right;
+  gap: 15px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #322419;
+}

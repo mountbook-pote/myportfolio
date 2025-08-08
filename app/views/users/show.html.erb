@@ -1,6 +1,6 @@
 <% content_for :title, @user.name %>
 
-<%= render 'shared/mypage_common', user: @user%>
-
-<h3><%= @user.name%>の投稿</h3>
-<%= render 'shared/list_of_posts', posts: @posts%>
+<div class="container mypage">
+  <%= render 'shared/mypage_common', user: @user%>
+  <%= render 'shared/list_of_posts', title: "#{@user.name}の投稿", posts: @posts%>
+</div>

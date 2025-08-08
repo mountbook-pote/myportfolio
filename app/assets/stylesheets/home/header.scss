@@ -1,0 +1,41 @@
+@import "./_break-points.scss";
+
+/*header要素*/
+header{
+  background-color: black;
+  color: #F2EFEC;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 3px 5px;
+  z-index: 100;
+}
+
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigationbar{
+  display: flex;
+  &__menus{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+  }
+  &__users{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.app-name{
+  color: #F2EFEC;
+  text-decoration: none;
+  font-size: 170%;
+    @include xs-device-or-less {
+    font-size: 120%;
+  }
+}

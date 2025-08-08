@@ -1,28 +1,37 @@
-<div>  
-  <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300">
-  <p>タイトル: <%= post.met_object.title %></p>
-  <p>製作者: <%= post.met_object.artist_display_name || '不明' %></p>
-  <p>制作年:</strong> <%= post.met_object.object_date || '不明' %></p>
-  <p>ジャンル: <%= post.met_object.department %></p>
-  <p>リンク: <%= post.met_object.object_url %></p>
-
-  <%= form_with model: post do |f| %>
-    <div class="field row mb-3">
-      <div class= "col-md-4"><%= f.label :comment, "コメント<span style='color: red;'>*</span>".html_safe %></div>
-      <div class= "col-md-8">
-        <div><%= f.text_area :comment, placeholder: "コメントを入力",autofocus: false, class: "w-100"  %></div>
-        <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: post, attribute: :comment %></div>
+<div class="post-section create-flame">
+  <h1><%= title %></h1>
+  <div class="post-container add-top-border">
+    <div class="image-section">
+      <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300">
+    </div>
+    <div class="description-section">
+      <div class="met-description-space">
+        <p>タイトル: <%= post.met_object.title %></p>
+        <p>制作者: <%= post.met_object.artist_display_name.presence || '不明' %></p>
+        <p>制作年:</strong> <%= post.met_object.object_date.presence || '不明' %></p>
+        <p>ジャンル: <%= ja_translated_name(post.met_object.department) %></p>
       </div>
+      <%= form_with model: post do |f| %>
+        <div class="user-space">
+          <div class="user-space__create-post">
+            <div>
+              <%= render "shared/user_icon_attached", user: current_user, size: 50 %>
+              <span class="link-default link-user"><%= current_user.name %></span>
+            </div>
+            <div><%= f.label :comment, "コメント(140字以内)<span class='required-field'>*必須</span>".html_safe, class: "label-comment" %></div>
+            <div><%= f.text_area :comment, placeholder: "コメントを入力", autofocus: false, class: "input-comment" %></div>
+          </div>
+          <div class="form-error"><%= render "devise/shared/error_messages", resource: post, attribute: :comment %></div>
+          <!-- new画面にだけ使用する要素 -->
+          <% if post.new_record? %>
+            <%= f.hidden_field :met_object_id, value: post.met_object.id %>
+          <% end %>
+        </div>
+        <div class="submit-space">
+          <div><%= f.submit "投稿", class: "btn btn-save" %></div>
+          <div><%= link_to "キャンセル", :back, class: "btn btn-outline-secondary" %></div>
+        </div>
+      <% end %>
     </div>
-
-    <!-- new画面にだけ使用する要素 -->
-    <% if post.new_record? %>
-      <%= f.hidden_field :met_object_id, value: post.met_object.id %>
-    <% end %>
-
-    <div class="cancelsave-buttons">
-        <p><%= f.submit "投稿", class: "btn btn-save w-100" %></p>
-        <p><%= link_to "キャンセル", :back, class: "btn btn-outline-secondary w-100" %></p>
-    </div>
-  <% end %>
+  </div>
 </div>

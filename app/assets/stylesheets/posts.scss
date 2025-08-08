@@ -1,3 +1,124 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./_break-points.scss";
+
+.post-section{
+  margin-bottom: 20px;
+  padding: 20px 0;
+  text-align: center;
+
+  background-color: #F2EFEC;
+  color: black;
+  border-radius: 5px;
+}
+.post-section.users.favorites{
+  background-color: #fef9fb;
+}
+
+.create-flame{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.add-top-border{
+  border-top: 1px solid black;
+  padding-top: 20px;
+}
+
+.post-container{
+  width: 95%;
+  margin: 0 auto 20px auto;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+    @include xs-device-or-less {
+    display: block;
+  }
+
+  .image-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;
+    width: 50%;
+    border-right: 1px dotted #322419;
+    @include xs-device-or-less {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px dotted #322419;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .description-section{
+    width: 50%;
+    text-align: left;
+    line-height: 1;
+    padding-left: 3%;
+    @include xs-device-or-less {
+      width: 100%;
+    }
+
+    .met-description-space{
+      margin-bottom: 5px;
+      border-bottom: 1px dotted #322419;
+
+    }
+    .user-space{
+      margin-bottom: 5px;
+      border-bottom: 1px dotted #322419;
+
+      .post-comment{
+        margin-top: 5px;
+        line-height: 1.4;
+
+      }
+      &__create-post{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .input-comment{
+        width: 100%;
+        padding-bottom: 30px;
+        margin-bottom: 10px;
+        background-color: #F2EFEC;
+        border-color: #322419;
+      }
+      .input-comment:focus{
+        outline: none;
+      }
+    }
+    .other-space{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+
+      .other-contents{
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        @include sm-device {
+          gap: 20px;
+        }
+      }
+
+      .posted-date{
+        text-align: right;
+        overflow-wrap: break-word;
+        @include sm-device {
+          font-size: 0.9rem;
+        }
+      }
+    }
+    .submit-space{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .submit-space > div > .btn{
+      width: 100%;
+    }
+  }
+}

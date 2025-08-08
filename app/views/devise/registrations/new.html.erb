@@ -1,53 +1,48 @@
 <% content_for :title, "ユーザー新規登録" %>
 
 <div class="container">
-  <div class="mx-auto w-100 w-md-75 bg-white py-4">
-    <div class="mx-auto" style="width: 65%;">
-      <h2 class="text-center">新規登録</h2>
-    
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    
-        <div class="field row mb-3">
-          <div class="col-12"><%= f.label :name, "ユーザー名<span style='color: red;'>*</span>".html_safe %></div>
-          <div class="col-12">
-            <div><%= f.text_field :name, placeholder: "ユーザー名を入力",autofocus: true, autocomplete: "name", class: "w-100" %></div>
-            <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :name %></div>
-          </div>
+  <div class="default-section sign">
+    <h2>ユーザー新規登録</h2>
+    <div class="term-space">
+      <%= link_to "利用規約", terms_path, class: "link-default" %>
+      <%= link_to "プライバシーポリシー", policy_path, class: "link-default" %></div>
+    <div>
+    <div>
+      <%= form_for(resource, as: resource_name, 
+        url: registration_path(resource_name), html: { class: "form-section" }) do |f| 
+      %>
+        <div>
+          <div><%= f.label :name, "ユーザー名<span class='required-field'>*必須</span>".html_safe %></div>
+          <div><%= f.text_field :name, placeholder: "ユーザー名を入力",autofocus: true, autocomplete: "name" %></div>
+          <span class="form-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :name %></span>
         </div>
-    
-        <div class="field row mb-3">
-          <div class="col-12"><%= f.label :email, "メールアドレス<span style='color: red;'>*</span>".html_safe %></div>
-          <div class="col-12">
-            <div><%= f.email_field :email, placeholder: "メールアドレスを入力", autocomplete: "email", class: "w-100" %></div>
-            <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :email %></div>
-          </div>
+        <div>
+          <div><%= f.label :email, "メールアドレス<span class='required-field'>*必須</span>".html_safe %></div>
+          <div><%= f.email_field :email, placeholder: "メールアドレスを入力", autocomplete: "email" %></div>
+          <div class="form-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :email %></div>
         </div>
-    
-        <div class="field row mb-3">
-          <div class="col-12">
-            <%= f.label :password, "パスワード<span style='color: red;'>*</span>".html_safe %>
+        <div>
+          <div>
+            <%= f.label :password, "パスワード<span class='required-field'>*必須</span>".html_safe %>
             <% if @minimum_password_length %>
             <% end %>
           </div>
-          <div class="col-12">
-            <div><%= f.password_field :password, placeholder: "パスワードを入力", autocomplete: "new-password", class:"w-100" %></div>
-            <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :password %></div>
-          </div>
+          <div><%= f.password_field :password, placeholder: "パスワードを入力", autocomplete: "new-password" %></div>
+          <div class="form-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :password %></div>
         </div>
-        <div class="field row mb-0">
-          <div class="col-12"><%= f.label :password_confirmation, "確認用パスワード<span style='color: red;'>*</span>".html_safe %></div>
-          <div class="col-12">
-            <div><%= f.password_field :password_confirmation, placeholder: "確認用パスワードを入力", autocomplete: "new-password", class:"w-100" %></div>
-            <div class="new-edit-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :password_confirmation %></div>
-          </div>
+        <div>
+          <div><%= f.label :password_confirmation, "確認用パスワード<span class='required-field'>*必須</span>".html_safe %></div>
+          <div><%= f.password_field :password_confirmation, placeholder: "確認用パスワードを入力", autocomplete: "new-password" %></div>
+          <div class="form-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :password_confirmation %></div>
         </div>
         <div class="actions">
-          <br>
-          <%= f.submit "新しいアカウントを作成", class: "btn btn-primary w-100 py-2 mb-3" %>
+          <%= f.submit "新規登録", class: "btn btn-primary" %>
         </div>
       <% end %>
-    
-      <%= render "devise/shared/links" %>
+    </div>
+    <div class="login-guestlogin-space">
+      <p>アカウントをお持ちの方は<%= link_to "ログイン", new_user_session_path%>してください。</p>
+      <p>アカウントが不要の方は<%= link_to "ゲストログイン", users_guest_login_path, method: :post %>してください。</p>
     </div>
   </div>
 </div>
