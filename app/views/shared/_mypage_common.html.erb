@@ -9,20 +9,20 @@
   </div>
 </div>
 <div class="mypage-selects-section">
-  <%= link_to user_path(user), data: { turbolinks: false }, class: "mypage-selects-section__button" do %>
+  <%= link_to user_path(user), class: "mypage-selects-section__button" do %>
     <div>
       <i class="bi bi-card-text" title="投稿"></i>
       <div>投稿</div>
     </div>
   <% end %>
-  <%= link_to favorites_user_path(user), data: { turbolinks: false }, class: "mypage-selects-section__button favorite" do %>
+  <%= link_to favorites_user_path(user), class: "mypage-selects-section__button favorite" do %>
     <div>
       <i class="bi bi-heart" title="いいね"></i>
       <div>いいね</div>
     </div>
   <% end %>
   <% if user == current_user && current_user.email != User::GUEST_USER_EMAIL %>
-    <%= link_to edit_user_registration_path, data: { turbolinks: false }, class: "mypage-selects-section__button edit" do %>
+    <%= link_to edit_user_registration_path, class: "mypage-selects-section__button edit" do %>
       <div>
         <i class="bi bi-gear" title="設定"></i>
         <div>編集</div>

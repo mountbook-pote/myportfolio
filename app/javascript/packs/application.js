@@ -10,11 +10,9 @@ import "channels"
 import $ from 'jquery'
 window.$ = $
 window.jQuery = $
+import "./select_department";
+import "./scroll_to_zero";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-document.addEventListener("turbolinks:load", function () {
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-});
