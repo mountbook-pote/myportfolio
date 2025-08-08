@@ -1,4 +1,4 @@
-<div class="post-section">
+<div class="post-section <%= controller.controller_name %> <%= controller.action_name %>">
   <h1><%= title %></h1>
   <% posts.each_with_index do |post, index| %>
     <div class="post-container <%= 'add-top-border' if index == 0 %>">

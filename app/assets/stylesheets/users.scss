@@ -1,3 +1,65 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./_break-points.scss";
+
+.container.mypage{
+  max-width: 1000px;
+}
+
+.mypage-section{
+  margin: 20px 0;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  color: white;
+}
+
+.mypage-section h2{
+  display: inline-block;
+  border-bottom: 1px solid white;
+}
+
+.mypage-info-space{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mypage-info-space div{
+  width: 230px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
+.mypage-selects-section{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 20px;
+  &__button{
+    width: 70px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    text-align: center;
+
+    background-color: #3174C3;
+    color: white;
+    line-height: 1.1;
+    text-decoration: none;
+
+  }
+  &__button i{
+    font-size:2rem;
+  }
+  &__button.favorite{
+    background-color: #CB4D6E;
+  }
+  &__button.edit{
+    background-color: gray;
+  }
+}
+
