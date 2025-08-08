@@ -1,15 +1,13 @@
 @import "./_break-points.scss";
 
 body.departments{
-    background-color: #241a08;
+    background-color: #333631; // 241a08
 }
 
 .department-selectbox-section{
   width: 50%;
   margin: 0 auto;
   padding: 10px 0;
-
-
 }
 .department-selectbox-container{
   display: flex;
@@ -22,12 +20,63 @@ body.departments{
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-}
 
-.artworks-image{
-  width: 400px;
-  border: 15px solid;
-  border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 15px;
-  box-shadow: 8px 8px 12px black;
+  .artworks-image{
+    width: 400px;
+    //額縁のCSS
+    border: 15px solid;
+    border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 15px;
+    box-shadow: 8px 8px 12px black;
+    @include xs-device-or-less {
+      width: 320px;
+    }
+  }
+
+  .artworks-description-space{
+    width: 300px;
+    margin: 20px auto 150px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #ECDED4;
+    color: black;
+    box-shadow: 8px 8px 12px black;
+
+    @include xs-device-or-less {
+      width: 240px;
+    }
+    &__title{
+      display: inline-block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    &__description{
+      width: 90%;
+      padding-bottom: 10px;
+      margin: 0 auto;
+      border-bottom: 1px solid black;
+      display: flex;
+    }
+      &__sentence{
+        width: 88%;
+      }
+      &__met{
+        position: relative;
+        text-align: right;
+      }
+      &__met .bi{
+        position: absolute;
+        bottom: -5px;
+      }
+
+    &__submit{
+
+    }
+  }
+}
+.see-more-section{
+  text-align: center;
+  padding-bottom: 30px;
 }

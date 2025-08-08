@@ -18,7 +18,7 @@
               <%= render "shared/user_icon_attached", user: current_user, size: 50 %>
               <span class="link-default link-user"><%= current_user.name %></span>
             </div>
-            <div><%= f.label :comment, "コメント<span class='required-field'>*必須</span>".html_safe, class: "label-comment" %></div>
+            <div><%= f.label :comment, "コメント(140字以内)<span class='required-field'>*必須</span>".html_safe, class: "label-comment" %></div>
             <div><%= f.text_area :comment, placeholder: "コメントを入力", autofocus: false, class: "input-comment" %></div>
           </div>
           <div class="form-error"><%= render "devise/shared/error_messages", resource: post, attribute: :comment %></div>
