@@ -9,7 +9,6 @@ header{
   width: 100%;
   padding: 3px 5px;
   z-index: 100;
-  
 }
 
 .header-container{
@@ -36,4 +35,7 @@ header{
   color: #F2EFEC;
   text-decoration: none;
   font-size: 170%;
+    @include xs-device-or-less {
+    font-size: 120%;
+  }
 }

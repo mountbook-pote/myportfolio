@@ -10,6 +10,7 @@ import "channels"
 import $ from 'jquery'
 window.$ = $
 window.jQuery = $
+import "./main_image_container_height";
 import "./select_department";
 import "./scroll_to_zero";
 
