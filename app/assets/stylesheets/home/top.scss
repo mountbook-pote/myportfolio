@@ -92,5 +92,9 @@
   }
   &__overlay .about-space{
     margin-top: 5px;
+    font-size: 0.9rem;
+    @include xs-device-or-less {
+      font-size: 0.8rem;
+    }
   }
 }
