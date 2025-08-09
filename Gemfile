@@ -65,6 +65,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '4.2.1' # rails gコマンドのエラー対策用。元々あったものにバージョンを指定
+
+  gem 'bullet' # N+1問題の発見用
 end
 
 group :test do
