@@ -27,9 +27,13 @@ body.departments{
     border: 15px solid;
     border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 15px;
     box-shadow: 8px 8px 12px black;
+    transition: filter 0.5s ease;
     @include xs-device-or-less {
       width: 320px;
     }
+  }
+  .artworks-image:hover{
+    filter: brightness(1.15);
   }
 
   .artworks-description-space{
@@ -72,10 +76,16 @@ body.departments{
       }
 
     &__submit{
-
+      text-align: center;
+      margin-top: 5px;
     }
   }
 }
+.artworks-section h1{
+  padding: 30px 0 50px 0;
+  color: #ECDED4;
+}
+
 .see-more-section{
   text-align: center;
   padding-bottom: 30px;

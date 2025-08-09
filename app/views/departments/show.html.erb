@@ -5,7 +5,7 @@
     <%= render 'shared/department_selectbox' %>
   </div>
   <div class="artworks-section">
-    <h2><%= ja_translated_name(@department_name) %></h2>
+    <h1><%= ja_translated_name(@department_name) %></h1>
     <% @met_works.each do |work| %>
       <div>
         <%= link_to work.primary_image_small, target: "_blank", rel: "noopener" do %>
@@ -30,9 +30,13 @@
         </div>
         <div class="artworks-description-space__submit">
           <% if current_user %>
-            <p><%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), class: "post-button" %></p>
+              <%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), 
+                class: "link-default" %>
           <% else %>
-            <p><%= link_to 'この作品を投稿', new_user_session_path(alert: 'アカウント登録もしくはログインしてください') %></p>
+            <div>
+              <%= link_to 'この作品を投稿', new_user_session_path(alert: 'アカウント登録もしくはログインしてください'),
+                class: "link-default" %>
+            </div>
           <% end %>
         </div>
       </div>
