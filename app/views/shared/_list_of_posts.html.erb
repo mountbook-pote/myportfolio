@@ -53,6 +53,6 @@
     </div>
   <% end %>
   <% if current_page?(root_path) %>
-    <%= link_to '投稿をもっと見る', posts_path, class: "btn btn-light", style: "color: black;" %>
+    <%= link_to '投稿をもっと見る', posts_path, data: { turbolinks: false }, class: "btn btn-light", style: "color: black;" %>
   <% end %>
 </div>

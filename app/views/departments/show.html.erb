@@ -31,7 +31,7 @@
         <div class="artworks-description-space__submit">
           <% if current_user %>
               <%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), 
-                class: "link-default" %>
+                data: { turbolinks: false }, class: "link-default" %>
           <% else %>
             <div>
               <%= link_to 'この作品を投稿', new_user_session_path(alert: 'アカウント登録もしくはログインしてください'),
