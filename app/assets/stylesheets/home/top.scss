@@ -21,7 +21,7 @@
     margin: 0 auto 2px auto;
     width: 85%;
 
-    /*額縁のスタイル*/
+    //額縁のスタイル
     border: 9px solid;
     border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 9px;
     box-shadow: 3px 3px 8px black;
@@ -51,7 +51,7 @@
   margin: 0 auto;
   width: 100%;
   position: absolute;
-  /* 画像のトリミング設定 */
+  //画像のトリミング設定
   clip-path: inset(50px 0 90px 0);
   top: -50px;
   @include sm-device-or-less {

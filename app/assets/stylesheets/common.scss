@@ -8,12 +8,12 @@ body{
   color: #F2EFEC;
 }
 
-/*フラッシュメッセージ*/
+//フラッシュメッセージ
 .flash{
   border-radius: 4px;
   position: fixed;
-  left: 50%; /* 親幅の中央に配置 */
-  transform: translateX(-50%); /* 自身の幅の半分左へ移動して中央寄せ */
+  left: 50%; //親幅の中央に配置
+  transform: translateX(-50%); //自身の幅の半分左へ移動して中央寄せ
   z-index: 1000;
   bottom: 2%;
 
@@ -31,7 +31,7 @@ body{
   color: white;
 }
 
-/*リンク*/
+//リンク
 .link-default{
   color: black !important;
   text-decoration: none;
