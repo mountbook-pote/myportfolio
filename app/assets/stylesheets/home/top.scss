@@ -52,11 +52,10 @@
   width: 100%;
   position: absolute;
   //画像のトリミング設定
-  clip-path: inset(50px 0 90px 0);
-  top: -50px;
+  clip-path: inset(20px 0 120px 0);
+  top: -20px;
   @include sm-device-or-less {
     clip-path: inset(20px 0 40px 0);
-    top: -20px;
   }
   @include xs-device-or-less {
     clip-path: none;
@@ -64,12 +63,34 @@
   }
   &__overlay{
     width: 80%;
+    max-width: 500px;
+    padding: 10px 10px 5px 10px ;
+
     position: absolute;
-    top: 20%;
+    text-align: center;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, 0%);
-    text-align: center;
+
     background-color: rgba(0, 0, 0, 0.5); 
-    padding: 10px;
+
+
+    @include sm-device-or-less {
+      top: 30%;
+      width: 85%;
+      h5 {
+        font-size: 1.8vw;
+      }
+    }
+    @include xs-device-or-less {
+      width: 80%;
+      top: 30%;
+      h5 {
+        font-size: 3vw;
+      }
+    }
+  }
+  &__overlay .about-space{
+    margin-top: 5px;
   }
 }

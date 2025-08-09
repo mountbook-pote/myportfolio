@@ -38,6 +38,17 @@ body{
   box-shadow: none !important;
 }
 
+.link-white{
+  display: inline-block; //link_toを拡大させるために必要
+  color: white;
+  text-decoration: none;
+  box-shadow: none !important;
+  transition: color 0.3s ease;
+}
+.link-white:hover{
+  color: #C2A579;
+}
+
 .link-user{
   font-size: 18px;
 }
