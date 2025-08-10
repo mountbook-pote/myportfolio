@@ -1,0 +1,58 @@
+@import "./_break-points.scss";
+
+.search-section{
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+.search-section .title{
+  text-align: center;
+}
+
+.search-space{
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  &__keyword-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    .keyword-title{
+      width:25%;
+    }
+    .keyword-area{
+      width: 75%;
+    }
+  }
+
+  &__check-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+        padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    label{
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    @include xs-device-or-less {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+          padding: 0 10px;
+    }
+  }
+  &__search-box{
+          width: 100%;
+  }
+}
