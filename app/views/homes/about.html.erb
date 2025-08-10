@@ -1,28 +1,48 @@
 <% content_for :title, "About" %>
 
 <div class="container">
-  <div class="default-section">
+  <div class="default-section about">
     <h3>SideGalleryとは？</h3>
-  
-    <h4>
-      美術館で、メインの展示物ではないけれど<br>
-      目立たない所や人通りの少ない通路やスペースに<br>
-      印象的な作品がひっそりと展示されているのを<br>
-      見かけたことはありますか？
-    </h4>
-  
-    <h4>
-      SideGalleryではそんなたまたま巡り会えた作品達を<br>
-      発見・共有するためのサービスです。
-    </h4>
-  
-    <h4>
-      ここで表示される作品たちは、<br>
-      メトロポリタン美術館がパブリックドメインとして公開している<br>
-      膨大な美術作品の中からランダムに取得された作品ばかり。<br>
-      その中から、たまたま面白い・印象的な作品と巡り会えたり、<br>
-      もしくは有名な作品とばったり出会えたりしたら、<br>
-      投稿して共有してみましょう！
-    </h4>
+    <div class="sentence-space">
+      <h5>
+        美術館で、目立たない所や人通りの少ない通路やスペースに<br>
+        印象的な作品がひっそりと展示されているのを<br>
+        見かけたことはありますか？
+      </h5>
+      <h5>
+        SideGalleryはそのような、本筋とは逸れた場所での<br>
+        たまたま巡り会えた作品との出会いをコンセプトに<br>
+        素敵な作品を投稿・共有するためのサービスです。
+      </h5>
+      <h5>
+        使い方は、はじめに<%= link_to "新規登録", new_user_registration_path %>や
+        <%= link_to "ゲストログイン", users_guest_login_path, method: :post %>を行い、<br>
+        鑑賞ボタンをクリックして、作品を鑑賞しましょう。<br>
+        (ジャンルの指定も行えます)
+      </h5>
+      <div class="sample-space">
+        <%= image_tag "about/sample.jpg", class: "sample-space__image" %>
+        <h6>
+          作品の鑑賞<br>
+          (ジャンルの指定も行えます)
+        </h6>
+      </div>
+      <h5>
+        SideGalleryで鑑賞できる作品は、<br>
+        メトロポリタン美術館がパブリックドメインとして公開している<br>
+        膨大な美術作品の中からランダムに取得された物ばかりです。<br>
+        その中から、たまたま面白い・印象的な作品と巡り会えたり、<br>
+        もしくは有名な作品とばったり出会えたりしたら、<br>
+        投稿して共有してみましょう！
+      </h5>
+      <div class="sample-space">
+        <%= image_tag "about/sample-post.jpg", class: "sample-space__post" %>
+        <h6>
+          投稿内容<br>
+        </h6>
+      </div>
+      <div class="registration-space">
+        <%= link_to "登録する", new_user_registration_path, class:"btn btn-second" %>
+      </div>
   </div>
 </div>

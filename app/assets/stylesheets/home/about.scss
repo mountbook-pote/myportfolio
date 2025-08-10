@@ -1,0 +1,46 @@
+@import "./_break-points.scss";
+
+body.homes.about{
+    background-color: #24140e;
+}
+
+.default-section.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.default-section h5{
+  margin: 0 auto;
+  white-space: nowrap;
+  font-size: 1.1rem;
+  @include xs-device-or-less {
+    font-size: 1rem;
+  }
+}
+
+.sentence-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+.sample-space{
+  text-align: center;
+  white-space: nowrap;
+  &__image{
+    width: 300px;
+  }
+  &__post{
+    margin-top: -20px;
+    width: 600px;
+      @include xs-device-or-less {
+    width: 100%;
+  }
+  }
+}
+.registration-space{
+  margin-top: -20px;
+  text-align: center;
+}
