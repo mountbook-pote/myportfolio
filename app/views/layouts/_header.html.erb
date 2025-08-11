@@ -3,12 +3,12 @@
     <div class="navigationbar__menus">
       <div><%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, class: "app-name" %></div>
       <div>
-        <%= link_to "投稿", posts_path, data: { turbolinks: false }, class: "link-white" %>
+        <%= link_to "投稿", posts_path, data: { turbolinks: false }, class: "link-white content" %>
       </div>
       <div>
         <%= link_to "鑑賞", department_path(
           DepartmentsController::DEPARTMENT_IDS.key("All Departments")
-          ), data: { turbolinks: false }, class: "link-white" 
+          ), data: { turbolinks: false }, class: "link-white content" 
         %>
       </div>
     </div>
@@ -16,9 +16,25 @@
       <% if user_signed_in? %>
         <%= render "layouts/navigation_bar", user: user %>
       <% else %>
-        <div><%= link_to "ログイン", new_user_session_path, class: "btn btn-light", style:"color: black;" %></div>
-        <div><%= link_to "ゲストログイン", users_guest_login_path, method: :post, class: "btn btn-light", style:"color: black;" %></div>
-        <div><%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary", style:"color: white;" %></div>
+        <div>
+          <%= link_to users_guest_login_path, method: :post, class: "header-icon link-white" do %>
+            <i class="bi bi-box-arrow-in-right header-icon__size" title="ゲストログイン"></i>
+            <div class="header-icon__title">ゲスト用</div>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_user_session_path, class: "header-icon link-white" do %>
+            <i class="bi bi-person-up header-icon__size" title="ログイン"></i>
+            <div class="header-icon__title">ログイン</div>
+          <% end %>
+        </div>
+
+        <div>
+          <%= link_to new_user_registration_path, class: "header-icon link-white" do %>
+            <i class="bi bi-person-fill-add header-icon__size" title="新規登録"></i>
+            <div class="header-icon__title">新規登録</div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
