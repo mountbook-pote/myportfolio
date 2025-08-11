@@ -1,8 +1,8 @@
 <div class="department-selectbox-container">
   <select id="department-id" class="form-select">
-    <% HomesHelper::DEPARTMENTS_INFORMATION.each do |information| %>
-      <option value="<%= information[:department_id] %>" <%= "selected" if information[:department_id] == params[:id].to_i %>>
-        <%= information[:name] %>
+    <% DepartmentsController::DEPARTMENT_IDS.each do |department_id, department_name| %>
+      <option value="<%= department_id %>" <%= "selected" if department_id == params[:id].to_i %>>
+        <%= ja_translated_name(department_name) %>
       </option>
     <% end %>
   </select>

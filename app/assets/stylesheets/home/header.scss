@@ -17,12 +17,24 @@ header{
   align-items: center;
 }
 
+.header-icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__size{
+    font-size: 2rem;
+  }
+  &__title{
+    margin-top: -10px;
+  }
+}
+
 .navigationbar{
   display: flex;
   &__menus{
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: 15px;
   }
   &__users{
     align-items: center;
