@@ -8,6 +8,9 @@ body.departments{
   width: 50%;
   margin: 0 auto;
   padding: 20px 0;
+  @include xs-device-or-less {
+    width: 85%;
+  }
 }
 .department-selectbox-container{
   max-width: 380px;
@@ -15,6 +18,7 @@ body.departments{
   display: flex;
   gap: 10px;
   white-space: nowrap;
+
 }
 
 .artworks-section{

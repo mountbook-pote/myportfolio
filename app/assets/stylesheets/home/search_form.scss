@@ -25,11 +25,22 @@
     justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 1px solid white;
-    .keyword-title{
-      width:25%;
+    @include xs-device-or-less {
+      display: flex;
+      flex-direction: column;
     }
+    .keyword-title{
+      width: 25%;
+      @include xs-device-or-less {
+        width: 100%;
+      }
+    }
+
     .keyword-area{
       width: 75%;
+      @include xs-device-or-less {
+        width: 100%;
+      }
     }
   }
 

@@ -3,7 +3,7 @@
   <%= search_form_for @q do |f| %>
     <div class="search-space">
       <div class="search-space__keyword-box">
-        <div class="keyword-title">キーワード：</div>
+        <div class="keyword-title">キーワード</div>
         <%= f.text_field :user_name_cont, placeholder: "投稿者", class:"keyword-area" %>
         <!--*_contは、あいまい検索を指定-->
         <% # 初期値=nil、空で検索すると""になる %>
