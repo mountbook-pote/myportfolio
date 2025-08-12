@@ -17,7 +17,7 @@
         <% end %>
         <% departments.each do |department| %>
           <label>
-            <%= f.check_box :met_object_department_in, { multiple: true }, department, nil %>
+            <div class="checkbox-color"><%= f.check_box :met_object_department_in, { multiple: true }, department, nil %></div>
             <%= ja_translated_name(department) %>
           </label>
         <% end %>

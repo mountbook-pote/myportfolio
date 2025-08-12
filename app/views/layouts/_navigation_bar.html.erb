@@ -5,7 +5,7 @@
       <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" 
       href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <%= render "shared/user_icon_attached", user: user %>
-        <%= user.name %>
+        <span class="header-username"><%= user.name %></span>
       </a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
         <!-- プルダウンメニューの内容 -->

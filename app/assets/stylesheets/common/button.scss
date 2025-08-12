@@ -1,5 +1,17 @@
 @import "common/_break-points.scss";
 
+.btn-primary{
+  border-color: #202279 !important;
+  background-color: #2F38AF !important;
+}
+.btn-primary:hover{
+  border-color: #100D38 !important;
+  background-color: #202279 !important;
+}
+.btn-primary:active{
+  background-color: #100D38 !important;
+}
+
 //新規登録・ログイン用
 .btn-secondary{
   background-color: #765c47

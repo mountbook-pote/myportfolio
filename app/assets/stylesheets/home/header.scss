@@ -31,6 +31,12 @@ header{
   }
 }
 
+.header-username{
+  @include xs-device-or-less {
+    display: none;
+  }
+}
+
 .navigationbar{
   display: flex;
 
@@ -39,7 +45,7 @@ header{
     display: flex;
     gap: 15px;
     .app-name{
-      font-size: 170%;
+      font-size: 150%;
       @include xs-device-or-less {
         font-size: 120%;
       }
@@ -66,7 +72,7 @@ header{
 .dropdown-divider{
   border-color: black;
   width: 80%;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 .dropdown-item:active{
   background-color: gray;

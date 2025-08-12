@@ -8,6 +8,14 @@ body{
   color: #F2EFEC;
 }
 
+//フォント
+.brand-font{
+  font-family: serif;
+}
+.bold-font{
+  font-weight: bold;
+}
+
 //フラッシュメッセージ
 .flash{
   border-radius: 4px;
@@ -23,7 +31,7 @@ body{
   white-space: nowrap;
 }
 .flash.notice{
-  background-color: #043c78;
+  background-color: #2F38AF;
   color: white;
 }
 .flash.alert{
@@ -93,5 +101,5 @@ body{
 }
 //チェックボックス
 .checkbox-color input[type="checkbox"] {
-  accent-color: #C2A579; /* 好きな色に変更 */
+  accent-color: #EFDE98;
 }
