@@ -1,27 +1,28 @@
-<div class=" text-center">
-  <div>
-    <h5>投稿を検索</h5>
-    <%= search_form_for @q do |f| %>
-      <!--*_contは、あいまい検索を指定-->
-      <% # 初期値=nil、空で検索すると""になる %>
-      <%= f.text_field :user_name_cont, placeholder: "投稿者" %>
-
-      <div>
+<div class= "search-section">
+  <h2 class="title">投稿を検索</h2>
+  <%= search_form_for @q do |f| %>
+    <div class="search-space">
+      <div class="search-space__keyword-box">
+        <div class="keyword-title">キーワード</div>
+        <%= f.text_field :user_name_cont, placeholder: "投稿者", class:"keyword-area input" %>
+        <!--*_contは、あいまい検索を指定-->
+        <% # 初期値=nil、空で検索すると""になる %>
+      </div>
+      <div class="search-space__check-box">
         <% # 全てのジャンルの配列 %>
         <% departments = ["European Paintings", "Medieval Art", "Egyptian Art"] %>
         <% # 初期状態ではparams...はnilに、入力なしで一度でも検索すると空要素を含む「ハッシュ」が渡るためfalseになる%>
         <% if f.object.met_object_department_in.blank? && params[:q].blank? %>
           <% f.object.met_object_department_in = departments %>
         <% end %>
-        
         <% departments.each do |department| %>
           <label>
-            <%= f.check_box :met_object_department_in, { multiple: true }, department, nil %>
+            <div class="checkbox-color"><%= f.check_box :met_object_department_in, { multiple: true }, department, nil %></div>
             <%= ja_translated_name(department) %>
-          </label><br>
+          </label>
         <% end %>
       </div>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
+        <%= f.submit "検索", class: "btn btn-primary search-space__search-box" %>
+    </div>
+  <% end %>
 </div>

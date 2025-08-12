@@ -1,18 +1,41 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
 body.departments{
-    background-color: #333631; // 241a08
+    background-color: #333631; // 241a08 //F2EFEC //333631
 }
 
 .department-selectbox-section{
   width: 50%;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 20px 0;
+  @include xs-device-or-less {
+    width: 85%;
+  }
 }
 .department-selectbox-container{
+  max-width: 400px;
+  margin: 0 auto;
   display: flex;
   gap: 10px;
   white-space: nowrap;
+  @include xs-device-or-less {
+    max-width: 320px;
+  }
+  .form-select{
+    @include xs-device-or-less {
+      font-size: 0.9rem;
+    }
+  }
+  select:focus{
+    border: none;
+    border-color: #C2A579;
+    box-shadow: 0 0 0 0.25rem rgba(194, 165, 121, 0.25);
+  }
+}
+.appreciation-doing{
+  @include xs-device-or-less {
+    display: none;
+  }
 }
 
 .artworks-section{
@@ -27,9 +50,13 @@ body.departments{
     border: 15px solid;
     border-image: linear-gradient(to right bottom,#a58f86,#281a14) 1 / 15px;
     box-shadow: 8px 8px 12px black;
+    transition: filter 0.5s ease;
     @include xs-device-or-less {
       width: 320px;
     }
+  }
+  .artworks-image:hover{
+    filter: brightness(1.15);
   }
 
   .artworks-description-space{
@@ -72,9 +99,14 @@ body.departments{
       }
 
     &__submit{
-
+      text-align: center;
+      margin-top: 5px;
     }
   }
+}
+.artworks-section h1{
+  padding: 30px 0 50px 0;
+  color: #ECDED4;
 }
 .see-more-section{
   text-align: center;

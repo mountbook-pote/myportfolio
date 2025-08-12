@@ -1,4 +1,4 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
 .footer-fixed{
   min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
@@ -13,7 +13,7 @@ footer{
   left: 0;
   height: 110px; /*footer-fixedのpadding-bottomに合わせる*/
   width: 100%;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   padding: 10px;
   z-index: 100;
   background-color: black;

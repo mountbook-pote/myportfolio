@@ -1,4 +1,4 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
 .post-section{
   margin-bottom: 20px;
@@ -84,9 +84,6 @@
         margin-bottom: 10px;
         background-color: #F2EFEC;
         border-color: #322419;
-      }
-      .input-comment:focus{
-        outline: none;
       }
     }
     .other-space{

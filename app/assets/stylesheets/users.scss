@@ -1,4 +1,4 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
 .container.mypage{
   max-width: 1000px;
@@ -59,7 +59,7 @@
     background-color: #CB4D6E;
   }
   &__button.edit{
-    background-color: gray;
+    background-color: #EFDE98;
   }
 }
 

@@ -1,6 +1,6 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
-/*header要素*/
+//header要素
 header{
   background-color: black;
   color: #F2EFEC;
@@ -8,6 +8,7 @@ header{
   top: 0;
   width: 100%;
   padding: 3px 5px;
+  margin: 0;
   z-index: 100;
 }
 
@@ -17,12 +18,43 @@ header{
   align-items: center;
 }
 
+.header-icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__size{
+    font-size: 1.5rem;
+  }
+  &__title{
+    margin-top: -5px;
+    font-size: 0.7rem;
+  }
+}
+
+.header-username{
+  @include xs-device-or-less {
+    display: none;
+  }
+}
+
 .navigationbar{
   display: flex;
+
   &__menus{
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    .app-name{
+      font-size: 150%;
+      @include xs-device-or-less {
+        font-size: 120%;
+      }
+    }
+    .content{
+      @include xs-device-or-less {
+        font-size: 90%;
+      }
+    }
   }
   &__users{
     align-items: center;
@@ -31,11 +63,17 @@ header{
   }
 }
 
-.app-name{
-  color: #F2EFEC;
-  text-decoration: none;
-  font-size: 170%;
-    @include xs-device-or-less {
-    font-size: 120%;
-  }
+//headerドロップダウンメニュー
+.dropdown-menu{
+  padding: 5px auto;
+  margin: 0 auto;
+  min-width: 120px;
+}
+.dropdown-divider{
+  border-color: black;
+  width: 80%;
+  margin: 5px auto;
+}
+.dropdown-item:active{
+  background-color: gray;
 }

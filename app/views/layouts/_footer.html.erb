@@ -1,16 +1,16 @@
 <footer>
   <div class="footer_container">
     <div class="footer-contents">
-      <%= link_to "利用規約", terms_path, class: "link-footer" %>
-      <%= link_to "プライバシーポリシー", policy_path, class: "link-footer" %></div>
+      <%= link_to "利用規約", terms_path, data: { turbolinks: false }, class: "link-blue" %>
+      <%= link_to "プライバシーポリシー", policy_path, data: { turbolinks: false }, class: "link-blue" %></div>
     <div>
     <div>
       当サイトで使用している作品画像は、
-      <a href="https://www.metmuseum.org/" target="_blank" rel="noopener" class="link-footer">メトロポリタン美術館</a>
+      <a href="https://www.metmuseum.org/" target="_blank" rel="noopener" class="link-blue">メトロポリタン美術館</a>
       が公開しているパブリックドメイン（Open Access API）を通して取得しています。
     </div>
     <div>
-      © 2025 <%= link_to "#{HomesHelper::APP_TITLE}.com", root_path, class: "link-footer" %>
+      © 2025 <%= link_to "#{HomesHelper::APP_TITLE}.com", root_path, data: { turbolinks: false }, class: "link-blue" %>
     </div>
   </div>
 </footer>

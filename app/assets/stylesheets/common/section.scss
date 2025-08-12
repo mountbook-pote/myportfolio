@@ -1,6 +1,6 @@
-@import "./_break-points.scss";
+@import "common/_break-points.scss";
 
-/*基本の表示フォーム*/
+//基本の表示フォーム
 .default-section{
   max-width: 800px;
   margin: 20px auto;
@@ -11,13 +11,13 @@
   border-radius: 5px;
 }
 
-  /*新規登録・ログイン・アカウント設定に適用*/
+  //新規登録・ログイン・アカウント設定に適用
   .sign h2,
   .edit h2{
     text-align:center
   }
 
-  /*利用規約・プライバシーポリシーに適用*/
+  //利用規約・プライバシーポリシーに適用
   .terms-policy{
     font-size: 0.9rem;
   }
@@ -30,7 +30,7 @@
     padding-top: 5px;
   }
 
-/*入力フォーム用*/
+//入力フォーム用
 .form-section{
   width: 60%;
   margin: 0 auto;
@@ -58,14 +58,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px dotted black;
 }
 .update-space .btn{
   width: 100%;
 }
 
-.delete-space{
-  margin-top: 20px;
-}
 .delete-space .btn{
    width: 100%;
 }

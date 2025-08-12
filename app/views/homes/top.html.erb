@@ -8,11 +8,13 @@
       <div class="center-column">
         <%= image_tag "top/main.jpg", class: "center-column-image" %>
         <div class="center-column-image__overlay">
-          <h1><%= HomesHelper::APP_TITLE %></h1>
-          <h5>巡り会えた素敵な作品を共有するサービス</h5>
-          <%= render 'shared/department_selectbox' %>
+          <h1 class="brand-font"><%= HomesHelper::APP_TITLE %></h1>
           <div>
-            <%= link_to 'SideGalleryについて知る', about_path, class: "" %>
+            <h5>巡り会えた素敵な作品を共有するサービス</h5>
+            <%= render 'shared/department_selectbox' %>
+          </div>
+          <div class="about-space">
+            <%= link_to 'SideGalleryについて知る', about_path, data: { turbolinks: false }, class: "link-white" %>
           </div>
         </div>
       </div>

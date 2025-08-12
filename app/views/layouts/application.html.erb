@@ -5,7 +5,7 @@
 
   </head>
 
-  <body class="<%= controller.controller_name %>">
+  <body class="<%= controller.controller_name %> <%= controller.action_name %>">
     <div class="footer-fixed">
       <!-- ヘッダーは常にcurrent_userにする(@userとしない) -->
       <%= render 'layouts/header', user: current_user %>

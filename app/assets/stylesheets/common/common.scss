@@ -1,0 +1,105 @@
+@import "common/_break-points.scss";
+*{
+  box-sizing: border-box; 
+} 
+
+body{
+  background-color: #322419;
+  color: #F2EFEC;
+}
+
+//フォント
+.brand-font{
+  font-family: serif;
+}
+.bold-font{
+  font-weight: bold;
+}
+
+//フラッシュメッセージ
+.flash{
+  border-radius: 4px;
+  position: fixed;
+  left: 50%; //親幅の中央に配置
+  transform: translateX(-50%); //自身の幅の半分左へ移動して中央寄せ
+  z-index: 1000;
+  bottom: 2%;
+
+  padding: 10px 20px;
+
+  text-align: center;
+  white-space: nowrap;
+}
+.flash.notice{
+  background-color: #2F38AF;
+  color: white;
+}
+.flash.alert{
+  background-color: #c82c55;
+  color: white;
+}
+
+//リンク
+.link-default{
+  color: black !important;
+  text-decoration: none;
+  box-shadow: none !important;
+}
+
+.link-white{
+  display: inline-block; //link_toを拡大させるために必要
+  color: white;
+  text-decoration: none;
+  box-shadow: none !important;
+  transition: color 0.3s ease;
+}
+.link-white:hover{
+  color: #C2A579;
+}
+
+.link-blue{
+  color: #0d6efd !important;
+  text-decoration: none;
+  box-shadow: none !important;
+
+}
+
+.link-navy{
+  color: #043c78 !important;
+  text-decoration: none;
+  box-shadow: none !important;
+}
+
+.link-default:hover,
+.link-blue:hover,
+.link-navy:hover{
+  text-decoration: underline;
+}
+
+.link-user{
+  font-size: 18px;
+}
+
+.link-to-post{
+  color: black;
+  text-decoration: none;
+  box-shadow: none !important;
+  transition: color 0.3s ease;
+}
+.link-to-post:hover{
+  color: #C2A579;
+  text-shadow: 0 0 5px white;
+}
+
+.bi {
+  font-size: 22px;
+}
+
+//テキストボックス
+.input:focus{
+  outline: 1px solid #322419;
+}
+//チェックボックス
+.checkbox-color input[type="checkbox"] {
+  accent-color: #EFDE98;
+}

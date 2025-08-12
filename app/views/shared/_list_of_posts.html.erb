@@ -1,6 +1,6 @@
 <div class="post-section <%= controller.controller_name %> <%= controller.action_name %>">
   <h1><%= title %></h1>
-  <%= "#{title}はありません" if posts.empty? %>
+  <div><%= "#{title}はありません" if posts.empty?%></div>
   <% posts.each_with_index do |post, index| %>
     <div class="post-container <%= 'add-top-border' if index == 0 %>">
       <div class="image-section">
@@ -53,6 +53,6 @@
     </div>
   <% end %>
   <% if current_page?(root_path) %>
-    <%= link_to '投稿をもっと見る', posts_path, class: "btn btn-light", style: "color: black;" %>
+    <%= link_to '投稿をもっと見る', posts_path, data: { turbolinks: false }, class: "btn btn-light" %>
   <% end %>
 </div>
