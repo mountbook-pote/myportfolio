@@ -1,0 +1,48 @@
+@import "common/_break-points.scss";
+
+//新規登録・ログイン用
+.btn-secondary{
+  background-color: #765c47
+}
+.btn-secondary:hover{
+  background-color: #663300 !important;
+}
+
+//投稿用
+.btn-outline-secondary{
+  color: black;
+}
+.btn-outline-secondary:hover{
+  color: white;
+  background-color: #765c47;
+  box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.9);
+}
+.btn-outline-secondary:active{
+  background-color: #663300 !important;
+}
+
+//キャンセル用
+.btn-outline-secondary.cancel:hover{
+  background-color: gray;
+}
+.btn-outline-secondary.cancel:active{
+  border: none;
+  background-color: #d3d3d3 !important;
+}
+
+//もっと見る用
+.btn-light{
+  border: 1px solid black !important;
+  background-color: #F2EFEC;
+}
+.btn-light:hover{
+  background-color: white;
+}
+.btn-light:active{
+  background-color: #F2EFEC !important;
+}
+
+//退会用
+.btn-danger{
+  background-color: #c82c55;
+}

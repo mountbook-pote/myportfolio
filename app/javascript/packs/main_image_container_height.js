@@ -29,6 +29,7 @@ window.addEventListener('resize', () => {
   const image = document.querySelector('.center-column-image');
   const centerColumn = document.querySelector('.center-column');
 
+  if (!image || !centerColumn) return;
   const displayedHeight = image.clientHeight;
   const adjustedHeight = displayedHeight - getTrimHeight();
   centerColumn.style.height = adjustedHeight + 'px';

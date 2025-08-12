@@ -1,7 +1,9 @@
 <header>
   <div class="header-container">
     <div class="navigationbar__menus">
-      <div><%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, class: "app-name" %></div>
+      <div>
+        <%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, class: "app-name link-white" %>
+      </div>
       <div>
         <%= link_to "投稿", posts_path, data: { turbolinks: false }, class: "link-white content" %>
       </div>

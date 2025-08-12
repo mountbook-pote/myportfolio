@@ -19,7 +19,7 @@
               <span class="link-default link-user"><%= current_user.name %></span>
             </div>
             <div><%= f.label :comment, "コメント(140字以内)<span class='required-field'>*必須</span>".html_safe, class: "label-comment" %></div>
-            <div><%= f.text_area :comment, placeholder: "コメントを入力", autofocus: false, class: "input-comment" %></div>
+            <div><%= f.text_area :comment, placeholder: "コメントを入力", autofocus: false, class: "input input-comment" %></div>
           </div>
           <div class="form-error"><%= render "devise/shared/error_messages", resource: post, attribute: :comment %></div>
           <!-- new画面にだけ使用する要素 -->
@@ -28,8 +28,8 @@
           <% end %>
         </div>
         <div class="submit-space">
-          <div><%= f.submit "投稿", class: "btn btn-save" %></div>
-          <div><%= link_to "キャンセル", :back, class: "btn btn-outline-secondary" %></div>
+          <div><%= f.submit "投稿", class: "btn btn-outline-secondary" %></div>
+          <div><%= link_to "キャンセル", :back, class: "btn btn-outline-secondary cancel" %></div>
         </div>
       <% end %>
     </div>

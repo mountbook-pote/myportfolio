@@ -39,8 +39,6 @@ header{
     display: flex;
     gap: 15px;
     .app-name{
-      color: #F2EFEC;
-      text-decoration: none;
       font-size: 170%;
       @include xs-device-or-less {
         font-size: 120%;
@@ -59,3 +57,17 @@ header{
   }
 }
 
+//headerドロップダウンメニュー
+.dropdown-menu{
+  padding: 5px auto;
+  margin: 0 auto;
+  min-width: 120px;
+}
+.dropdown-divider{
+  border-color: black;
+  width: 80%;
+  margin: 0 auto;
+}
+.dropdown-item:active{
+  background-color: gray;
+}

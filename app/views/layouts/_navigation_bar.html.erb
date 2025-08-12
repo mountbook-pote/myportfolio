@@ -9,10 +9,11 @@
       </a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
         <!-- プルダウンメニューの内容 -->
-        <li><%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %></li>
-        <li><%= link_to '設定', edit_user_registration_path, class: 'dropdown-item' %></li>
+        <li><%= link_to 'マイページ', user_path(current_user), data: { turbolinks: false }, class: 'dropdown-item' %></li>
         <li><hr class="dropdown-divider"></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+        <li><%= link_to '設定', edit_user_registration_path, data: { turbolinks: false }, class: 'dropdown-item' %></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbolinks: false },  class: 'dropdown-item' %></li>
       </ul>
     </div>
   </div>

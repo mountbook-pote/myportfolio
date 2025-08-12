@@ -15,8 +15,8 @@
         素敵な作品を投稿・共有するためのサービスです。
       </h5>
       <h5>
-        使い方は、はじめに<%= link_to "新規登録", new_user_registration_path %>や
-        <%= link_to "ゲストログイン", users_guest_login_path, method: :post %>等を行い<br>
+        使い方は、はじめに<%= link_to "新規登録", new_user_registration_path, class:"link-navy" %>や
+        <%= link_to "ゲストログイン", users_guest_login_path, method: :post, class:"link-navy" %>等を行い<br>
         鑑賞ボタンをクリックして、作品を鑑賞しましょう。<br>
       </h5>
       <div class="sample-space">
@@ -41,7 +41,10 @@
         </h6>
       </div>
       <div class="registration-space">
-        <%= link_to "登録する", new_user_registration_path, class:"btn btn-second" %>
+        <%= link_to "登録する", new_user_registration_path, 
+          data: { turbolinks: false }, class:"btn btn-outline-secondary"
+        %>
       </div>
+    </div>
   </div>
 </div>
