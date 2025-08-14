@@ -1,0 +1,2 @@
+--require spec_helper
+--format documentation # テストの実行結果表示改善のため追加

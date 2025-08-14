@@ -53,6 +53,9 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop-airbnb'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -72,9 +75,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'simplecov', require: false # カバレッジ確認用
 end
 
-group :production do
+group :test, :production do
   gem 'pg' # postgreSQL
 end
 
