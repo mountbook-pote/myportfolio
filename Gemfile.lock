@@ -80,6 +80,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    coderay (1.1.3)
     concurrent-ruby (1.3.4)
     crass (1.0.6)
     csv (3.3.5)
@@ -93,7 +94,13 @@ GEM
     devise-i18n (1.14.0)
       devise (>= 4.9.0)
       rails-i18n
+    diff-lcs (1.6.2)
     erubi (1.13.1)
+    factory_bot (6.5.4)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.0)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -180,6 +187,12 @@ GEM
     pg (1.6.1-x86_64-linux)
     pg (1.6.1-x86_64-linux-musl)
     prism (1.4.0)
+    pry (0.15.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.11.0)
+      byebug (~> 12.0)
+      pry (>= 0.13, < 0.16)
     psych (3.3.4)
     public_suffix (6.0.2)
     puma (5.6.9)
@@ -237,6 +250,23 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
+    rspec-core (3.13.5)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (6.1.5)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.4)
     rubocop (1.79.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -369,6 +399,7 @@ DEPENDENCIES
   concurrent-ruby (= 1.3.4)
   devise
   devise-i18n
+  factory_bot_rails
   httparty
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
@@ -376,12 +407,14 @@ DEPENDENCIES
   mini_magick
   mutex_m
   pg
+  pry-byebug
   psych (~> 3.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (= 6.1.3.2)
   rails-i18n
   ransack
+  rspec-rails
   rubocop-airbnb
   sass-rails (>= 6)
   selenium-webdriver
