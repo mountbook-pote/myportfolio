@@ -10,6 +10,10 @@ class UsersController < ApplicationController
       order(created_at: :desc)
   end
 
+  def delete_icon
+    @user.image.purge
+  end
+
   private
 
   def set_user
