@@ -59,7 +59,7 @@ class PostsController < ApplicationController
   end
 
   def authorize_user!
-    unless @post.user == current_user
+    unless user_signed_in? && @post.user == current_user
       redirect_to root_path, alert: "権限がありません。"
     end
   end
