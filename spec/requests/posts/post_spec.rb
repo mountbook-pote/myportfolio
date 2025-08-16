@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Post_contents", type: :request do
   describe "GET /top" do #投稿内容の確認をトップページで行う
-    let (:post_user) { create(:user) }
-    let!(:post) { create(:post, user: post_user) }
+    let (:user) { create(:user, :with_icon_image) }
+    let!(:post) { create(:post, user: user) }
     let (:other_user) { create(:user, name: "other", email: "other@com") }
 
     describe "共通の投稿内容" do
@@ -12,7 +12,7 @@ RSpec.describe "Post_contents", type: :request do
       end
 
       describe "作品情報" do
-        it "URLが含まれる" do
+        it "作品画像URLが含まれる" do
           expect(response.body).to include(post.met_object.primary_image_small)
         end
         it "タイトルが含まれる" do
@@ -29,8 +29,11 @@ RSpec.describe "Post_contents", type: :request do
         end
       end
 
-      describe "ユーザ情報" do
-        it "ユーザー名が含まれる" do
+      describe "投稿者情報" do
+        it "投稿者画像が含まれる" do
+          expect(user.image).to be_attached
+        end
+        it "投稿者名が含まれる" do
           expect(response.body).to include(post.user.name)
         end
         it "コメントが含まれる" do
@@ -62,7 +65,7 @@ RSpec.describe "Post_contents", type: :request do
 
       context "ログインする場合(current_user == post.user)" do
         before do
-          sign_in post_user
+          sign_in user
           get root_path
         end
 
