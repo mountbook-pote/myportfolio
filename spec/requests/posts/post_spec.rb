@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Post_contents", type: :request do
-  describe "GET /top" do #投稿内容の確認をトップページで行う
+  describe "GET /top" do # 投稿内容の確認をトップページで行う
     let (:user) { create(:user, :with_icon_image) }
     let!(:post) { create(:post, user: user) }
     let (:other_user) { create(:user, name: "other", email: "other@com") }

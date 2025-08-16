@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    name { "name" }
+    name { "user_name" }
     email { "test@gmail.com" }
     password { "password" }
     trait :with_icon_image do
