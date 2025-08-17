@@ -15,8 +15,9 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
 SimpleCov.start 'rails' do
-  # 制作対象外のフォルダ+specはフィルターで除く
+  # 制作対象外のフォルダ+spec自体はフィルターで除く
   add_filter %r{app/(spec|channels|mailers|jobs|libraries)}
+  add_filter %r{app/controllers/users/(confirmations|passwords|unlocks|omniauth_callbacks)_controller\.rb}
 end
 
 RSpec.configure do |config|

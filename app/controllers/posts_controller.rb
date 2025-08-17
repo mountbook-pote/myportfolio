@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_current_user # postアクションで、常に@user = current_userを渡す
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create] # deviseのメソッド(devise用意以外のcontrollerでも使用可)
 
   def index
     @q = Post.ransack(params[:q])
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def authorize_user!
-    unless @post.user == current_user
+    unless user_signed_in? && @post.user == current_user
       redirect_to root_path, alert: "権限がありません。"
     end
   end

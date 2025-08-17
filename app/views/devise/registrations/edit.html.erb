@@ -13,6 +13,13 @@
             <%= render "shared/user_icon_attached",user: @user, size: 60 %>
             <%= f.file_field :image %>
           </div>
+          <% if @user.image.attached? %>
+          <div>
+            <%= link_to '元に戻す', delete_icon_user_path(@user), method: :delete, 
+              data: { confirm: "アイコンをデフォルトに戻しますか？" }, class: "link-navy" 
+            %>
+          </div>
+          <% end %>
           <div class="form-error"><%= render "devise/shared/error_messages", resource: @user, attribute: :image %></div>
         </div>
         <div>
