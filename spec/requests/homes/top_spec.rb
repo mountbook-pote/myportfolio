@@ -10,7 +10,7 @@ RSpec.describe "top_page", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    context "投稿がある場合(7件とする)" do
+    context "投稿がある場合(新着投稿の最大表示件数+1件とする)" do
       let(:user) { create(:user) }
       let!(:posts) { create_list(:post, 7, user: user) }
       # controllerで順番を新着順にするため、順番を並び替える

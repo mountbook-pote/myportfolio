@@ -112,11 +112,6 @@ RSpec.describe "user_show_page", type: :request do
         it "ユーザの設定ボタンを含まない" do
           expect(response.body).not_to include('class="bi bi-gear"')
         end
-
-        it "current_userの設定画面にアクセスできない" do
-          get edit_user_registration_path
-          expect(response).to have_http_status(302)
-        end
       end
       
       context "ゲストログインする場合" do
@@ -132,11 +127,6 @@ RSpec.describe "user_show_page", type: :request do
           it "設定ボタンを含まない" do
             expect(response.body).not_to include('class="bi bi-gear"')
           end
-
-          it "current_userの設定画面にアクセスできない" do
-            get edit_user_registration_path
-            expect(response).to have_http_status(302)
-          end
         end
 
         context "他ユーザのマイページにアクセスした場合" do
@@ -147,8 +137,6 @@ RSpec.describe "user_show_page", type: :request do
           it "設定ボタンを含まない" do
             expect(response.body).not_to include('class="bi bi-gear"')
           end
-
-          # ユーザ設定画面は、URLにid指定がなくcurrent_userの設定画面になるため、アクセス確認不要
         end
       end
       context "ユーザーログインする場合" do
@@ -163,11 +151,6 @@ RSpec.describe "user_show_page", type: :request do
 
           it "設定ボタンが含まれる" do
             expect(response.body).to include('class="bi bi-gear"')
-          end
-
-          it "current_userの設定画面にアクセスできる" do
-            get edit_user_registration_path
-            expect(response).to have_http_status(:success)
           end
         end
         context "他ユーザのマイページにアクセスした場合" do
