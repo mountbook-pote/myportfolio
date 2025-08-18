@@ -5,7 +5,7 @@ RSpec.describe "Registration_edit", type: :request do
     let(:user) { create(:user, :with_icon_image) }
     let(:guest_user) { User.guest }
 
-    describe "アクセスの確認" do
+    describe "リクエストの確認" do
 
       context "ログインしない場合" do
         before do
@@ -34,7 +34,7 @@ RSpec.describe "Registration_edit", type: :request do
           get edit_user_registration_path
         end
 
-        it "ユーザーの設定画面にアクセスできる" do
+        it "リクエストが成功する" do
           expect(response).to have_http_status(:success)
         end
       end

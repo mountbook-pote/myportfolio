@@ -6,6 +6,7 @@
   </div>
   <div class="artworks-section">
     <h1><%= ja_translated_name(@department_name) %></h1>
+    <div><%= "作品が用意されていません" if @met_works.empty?%></div>
     <% @met_works.each do |work| %>
       <div>
         <%= link_to work.primary_image_small, target: "_blank", rel: "noopener" do %>

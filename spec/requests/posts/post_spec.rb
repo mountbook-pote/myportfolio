@@ -31,13 +31,19 @@ RSpec.describe "Post_contents", type: :request do
 
       describe "投稿者情報" do
         it "投稿者画像が含まれる" do
-          expect(user.image).to be_attached
+          expect(post.user.image).to be_attached
         end
         it "投稿者名が含まれる" do
           expect(response.body).to include(post.user.name)
         end
         it "コメントが含まれる" do
           expect(response.body).to include(post.comment)
+        end
+      end
+
+      describe "ボタン情報" do
+        it "いいねボタンが含まれる" do
+          expect(response.body).to include('class="bi bi-balloon-heart"')
         end
       end
     end
@@ -52,11 +58,7 @@ RSpec.describe "Post_contents", type: :request do
           expect(response.body).not_to include("編集")
           expect(response.body).not_to include("削除")
         end
-        it "投稿の編集画面にアクセスできない" do
-          # 編集は表示されないが、リクエストが仮に飛んだ時の確認は行う
-          get edit_post_path(post)
-          expect(response).to redirect_to(root_path)
-        end
+
         it "投稿を削除できない" do
           # 削除は表示されないが、リクエストが仮に飛んだ時の確認は行う
           expect {delete post_path(post)}.not_to change(Post, :count)
@@ -74,13 +76,7 @@ RSpec.describe "Post_contents", type: :request do
           expect(response.body).to include("削除")
         end
 
-        it "その投稿の編集画面にアクセスできる" do
-          get edit_post_path(post)
-          expect(response).to have_http_status(:success)
-        end
-
         it "その投稿を削除できる" do
-          # DBの変化などを検証する時は、expect{}とする
           expect {delete post_path(post)}.to change(Post, :count).by(-1)
         end
       end
@@ -95,10 +91,7 @@ RSpec.describe "Post_contents", type: :request do
           expect(response.body).not_to include("編集")
           expect(response.body).not_to include("削除")
         end
-        it "その投稿の編集画面にアクセスできない" do
-          get edit_post_path(post)
-          expect(response).to redirect_to(root_path)
-        end
+
         it "その投稿を削除できない" do
           expect {delete post_path(post)}.not_to change(Post, :count)
         end

@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
+  gem 'rails-controller-testing' # テストでnewメソッド時のインスタンスの生成のため使用
 end
 
 group :development do

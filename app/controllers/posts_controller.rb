@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_current_user # postアクションで、常に@user = current_userを渡す
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create] # deviseのメソッド(devise用意以外のcontrollerでも使用可)
+  before_action :authenticate_user!, only: [:new, :create] # deviseのメソッド(devise用意以外のcontrollerでも使用可)
 
   def index
     @q = Post.ransack(params[:q])
