@@ -6,12 +6,9 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).
+    @posts = Post.search_with_ransack(params).
       includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
-    if params[:q].present? && params[:q][:met_object_department_in].blank?
-      @posts = []
-    end
   end
 
   def new
