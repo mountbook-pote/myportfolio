@@ -9,6 +9,6 @@ class Post < ApplicationRecord
   def self.search_with_ransack(params)
     return Post.none if params[:q].present? && params[:q][:met_object_department_in].blank?
 
-    Post.ransack(params[:q]).result(distinct: true)
+    Post.ransack(params[:q]).result # 一つの作品は一つのカテゴリしか持たないため、重複がないのでdistinctは外している
   end
 end
