@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Met_objects", type: :model do
+RSpec.describe "Met_object", type: :model do
   describe "#fetch_all_departments_works_at_random" do
     # データの取得や通常の変数もlet使用可能
     let(:fetched_results) { MetObject.fetch_all_departments_works_at_random(all_departments, fetch_each_number) }
@@ -95,6 +95,16 @@ RSpec.describe "Met_objects", type: :model do
         expect(results.any?{|result| result.primary_image_small == nil}). to be false
         expect(results.any?{|result| result.primary_image_small == ""}). to be false
       end
+    end
+  end
+
+  describe "バリデーション" do
+    let(:met_object){ create(:met_object) }
+    let!(:post){ create(:post, met_object: met_object) }
+
+    it "作品を削除するとそれに紐づく投稿も削除される" do
+      expect{met_object.destroy}.to change{ Post.count }.by(-1)
+      expect(Post.find_by(id: post.id)).to be_nil
     end
   end
 end
