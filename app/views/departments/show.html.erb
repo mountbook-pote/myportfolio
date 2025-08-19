@@ -20,7 +20,7 @@
         <div class="artworks-description-space__description">
           <div class="artworks-description-space__sentence">
             <% if @department_name == "All Departments" %>
-              <div><%= ja_translated_name(work.department) %></div>
+              <div class="department_for_rspec"><%= ja_translated_name(work.department) %></div>
             <% end %>
             <div>製作者: <%= work.artist_display_name.presence || '不明' %></div>
             <div>制作年: <%= work.object_date.presence || '不明' %></div>
