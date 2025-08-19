@@ -18,7 +18,7 @@ RSpec.describe "Post_index", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it "キーワード欄が含まれる" do
+      it "検索キーワード欄が含まれる" do
         expect(response.body).to include('class="keyword-area input"')
       end
 

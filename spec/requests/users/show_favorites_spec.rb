@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "user_show_page", type: :request do
+RSpec.describe "User_show_page", type: :request do
   describe "get/users/id" do
     let(:user) { create(:user, :with_icon_image) }
     let(:other_user) { create(:user, name: "other", email: "other@com") }
@@ -12,6 +12,11 @@ RSpec.describe "user_show_page", type: :request do
       end
 
       it "リクエストが成功する" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "いいねページのリクエストが成功する" do
+        get favorites_user_path(user)
         expect(response).to have_http_status(:success)
       end
 
@@ -43,7 +48,7 @@ RSpec.describe "user_show_page", type: :request do
         end
       end
 
-      context "ユーザの投稿を表示時" do
+      context "ユーザの投稿を表示した時" do
         context "そのユーザの投稿がある場合" do
           let(:post) { create(:post, user: user) } 
           let!(:favorite) { create(:favorite, user: user, post: post) }
@@ -62,6 +67,7 @@ RSpec.describe "user_show_page", type: :request do
             expect(response.body).not_to include(other_post.comment)
           end
         end
+
         context "そのユーザの投稿がない場合" do
           it "「そのユーザの投稿はありません」が含まれる" do
             expect(response.body).to include("#{user.name}の投稿はありません")
@@ -83,9 +89,11 @@ RSpec.describe "user_show_page", type: :request do
           it "いいねした投稿が含まれる" do
             expect(response.body).to include(other_post.comment)
           end
+
           it "いいねしてない投稿を含まない" do
             expect(response.body).not_to include(post.comment)
           end
+          
           it "他ユーザがいいねした投稿を含まない" do
             expect(response.body).not_to include(post.comment)
           end

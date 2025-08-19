@@ -4,8 +4,6 @@ RSpec.describe "Department_show", type: :request do
   describe "get /departments/id" do
 
     describe "共通の項目" do
-      let!(:met_object){ create(:met_object) }
-
       before do
         get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
       end
@@ -23,24 +21,38 @@ RSpec.describe "Department_show", type: :request do
       end
 
       describe "作品情報" do
-        it "作品画像URLが含まれる" do
-          expect(response.body).to include(met_object.primary_image_small)
+        context "作品が存在する時" do
+          let!(:met_object){ create(:met_object) }
+          
+          before do
+            get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
+          end
+
+          it "作品画像URLが含まれる" do
+            expect(response.body).to include(met_object.primary_image_small)
+          end
+
+          it "タイトルが含まれる" do
+            expect(response.body).to include(met_object.title)
+          end
+
+          it "制作者が含まれる" do
+            expect(response.body).to include(met_object.artist_display_name)
+          end
+
+          it "制作年が含まれる" do
+            expect(response.body).to include(met_object.object_date)
+          end
+
+          it "投稿ボタンが含まれる" do
+            expect(response.body).to include("この作品を投稿")
+          end
         end
 
-        it "タイトルが含まれる" do
-          expect(response.body).to include(met_object.title)
-        end
-
-        it "制作者が含まれる" do
-          expect(response.body).to include(met_object.artist_display_name)
-        end
-
-        it "制作年が含まれる" do
-          expect(response.body).to include(met_object.object_date)
-        end
-
-        it "投稿ボタンが含まれる" do
-          expect(response.body).to include("この作品を投稿")
+        context "作品が１つもない時" do
+          it "「作品が用意されていません」が含まれる" do
+            expect(response.body).to include("作品が用意されていません")
+          end
         end
       end
     end
@@ -53,7 +65,7 @@ RSpec.describe "Department_show", type: :request do
           get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
         end
         # 作品の合計件数や各ジャンルが指定した件数分取得できることはmet_object_specで確認済
-        it "共通の作品情報が含まれる" do
+        it "作品情報が含まれる" do
           expect(response.body).to include(met_object.primary_image_small)
         end
 
@@ -69,7 +81,7 @@ RSpec.describe "Department_show", type: :request do
           get department_path(DepartmentsController::DEPARTMENT_IDS.key("European Paintings"))
         end
         # 指定ジャンルの件数取得や他ジャンルが混入しないことはmet_object_specで確認済
-        it "共通の作品情報が含まれる" do
+        it "作品情報が含まれる" do
           expect(response.body).to include(met_european.primary_image_small)
         end
 

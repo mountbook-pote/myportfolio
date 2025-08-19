@@ -84,6 +84,7 @@ RSpec.describe "Post_new", type: :request do
 
         it "投稿ができない" do
           expect{
+            # posts_controllerのparamsの内容に値を入れて渡す
             post posts_path, params: {
               post: {
                 comment: "submit_test",
@@ -101,7 +102,6 @@ RSpec.describe "Post_new", type: :request do
 
         it "投稿が成功する" do
           expect{
-            # posts_controllerのparamsの内容に値を入れて渡す
             post posts_path, params: {
               post: {
                 comment: "submit_test",

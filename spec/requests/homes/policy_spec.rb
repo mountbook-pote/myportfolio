@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "policy", type: :request do
-  describe "GET /policy" do
+RSpec.describe "Policy_page", type: :request do
+  describe "get /policy" do
     before do
       get policy_path
     end

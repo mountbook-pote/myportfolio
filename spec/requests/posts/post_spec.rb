@@ -15,30 +15,38 @@ RSpec.describe "Post_contents", type: :request do
         it "作品画像URLが含まれる" do
           expect(response.body).to include(post.met_object.primary_image_small)
         end
+
         it "タイトルが含まれる" do
           expect(response.body).to include(post.met_object.title)
         end
+
         it "制作者が含まれる" do
           expect(response.body).to include(post.met_object.artist_display_name)
         end
+
         it "制作年が含まれる" do
           expect(response.body).to include(post.met_object.object_date)
         end
+
         it "ジャンルが含まれる" do
           expect(response.body).to include(ja_translated_name(post.met_object.department))
         end
+
       end
 
       describe "投稿者情報" do
         it "投稿者画像が含まれる" do
           expect(post.user.image).to be_attached
         end
+
         it "投稿者名が含まれる" do
           expect(response.body).to include(post.user.name)
         end
+
         it "コメントが含まれる" do
           expect(response.body).to include(post.comment)
         end
+
       end
 
       describe "ボタン情報" do
@@ -58,6 +66,38 @@ RSpec.describe "Post_contents", type: :request do
           expect(response.body).not_to include("編集")
           expect(response.body).not_to include("削除")
         end
+      end
+
+      context "ログインする場合(current_user == post.user)" do
+        before do
+          sign_in user
+          get root_path
+        end
+
+        it "その投稿に編集と削除ボタンが含まれる" do
+          expect(response.body).to include("編集")
+          expect(response.body).to include("削除")
+        end
+      end
+
+      context "ログインする場合(current_user != post.user)" do
+        before do
+          sign_in other_user
+          get root_path
+        end
+
+        it "その投稿に編集と削除ボタンが含まれない" do
+          expect(response.body).not_to include("編集")
+          expect(response.body).not_to include("削除")
+        end
+      end
+    end
+    
+    describe "動作の確認" do
+      context "ログインしない場合" do
+        before do
+          get root_path
+        end
 
         it "投稿を削除できない" do
           # 削除は表示されないが、リクエストが仮に飛んだ時の確認は行う
@@ -71,11 +111,6 @@ RSpec.describe "Post_contents", type: :request do
           get root_path
         end
 
-        it "その投稿に編集と削除ボタンが含まれる" do
-          expect(response.body).to include("編集")
-          expect(response.body).to include("削除")
-        end
-
         it "その投稿を削除できる" do
           expect {delete post_path(post)}.to change(Post, :count).by(-1)
         end
@@ -85,11 +120,6 @@ RSpec.describe "Post_contents", type: :request do
         before do
           sign_in other_user
           get root_path
-        end
-
-        it "その投稿に編集と削除ボタンが含まれない" do
-          expect(response.body).not_to include("編集")
-          expect(response.body).not_to include("削除")
         end
 
         it "その投稿を削除できない" do

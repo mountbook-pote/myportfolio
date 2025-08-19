@@ -50,7 +50,7 @@ RSpec.describe "Post_edit", type: :request do
       end
     end
 
-    describe "更新動作の確認" do
+    describe "動作の確認" do
       context "ログインしない場合" do
 
         it "投稿の更新ができない" do

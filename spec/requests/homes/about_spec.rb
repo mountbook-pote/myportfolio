@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "about", type: :request do
-  describe "GET /about" do
+RSpec.describe "About_page", type: :request do
+  describe "get /about" do
     before do
       get about_path
     end
