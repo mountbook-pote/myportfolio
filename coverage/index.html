@@ -13,7 +13,7 @@
       <img src="./assets/0.13.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-20T10:29:33+09:00">2025-08-20T10:29:33+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-20T11:01:58+09:00">2025-08-20T11:01:58+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,7 +29,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         15.98
+         15.83
        </span>
     </span> hits/line
     )
@@ -42,8 +42,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>186</b> relevant lines,
-    <span class="green"><b>186</b> lines covered</span> and
+    <b>187</b> relevant lines,
+    <span class="green"><b>187</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -259,11 +259,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3f4f9612a24d77e1c874eddbee31cf47c97054fa" class="src_link" title="app/models/post.rb">app/models/post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">9</td>
+            <td class="cell--number">16</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.89</td>
+            <td class="cell--number">3.50</td>
             
           </tr>
         
@@ -274,7 +274,7 @@
             <td class="cell--number">24</td>
             <td class="cell--number">24</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">27.33</td>
+            <td class="cell--number">26.83</td>
             
           </tr>
         
@@ -501,7 +501,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         18.54
+         18.03
        </span>
     </span> hits/line
     )
@@ -514,8 +514,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>59</b> relevant lines,
-    <span class="green"><b>59</b> lines covered</span> and
+    <b>60</b> relevant lines,
+    <span class="green"><b>60</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -577,11 +577,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3f4f9612a24d77e1c874eddbee31cf47c97054fa" class="src_link" title="app/models/post.rb">app/models/post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">9</td>
+            <td class="cell--number">16</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.89</td>
+            <td class="cell--number">3.50</td>
             
           </tr>
         
@@ -592,7 +592,7 @@
             <td class="cell--number">24</td>
             <td class="cell--number">24</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">27.33</td>
+            <td class="cell--number">26.83</td>
             
           </tr>
         
@@ -2636,7 +2636,7 @@
 
             
 
-            <code class="ruby">    unless user_signed_in? &amp;&amp; @post.user == current_user</code>
+            <code class="ruby">    if !user_signed_in? || @post.user != current_user</code>
           </li>
         </div>
       
@@ -5051,7 +5051,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5547,8 +5547,8 @@
     
 
     <div class="t-line-summary">
-      <b>9</b> relevant lines.
-      <span class="green"><b>9</b> lines covered</span> and
+      <b>10</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -5664,36 +5664,36 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="10">
+          <li class="covered" data-hits="14" data-linenumber="10">
             
-              <span class="hits">16</span>
-            
-
+              <span class="hits">14</span>
             
 
-            <code class="ruby">    return Post.none if params[:q].present? &amp;&amp; params[:q][:met_object_department_in].blank?</code>
+            
+
+            <code class="ruby">    if params[:q].present? &amp;&amp; params[:q][:met_object_department_in].blank?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
+          <li class="covered" data-hits="3" data-linenumber="11">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      return Post.none</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="12">
-            
-              <span class="hits">12</span>
+          <li class="never" data-hits="" data-linenumber="12">
             
 
             
 
-            <code class="ruby">    Post.ransack(params[:q]).result # 一つの作品は一つのカテゴリしか持たないため、重複がないのでdistinctは外している</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -5703,12 +5703,34 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="14">
+            
+              <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    Post.ransack(params[:q]).result # 一つの作品は一つのカテゴリしか持たないため、重複がないのでdistinctは外している</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="16">
             
 
             
@@ -6137,9 +6159,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="291" data-linenumber="36">
+          <li class="covered" data-hits="285" data-linenumber="36">
             
-              <span class="hits">291</span>
+              <span class="hits">285</span>
             
 
             
@@ -6203,9 +6225,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="291" data-linenumber="42">
+          <li class="covered" data-hits="285" data-linenumber="42">
             
-              <span class="hits">291</span>
+              <span class="hits">285</span>
             
 
             

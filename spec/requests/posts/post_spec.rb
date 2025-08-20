@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Post_contents", type: :request do
   describe "GET /top" do # 投稿内容の確認をトップページで行う
-    let (:user) { create(:user, :with_icon_image) }
+    let(:user) { create(:user, :with_icon_image) }
     let!(:post) { create(:post, user: user) }
-    let (:other_user) { create(:user, name: "other", email: "other@com") }
+    let(:other_user) { create(:user, name: "other", email: "other@com") }
 
     describe "共通の投稿内容" do
       before do
@@ -31,7 +31,6 @@ RSpec.describe "Post_contents", type: :request do
         it "ジャンルが含まれる" do
           expect(response.body).to include(ja_translated_name(post.met_object.department))
         end
-
       end
 
       describe "投稿者情報" do
@@ -46,7 +45,6 @@ RSpec.describe "Post_contents", type: :request do
         it "コメントが含まれる" do
           expect(response.body).to include(post.comment)
         end
-
       end
 
       describe "ボタン情報" do
@@ -55,7 +53,7 @@ RSpec.describe "Post_contents", type: :request do
         end
       end
     end
-    
+
     describe "個別の内容" do
       context "ログインしない場合" do
         before do
@@ -92,7 +90,7 @@ RSpec.describe "Post_contents", type: :request do
         end
       end
     end
-    
+
     describe "動作の確認" do
       context "ログインしない場合" do
         before do
@@ -101,7 +99,7 @@ RSpec.describe "Post_contents", type: :request do
 
         it "投稿を削除できない" do
           # 削除は表示されないが、リクエストが仮に飛んだ時の確認は行う
-          expect {delete post_path(post)}.not_to change(Post, :count)
+          expect { delete post_path(post) }.not_to change(Post, :count)
         end
       end
 
@@ -112,7 +110,7 @@ RSpec.describe "Post_contents", type: :request do
         end
 
         it "その投稿を削除できる" do
-          expect {delete post_path(post)}.to change(Post, :count).by(-1)
+          expect { delete post_path(post) }.to change(Post, :count).by(-1)
         end
       end
 
@@ -123,7 +121,7 @@ RSpec.describe "Post_contents", type: :request do
         end
 
         it "その投稿を削除できない" do
-          expect {delete post_path(post)}.not_to change(Post, :count)
+          expect { delete post_path(post) }.not_to change(Post, :count)
         end
       end
     end

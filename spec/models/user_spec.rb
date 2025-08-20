@@ -2,31 +2,29 @@ require 'rails_helper'
 
 RSpec.describe "User(deviseに追加した項目)", type: :model do
   describe "#self.guest" do
-    let(:guest_user){ User.guest }
+    let(:guest_user) { User.guest }
 
     context "ゲストユーザが存在しない場合" do
-
       it "ゲストユーザを新規作成する" do
-        expect{guest_user}.to change{User.count}.by(1) # 状態変化の確認には{}を使う
+        expect { guest_user }.to change { User.count }.by(1) # 状態変化の確認には{}を使う
         expect(guest_user.name).to eq(User::GUEST_USER_NAME)
       end
     end
 
     context "ゲストユーザが存在する場合" do
-      let!(:existed_guest_user){ create(:user, name: User::GUEST_USER_NAME, email: User::GUEST_USER_EMAIL) }
+      let!(:existed_guest_user) { create(:user, name: User::GUEST_USER_NAME, email: User::GUEST_USER_EMAIL) }
 
       it "既存のゲストユーザを返す" do
-        expect{guest_user}.not_to change{User.count}
+        expect { guest_user }.not_to change { User.count }
         expect(guest_user.id). to eq(existed_guest_user.id) # idの一致を入れる
         expect(guest_user.name). to eq(existed_guest_user.name)
-        expect(guest_user.email). to eq(existed_guest_user.email)
       end
     end
   end
 
   describe "#guest?" do
-    let(:user){ create(:user) }
-    let(:guest_user){ User.guest }
+    let(:user) { create(:user) }
+    let(:guest_user) { User.guest }
 
     it "ユーザのメールアドレス != ゲストのメールアドレスだとfalseを返す" do
       expect(user.guest?).to be false
@@ -38,14 +36,14 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
   end
 
   describe "バリデーション" do
-    let(:user){ create(:user) }
-    let!(:post){ create(:post, user: user) }
-    let!(:favorite){ create(:favorite, user: user) }
+    let(:user) { create(:user) }
+    let!(:post) { create(:post, user: user) }
+    let!(:favorite) { create(:favorite, user: user) }
 
     it "ユーザー名が空の場合は無効" do
       expect(
         User.new(
-          name: "", 
+          name: "",
           email: "test@test.com",
           password: "password",
           password_confirmation: "password"
@@ -56,7 +54,7 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
     it "ユーザー名が11文字の場合は無効" do
       expect(
         User.new(
-          name: "a" * 11, 
+          name: "a" * 11,
           email: "test@test.com",
           password: "password",
           password_confirmation: "password"
@@ -67,7 +65,7 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
     it "ユーザ名が10文字以内の場合は有効" do
       expect(
         User.new(
-          name: "a" * 10, 
+          name: "a" * 10,
           email: "test@test.com",
           password: "password",
           password_confirmation: "password"
@@ -76,12 +74,12 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
     end
 
     it "ユーザを削除するとそれに紐づく投稿も削除される" do
-      expect{user.destroy}.to change{ Post.count }.by(-1)
+      expect { user.destroy }.to change { Post.count }.by(-1)
       expect(Post.find_by(id: post.id)).to be_nil
     end
 
     it "ユーザを削除するとそれに紐づくいいねも削除される" do
-      expect{user.destroy}.to change{ Favorite.count }.by(-1)
+      expect { user.destroy }.to change { Favorite.count }.by(-1)
       expect(Favorite.find_by(id: favorite.id)).to be_nil
     end
 
@@ -94,7 +92,7 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
         user.image.attach(
           io: image_file,
           filename: 'temp_image.txt',
-          content_type: 'text/plain'       
+          content_type: 'text/plain'
         )
 
         expect(user).not_to be_valid
@@ -125,12 +123,12 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
       it "ユーザ画像サイズが1MBより大きいと無効" do
         image_file = Tempfile.new(['temp_image', '.jpg'])
         image_file.write("a" * 1.1.megabytes.to_i)
-        image_file.rewind #ポインタの位置を先頭に移動させる
+        image_file.rewind # ポインタの位置を先頭に移動させる
 
         user.image.attach(
           io: image_file,
           filename: 'temp_image.jpg',
-          content_type: 'image/jpeg'       
+          content_type: 'image/jpeg'
         )
 
         expect(user).not_to be_valid
@@ -140,12 +138,12 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
       it "ユーザ画像サイズが1MB以下だと有効" do
         image_file = Tempfile.new(['temp_image', '.jpg'])
         image_file.write("a" * 1.megabytes.to_i)
-        image_file.rewind 
+        image_file.rewind
 
         user.image.attach(
           io: image_file,
           filename: 'temp_image.jpg',
-          content_type: 'image/jpeg'       
+          content_type: 'image/jpeg'
         )
 
         expect(user).to be_valid

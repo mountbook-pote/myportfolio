@@ -8,23 +8,23 @@ RSpec.describe "Met_object", type: :model do
     let(:fetch_each_number) { 2 }
 
     context "正常なデータのみが存在する場合" do
-      let!(:met_european){ create_list(:met_object, 6, department: "European Paintings") }
-      let!(:met_medieval){ create_list(:met_object, 6, department: "Medieval Art") }
-      let!(:met_egyptian){ create_list(:met_object, 6, department: "Egyptian Art") }
-      
+      let!(:met_european) { create_list(:met_object, 6, department: "European Paintings") }
+      let!(:met_medieval) { create_list(:met_object, 6, department: "Medieval Art") }
+      let!(:met_egyptian) { create_list(:met_object, 6, department: "Egyptian Art") }
+
       it "合計取得件数＝全てのジャンル×指定した件数になる" do
         expect(fetched_results.count).to be 6
       end
 
       it "各ジャンル取得件数＝指定した件数になる" do
-        expect(fetched_results.count{ |result| result.department == "European Paintings" }).to be 2
-        expect(fetched_results.count{ |result| result.department == "Medieval Art" }).to be 2
-        expect(fetched_results.count{ |result| result.department == "Egyptian Art" }).to be 2
+        expect(fetched_results.count { |result| result.department == "European Paintings" }).to be 2
+        expect(fetched_results.count { |result| result.department == "Medieval Art" }).to be 2
+        expect(fetched_results.count { |result| result.department == "Egyptian Art" }).to be 2
       end
 
       it "ランダムに取得されていることが確認できる(2回の取得結果が異なることによる)" do
         result1 = fetched_results
-        result2 = fetched_results
+        fetched_results
         ids1 = result1.map(&:id)
         ids2 = result1.map(&:id)
         expect(ids1).not_to be eq(ids2)
@@ -32,18 +32,18 @@ RSpec.describe "Met_object", type: :model do
     end
 
     context "画像URLがnilやemptyのデータが存在し、取得される可能性がある場合" do
-      let!(:met_european){ create(:met_object, department: "European Paintings") }
+      let!(:met_european) { create(:met_object, department: "European Paintings") }
       let!(:met_european_invalid_nil) do
         create(:met_object, department: "European Paintings", primary_image_small: nil)
       end
       let!(:met_european_invalid_empty) do
         create(:met_object, department: "European Paintings", primary_image_small: "")
       end
-      
+
       it "画像URLがnilやemptyのデータが取得されない" do
         results = fetched_results
-        expect(results.any?{|result| result.primary_image_small == nil}). to be false
-        expect(results.any?{|result| result.primary_image_small == ""}). to be false
+        expect(results.any? { |result| result.primary_image_small.nil? }). to be false
+        expect(results.any? { |result| result.primary_image_small == "" }). to be false
       end
     end
   end
@@ -55,16 +55,16 @@ RSpec.describe "Met_object", type: :model do
     let(:fetch_number) { 2 }
 
     context "正常なデータのみが存在する場合" do
-      let!(:met_european){ create_list(:met_object, 20, department: "European Paintings") }
-      
+      let!(:met_european) { create_list(:met_object, 20, department: "European Paintings") }
+
       it "指定したジャンルから、指定した件数を取得できる" do
         expect(fetched_results.count).to be 2
-        expect(fetched_results.count{ |result| result.department == "European Paintings" }).to be 2
+        expect(fetched_results.count { |result| result.department == "European Paintings" }).to be 2
       end
 
       it "ランダムに取得されていることが確認できる(2回の取得結果が異なることによる)" do
         result1 = fetched_results
-        result2 = fetched_results
+        fetched_results
         ids1 = result1.map(&:id)
         ids2 = result1.map(&:id)
         expect(ids1).not_to be eq(ids2)
@@ -72,8 +72,8 @@ RSpec.describe "Met_object", type: :model do
     end
 
     context "別ジャンルのデータが取得される可能性がある場合" do
-      let!(:met_european){ create_list(:met_object, 1, department: "European Paintings") }
-      let!(:met_medieval){ create_list(:met_object, 1, department: "Medieval Art") }
+      let!(:met_european) { create_list(:met_object, 1, department: "European Paintings") }
+      let!(:met_medieval) { create_list(:met_object, 1, department: "Medieval Art") }
 
       it "別ジャンルのデータが取得されない" do
         results = fetched_results
@@ -82,28 +82,28 @@ RSpec.describe "Met_object", type: :model do
     end
 
     context "画像URLがnilやemptyのデータが存在し、取得される可能性がある場合" do
-      let!(:met_european){ create(:met_object, department: "European Paintings") }
+      let!(:met_european) { create(:met_object, department: "European Paintings") }
       let!(:met_european_invalid_nil) do
         create(:met_object, department: "European Paintings", primary_image_small: nil)
       end
       let!(:met_european_invalid_empty) do
         create(:met_object, department: "European Paintings", primary_image_small: "")
       end
-      
+
       it "画像URLがnilやemptyのデータが取得されない" do
         results = fetched_results
-        expect(results.any?{|result| result.primary_image_small == nil}). to be false
-        expect(results.any?{|result| result.primary_image_small == ""}). to be false
+        expect(results.any? { |result| result.primary_image_small.nil? }). to be false
+        expect(results.any? { |result| result.primary_image_small == "" }). to be false
       end
     end
   end
 
   describe "バリデーション" do
-    let(:met_object){ create(:met_object) }
-    let!(:post){ create(:post, met_object: met_object) }
+    let(:met_object) { create(:met_object) }
+    let!(:post) { create(:post, met_object: met_object) }
 
     it "作品を削除するとそれに紐づく投稿も削除される" do
-      expect{met_object.destroy}.to change{ Post.count }.by(-1)
+      expect { met_object.destroy }.to change { Post.count }.by(-1)
       expect(Post.find_by(id: post.id)).to be_nil
     end
   end

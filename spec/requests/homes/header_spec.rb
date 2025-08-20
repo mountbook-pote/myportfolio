@@ -44,7 +44,7 @@ RSpec.describe "Header", type: :request do
           expect(response.body).not_to include('ログアウト')
         end
       end
-    
+
       context "ログインした場合" do
         before do
           sign_in user
@@ -82,9 +82,8 @@ RSpec.describe "Header", type: :request do
         it "メニュー：ログアウトを含む" do
           expect(response.body).to include('ログアウト')
         end
-
       end
-      
+
       context "ゲストとしてログインした場合" do
         before do
           sign_in guest_user
@@ -98,7 +97,6 @@ RSpec.describe "Header", type: :request do
     end
 
     describe "動作項目(deviseに追加した項目)" do
-
       context "ログインしない場合" do
         before do
           get root_path

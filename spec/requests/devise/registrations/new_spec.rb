@@ -12,7 +12,7 @@ RSpec.describe "Registration_page", type: :request do
 
     describe "内容の確認" do
       it "ユーザー名入力欄が含まれている" do
-          expect(response.body).to include("ユーザー名を入力")
+        expect(response.body).to include("ユーザー名を入力")
       end
 
       it "メールアドレス入力欄が含まれている" do
@@ -35,17 +35,17 @@ RSpec.describe "Registration_page", type: :request do
 
     describe "動作の確認(deviseに追加した項目)" do
       it "名前を登録できる" do
-        expect{
+        expect do
           post user_registration_path, params: {
             user: {
               name: "test001",
               email: "test001@example.com",
               password: "password",
-              password_confirmation: "password"
-            }
+              password_confirmation: "password",
+            },
           }
-        }.to change(User, :count).by(1)
-      expect(User.last.name).to eq("test001")
+        end.to change(User, :count).by(1)
+        expect(User.last.name).to eq("test001")
       end
     end
   end

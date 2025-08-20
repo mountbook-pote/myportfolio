@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Department_show", type: :request do
   describe "get /departments/id" do
-
     describe "共通の項目" do
       before do
         get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
@@ -22,8 +21,8 @@ RSpec.describe "Department_show", type: :request do
 
       describe "作品情報" do
         context "作品が存在する時" do
-          let!(:met_object){ create(:met_object) }
-          
+          let!(:met_object) { create(:met_object) }
+
           before do
             get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
           end
@@ -59,7 +58,7 @@ RSpec.describe "Department_show", type: :request do
 
     describe "個別の項目" do
       context "全てのジャンルを鑑賞する時" do
-        let!(:met_object){ create(:met_object) }
+        let!(:met_object) { create(:met_object) }
 
         before do
           get department_path(DepartmentsController::DEPARTMENT_IDS.key("All Departments"))
@@ -75,7 +74,7 @@ RSpec.describe "Department_show", type: :request do
       end
 
       context "個々のジャンルを鑑賞する時" do
-        let!(:met_european){ create(:met_object, department: "European Paintings") }
+        let!(:met_european) { create(:met_object, department: "European Paintings") }
 
         before do
           get department_path(DepartmentsController::DEPARTMENT_IDS.key("European Paintings"))

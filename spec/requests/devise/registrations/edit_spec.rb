@@ -7,7 +7,6 @@ RSpec.describe "Registration_edit", type: :request do
     let(:guest_user) { User.guest }
 
     describe "リクエストの確認" do
-
       context "ログインしない場合" do
         before do
           get edit_user_registration_path
@@ -28,7 +27,7 @@ RSpec.describe "Registration_edit", type: :request do
           expect(response).to have_http_status(302)
         end
       end
-      
+
       context "ユーザーログインした場合" do
         before do
           sign_in user
@@ -93,7 +92,7 @@ RSpec.describe "Registration_edit", type: :request do
         expect(response.body).to include("退会する")
         expect(response.body).to include('class="btn btn-danger"')
       end
-    end  
+    end
 
     describe "動作の確認(deviseに追加した項目)" do
       context "ユーザログインした場合" do
@@ -106,8 +105,8 @@ RSpec.describe "Registration_edit", type: :request do
           patch user_registration_path, params: {
             user: {
               name: "new_name",
-              current_password: "password"
-            }
+              current_password: "password",
+            },
           }
           no_image_user.reload
           expect(no_image_user.name).to eq("new_name")
@@ -118,14 +117,14 @@ RSpec.describe "Registration_edit", type: :request do
           patch user_registration_path, params: {
             user: {
               image: image,
-              current_password: "password"
-            }
+              current_password: "password",
+            },
           }
           no_image_user.reload
           expect(no_image_user.image).to be_attached
-          expect {
+          expect do
             delete delete_icon_user_path(no_image_user)
-          }.to change { no_image_user.reload.image.attached? }.from(true).to(false)
+          end.to change { no_image_user.reload.image.attached? }.from(true).to(false)
         end
       end
 
@@ -139,28 +138,27 @@ RSpec.describe "Registration_edit", type: :request do
           patch user_registration_path, params: {
             user: {
               name: "new_name",
-              current_password: "password"
-            }
+              current_password: "password",
+            },
           }
           guest_user.reload
           expect(guest_user.name).to eq("ゲスト")
         end
 
         it "退会ができない" do
-          expect{
+          expect do
             delete user_registration_path
-          }.not_to change(User, :count)
+          end.not_to change(User, :count)
         end
       end
 
       context "ログインしない場合" do
-
         it "更新ができない" do
           patch user_registration_path, params: {
             user: {
               name: "new_name",
-              current_password: "password"
-            }
+              current_password: "password",
+            },
           }
           expect(response).to redirect_to(new_user_session_path)
           guest_user.reload
@@ -168,9 +166,9 @@ RSpec.describe "Registration_edit", type: :request do
         end
 
         it "退会ができない" do
-          expect{
+          expect do
             delete user_registration_path
-          }.not_to change(User, :count)
+          end.not_to change(User, :count)
         end
       end
     end

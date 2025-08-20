@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "Post_index", type: :request do
   describe "get /posts" do
-    let(:user){ create(:user, name: "tarou") }
-    let(:other_user){ create(:user, name: "zirou") }
-    let!(:post_european){ create(:post, user: user, met_object: create(:met_object, department: "European Paintings")) }
-    let!(:post_medieval){ create(:post, met_object: create(:met_object, department: "Medieval Art")) }
-    let!(:post_egyptian){ create(:post, met_object: create(:met_object, department: "Egyptian Art")) }
-    let!(:other_post_european){ create(:post, user: other_user, met_object: create(:met_object, department: "European Paintings")) }
+    let(:user) { create(:user, name: "tarou") }
+    let(:other_user) { create(:user, name: "zirou") }
+    let!(:post_european) { create(:post, user: user, met_object: create(:met_object, department: "European Paintings")) }
+    let!(:post_medieval) { create(:post, met_object: create(:met_object, department: "Medieval Art")) }
+    let!(:post_egyptian) { create(:post, met_object: create(:met_object, department: "Egyptian Art")) }
+    let!(:other_post_european) do
+      create(:post, user: other_user, met_object: create(:met_object, department: "European Paintings"))
+    end
 
     context "投稿一覧にアクセスした時" do
       before do
@@ -76,7 +78,7 @@ RSpec.describe "Post_index", type: :request do
     context "ジャンルと投稿者を指定して検索した時" do
       before do
         get posts_index_path, params: {
-          q: { met_object_department_in: ["European Paintings"], user_name_cont: "tarou" }
+          q: { met_object_department_in: ["European Paintings"], user_name_cont: "tarou" },
         }
       end
 
