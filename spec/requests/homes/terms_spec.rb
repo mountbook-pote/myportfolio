@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "terms", type: :request do
-  describe "GET /terms" do
+RSpec.describe "Terms_page", type: :request do
+  describe "get /terms" do
     before do
       get terms_path
     end

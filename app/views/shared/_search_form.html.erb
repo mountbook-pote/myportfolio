@@ -5,12 +5,14 @@
       <div class="search-space__keyword-box">
         <div class="keyword-title">キーワード</div>
         <%= f.text_field :user_name_cont, placeholder: "投稿者", class:"keyword-area input" %>
-        <!--*_contは、あいまい検索を指定-->
+        <% # *_contは、あいまい検索を指定 %>
         <% # 初期値=nil、空で検索すると""になる %>
       </div>
       <div class="search-space__check-box">
         <% # 全てのジャンルの配列 %>
-        <% departments = ["European Paintings", "Medieval Art", "Egyptian Art"] %>
+        <% departments = DepartmentsController::DEPARTMENT_IDS.values.
+          reject { |name| name == "All Departments" } 
+        %>
         <% # 初期状態ではparams...はnilに、入力なしで一度でも検索すると空要素を含む「ハッシュ」が渡るためfalseになる%>
         <% if f.object.met_object_department_in.blank? && params[:q].blank? %>
           <% f.object.met_object_department_in = departments %>

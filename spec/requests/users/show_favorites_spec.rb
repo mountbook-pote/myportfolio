@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "user_show_page", type: :request do
+RSpec.describe "User_show_page", type: :request do
   describe "get/users/id" do
     let(:user) { create(:user, :with_icon_image) }
     let(:other_user) { create(:user, name: "other", email: "other@com") }
@@ -15,8 +15,13 @@ RSpec.describe "user_show_page", type: :request do
         expect(response).to have_http_status(:success)
       end
 
+      it "いいねページのリクエストが成功する" do
+        get favorites_user_path(user)
+        expect(response).to have_http_status(:success)
+      end
+
       describe "ユーザ情報" do
-        let(:post) { create(:post, user: user) } 
+        let(:post) { create(:post, user: user) }
         let!(:favorite) { create(:favorite, user: user, post: post) }
         before do
           get user_path(user)
@@ -43,11 +48,11 @@ RSpec.describe "user_show_page", type: :request do
         end
       end
 
-      context "ユーザの投稿を表示時" do
+      context "ユーザの投稿を表示した時" do
         context "そのユーザの投稿がある場合" do
-          let(:post) { create(:post, user: user) } 
+          let(:post) { create(:post, user: user) }
           let!(:favorite) { create(:favorite, user: user, post: post) }
-          let(:other_post) { create(:post, user: other_user, comment: "other_comment") } 
+          let(:other_post) { create(:post, user: other_user, comment: "other_comment") }
           let!(:other_favorite) { create(:favorite, user: other_user, post: other_post) }
 
           before do
@@ -57,11 +62,12 @@ RSpec.describe "user_show_page", type: :request do
           it "投稿が含まれる" do
             expect(response.body).to include(post.comment)
           end
-          
+
           it "他ユーザの投稿を含まない" do
             expect(response.body).not_to include(other_post.comment)
           end
         end
+
         context "そのユーザの投稿がない場合" do
           it "「そのユーザの投稿はありません」が含まれる" do
             expect(response.body).to include("#{user.name}の投稿はありません")
@@ -71,9 +77,9 @@ RSpec.describe "user_show_page", type: :request do
 
       context "ユーザのいいねを表示時" do
         context "そのユーザのいいねがある場合" do
-          let(:post) { create(:post, user: user) } 
+          let(:post) { create(:post, user: user) }
           let!(:cross_favorite) { create(:favorite, user: user, post: other_post) }
-          let(:other_post) { create(:post, user: other_user) } 
+          let(:other_post) { create(:post, user: other_user) }
           let!(:cross_other_favorite) { create(:favorite, user: other_user, post: post) }
 
           before do
@@ -83,9 +89,11 @@ RSpec.describe "user_show_page", type: :request do
           it "いいねした投稿が含まれる" do
             expect(response.body).to include(other_post.comment)
           end
+
           it "いいねしてない投稿を含まない" do
             expect(response.body).not_to include(post.comment)
           end
+
           it "他ユーザがいいねした投稿を含まない" do
             expect(response.body).not_to include(post.comment)
           end
@@ -113,7 +121,7 @@ RSpec.describe "user_show_page", type: :request do
           expect(response.body).not_to include('class="bi bi-gear"')
         end
       end
-      
+
       context "ゲストログインする場合" do
         before do
           sign_in guest_user

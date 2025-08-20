@@ -2,16 +2,13 @@ class PostsController < ApplicationController
   before_action :set_current_user # postアクションで、常に@user = current_userを渡す
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create] # deviseのメソッド(devise用意以外のcontrollerでも使用可)
+  before_action :authenticate_user!, only: [:new, :create] # deviseのメソッド(devise用意以外のcontrollerでも使用可)
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).
+    @posts = Post.search_with_ransack(params).
       includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
-    if params[:q].present? && params[:q][:met_object_department_in].blank?
-      @posts = []
-    end
   end
 
   def new
@@ -60,7 +57,7 @@ class PostsController < ApplicationController
   end
 
   def authorize_user!
-    unless user_signed_in? && @post.user == current_user
+    if !user_signed_in? || @post.user != current_user
       redirect_to root_path, alert: "権限がありません。"
     end
   end
