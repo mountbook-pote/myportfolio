@@ -1,6 +1,7 @@
 <div id="favorite_buttons_<%= post.id %>" class="favorite-buttons">
   <% if current_user %>
-    <% if current_user.favorite_posts.exists?(post.id) %>
+    <% # メモリ上で確認される %>
+    <% if current_user_favorite_post_ids.include?(post.id) %>
       <%= link_to post_favorite_path(post), method: :delete, remote: true, class: "link-default" do %>
         <i class="bi bi-balloon-heart-fill" title="いいね解除"></i>
       <% end %>
@@ -15,7 +16,7 @@
     <% end %>
   <% end %>
   
-  <span class="<%= 'change-favorite-sizecolor' if current_user && current_user.favorite_posts.exists?(post.id) %>">
+  <span class="<%= 'change-favorite-sizecolor' if current_user && current_user_favorite_post_ids.include?(post.id) %>">
     <%= post.favorites.size if post.favorites.size > 0 %>
   </span>
 </div>

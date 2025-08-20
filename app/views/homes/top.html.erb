@@ -23,6 +23,8 @@
         <%= render 'shared/both_end_column', images: HomesHelper::RIGHT_COLUMN_IMAGES %>
       </div>
     </div>
-      <%= render 'shared/list_of_posts', title: "新着投稿", posts: @posts%>
+      <%= render 'shared/list_of_posts', title: "新着投稿", posts: @posts,
+        current_user_favorite_post_ids: @current_user_favorite_post_ids
+      %>
   </div>
 </div>

@@ -43,7 +43,9 @@
                 <i class="bi bi-bank" title="メトロポリタン美術館で見る"></i>
               <% end %>
             </div>
-            <%= render "shared/favorite", post: post %>
+            <%= render "shared/favorite", post: post,
+              current_user_favorite_post_ids: current_user_favorite_post_ids 
+            %>
           </div>
           <div class="posted-date">
             <span><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></span>

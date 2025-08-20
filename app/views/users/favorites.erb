@@ -2,5 +2,7 @@
 
 <div class="container mypage">
   <%= render 'shared/mypage_common', user: @user%>
-  <%= render 'shared/list_of_posts', title: "#{@user.name}のいいね", posts: @favorite_posts %>
+  <%= render 'shared/list_of_posts', title: "#{@user.name}のいいね", posts: @favorite_posts,
+    current_user_favorite_post_ids: @current_user_favorite_post_ids
+  %>
 </div>

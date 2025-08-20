@@ -6,6 +6,11 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: @post.id)
     favorite.save
 
+    # 現在のユーザのいいねしているidのうち、この投稿分だけを新たに取得する。
+    @current_user_favorite_post_ids = current_user.favorites.
+      where(post_id: [@post.id]).
+      pluck(:post_id)
+
     respond_to do |format|
       format.js  # HTMLのリダイレクトの代わりにcreate.js.erbを返す
     end
@@ -14,6 +19,12 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
+
+    # 現在のユーザのいいねしているidのうち、この投稿分だけを削除する。
+    @current_user_favorite_post_ids = current_user.favorites.
+      where(post_id: [@post.id]).
+      pluck(:post_id)
+
     respond_to do |format|
       format.js  # HTMLのリダイレクトの代わりにdestroy.js.erbを返す
     end

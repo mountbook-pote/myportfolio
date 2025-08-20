@@ -7,8 +7,14 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = Post.search_with_ransack(params).
-      includes(:met_object, user: { image_attachment: :blob }).
+      includes(:favorites, :met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
+
+    @current_user_favorite_post_ids = if current_user
+      current_user.favorites.where(post_id: @posts.map(&:id)).pluck(:post_id)
+    else
+      []
+    end
   end
 
   def new
