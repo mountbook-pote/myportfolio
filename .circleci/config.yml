@@ -7,26 +7,29 @@ executors:
   ruby-executor:
     docker:
       - image: cimg/ruby:3.3.3 # 開発PCと同じ
-      - image: cimg/postgres:14.1
-        environment:
-          POSTGRES_USER: postgres #任意の名前
-          POSTGRES_PASSWORD: postgres # 任意のpassword
-          POSTGRES_DB: myportfolio_test # database.ymlと同じ
     working_directory: ~/repo # 標準のworking_directory名
 
 jobs:
   rspec:
-    executor: ruby-executor
+    resource_class: medium
+    docker: # executorsに代わって指定
+      - image: cimg/ruby:3.3.3
+      - image: cimg/postgres:14.1 # テストで使用するSQL
+        environment:
+          POSTGRES_USER: postgres #任意の名前
+          POSTGRES_PASSWORD: postgres # 任意のpassword
+          POSTGRES_DB: myportfolio_test # database.ymlで指定した名前と同じ
+    working_directory: ~/repo # 標準のworking_directory名
     environment:
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/myportfolio_test # 上のenvironment内容で決まる
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/myportfolio_test # 上のenvironment内容で決まる。database.ymlにURL環境変数が必要
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: bundle check || bundle install --jobs=8 # -jobs=8は並列処理の数
       
-      - run: #nodeなどのインストールはrspec内で行う
+      - run: #nodeなどのwebpackage関連のインストールはrspec内で行う
           name: Setup Node.js and Yarn, install JS packages, precompile
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
@@ -47,7 +50,7 @@ jobs:
           command: bundle exec rspec
 
   rubocop:
-      executor: ruby-executor
+      executor: ruby-executor # executorsを使用
       steps:
         - checkout
         - run:
