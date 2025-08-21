@@ -9,7 +9,7 @@ executors:
           POSTGRES_USER: postgres #任意の名前
           POSTGRES_PASSWORD: postgres # 任意のpassword
           POSTGRES_DB: myportfolio_test # database.ymlと同じ
-    working_directory: ~/repo
+    working_directory: ~/repo # 標準のworking_directory名
 
 jobs:
   rspec:
@@ -43,8 +43,20 @@ jobs:
           name: Run RSpec
           command: bundle exec rspec
 
+rubocop:
+    executor: ruby-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: bundle check || bundle install --jobs=8
+      - run:
+          name: Run RuboCop
+          command: bundle exec rubocop
+
 workflows:
   version: 2
   run-tests:
     jobs:
       - rspec
+      - rubocop
