@@ -43,16 +43,17 @@ jobs:
           name: Run RSpec
           command: bundle exec rspec
 
-rubocop:
-    executor: ruby-executor
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: bundle check || bundle install --jobs=8
-      - run:
-          name: Run RuboCop
-          command: bundle exec rubocop
+  rubocop:
+      executor: ruby-executor
+      steps:
+        - checkout
+        - run:
+            name: Install dependencies
+            command: bundle check || bundle install --jobs=8
+            
+        - run:
+            name: Run RuboCop
+            command: bundle exec rubocop
 
 workflows:
   version: 2
