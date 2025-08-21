@@ -1,17 +1,31 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  ruby-executor:
     docker:
-      - image: cimg/ruby:3.3.3 
+      - image: cimg/ruby:3.3.3
+    working_directory: ~/repo
+
+jobs:
+  rspec:
+    executor: ruby-executor
     steps:
       - checkout
+
       - run:
           name: Install Bundler
           command: gem install bundler -v 2.6.8
+
       - run:
-          name: Install dependencies
-          command: bundle _2.6.8_ install
+          name: Bundle install
+          command: bundle install --jobs=4
+
       - run:
-          name: Run tests
-          command: bundle exec rake test || echo "No tests found"
+          name: Run RSpec
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  run-tests:
+    jobs:
+      - rspec
