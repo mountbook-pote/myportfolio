@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: @post.id)
     favorite.save
 
+    @post.reload # postのいいね数(DB上)を反映させるために必要
+
     # 現在のユーザのいいねしているidのうち、この投稿分だけを新たに取得する。
     @current_user_favorite_post_ids = current_user.favorites.
       where(post_id: [@post.id]).
@@ -19,6 +21,8 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
+
+    @post.reload
 
     # 現在のユーザのいいねしているidのうち、この投稿分だけを削除する。
     @current_user_favorite_post_ids = current_user.favorites.

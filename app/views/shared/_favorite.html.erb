@@ -17,6 +17,6 @@
   <% end %>
   
   <span class="<%= 'change-favorite-sizecolor' if current_user && current_user_favorite_post_ids.include?(post.id) %>">
-    <%= post.favorites.size if post.favorites.size > 0 %>
+    <%= post.favorites_count if post.favorites_count > 0 %>
   </span>
 </div>
