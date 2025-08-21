@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @favorite_posts = @user.favorite_posts.
       includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
-    
+
     @current_user_favorite_post_ids = current_user&.
       pluck_favorite_post_ids(@favorite_posts) || []
   end

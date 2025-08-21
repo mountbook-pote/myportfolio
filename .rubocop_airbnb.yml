@@ -12,6 +12,7 @@ AllCops:
     - 'db/**/*'
     - 'bin/*'
     - 'config/**/*'
+    - 'coverage/*'
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'

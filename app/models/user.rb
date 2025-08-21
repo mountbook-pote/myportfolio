@@ -27,14 +27,14 @@ class User < ApplicationRecord
 
   # データ取得用のコード
   def total_received_favorites
-    Favorite.joins(:post).where(posts: { user_id: self.id }).count
+    Favorite.joins(:post).where(posts: { user_id: id }).count
   end
 
   def pluck_favorite_post_ids(posts)
     favorites.where(post_id: posts.map(&:id)).pluck(:post_id)
   end
 
-  def pluck_favorite_post_ids_for_js(post)
+  def pluck_favorite_post_ids_for_js(post) # いいねが押された時に使用されるメソッド
     favorites.where(post_id: [post.id]).pluck(:post_id)
   end
 

@@ -36,7 +36,6 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
   end
 
   describe "#total_received_favorites" do
-
     context "そのユーザの投稿がいいねされている時" do
       let(:user) { create(:user) }
       let(:post1) { create(:post, user: user) }
@@ -71,7 +70,6 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
   end
 
   describe "#pluck_favorite_post_ids(posts)" do
-
     context "そのユーザがいいねしている時" do
       let(:user) { create(:user) }
       let(:post) { create(:post) }
@@ -106,7 +104,6 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
   end
 
   describe "#pluck_favorite_post_ids_for_js(post)" do
-
     context "そのユーザが投稿をいいねした時" do
       let(:user) { create(:user) }
       let(:post) { create(:post) }

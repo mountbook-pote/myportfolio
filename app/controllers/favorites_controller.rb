@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
     @current_user_favorite_post_ids = current_user.pluck_favorite_post_ids_for_js(@post)
 
     respond_to do |format|
-      format.js  # HTMLのリダイレクトの代わりにcreate.js.erbを返す
+      format.js # HTMLのリダイレクトの代わりにcreate.js.erbを返す
     end
   end
 
@@ -26,7 +26,7 @@ class FavoritesController < ApplicationController
     @current_user_favorite_post_ids = current_user.pluck_favorite_post_ids_for_js(@post)
 
     respond_to do |format|
-      format.js  # HTMLのリダイレクトの代わりにdestroy.js.erbを返す
+      format.js # HTMLのリダイレクトの代わりにdestroy.js.erbを返す
     end
   end
 
