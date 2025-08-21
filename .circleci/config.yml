@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Install JavaScript packages
           command: yarn install
-      - run:（）
+      - run:
           name: Precompile Webpacker
           command: bundle exec rails webpacker:compile
 
