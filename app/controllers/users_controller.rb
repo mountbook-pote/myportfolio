@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @posts = @user.posts.
-      includes(:favorites, :met_object, user: { image_attachment: :blob }).
+    @posts = @user.posts.includes(:met_object).
       order(created_at: :desc)
 
     # current_userが@userの投稿をいいねしているか判定するために使用(N+1対策)
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
 
   def favorites
     @favorite_posts = @user.favorite_posts.
-      includes(:favorites, :met_object, user: { image_attachment: :blob }).
+      includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
     
     @current_user_favorite_post_ids = current_user&.

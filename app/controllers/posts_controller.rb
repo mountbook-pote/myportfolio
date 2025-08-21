@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = Post.search_with_ransack(params).
-      includes(:favorites, :met_object, user: { image_attachment: :blob }).
+      includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
 
     @current_user_favorite_post_ids = current_user&.
