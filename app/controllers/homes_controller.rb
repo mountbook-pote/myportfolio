@@ -5,6 +5,9 @@ class HomesController < ApplicationController
     @posts = Post.includes(:met_object, user: { image_attachment: :blob }).
       order(created_at: :desc).
       limit(FETCH_NUMBER)
+
+    @current_user_favorite_post_ids = current_user&.
+      pluck_favorite_post_ids(@posts) || []
   end
 
   def about

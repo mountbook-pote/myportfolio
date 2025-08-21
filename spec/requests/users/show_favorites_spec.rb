@@ -44,7 +44,7 @@ RSpec.describe "User_show_page", type: :request do
         end
 
         it "いいねされた数が含まれる" do
-          expect(response.body).to include(favorited_by_users_count(user).to_s)
+          expect(response.body).to include(user.total_received_favorites.to_s)
         end
       end
 

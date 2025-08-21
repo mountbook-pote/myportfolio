@@ -26,12 +26,101 @@ RSpec.describe "User(deviseに追加した項目)", type: :model do
     let(:user) { create(:user) }
     let(:guest_user) { User.guest }
 
-    it "ユーザのメールアドレス != ゲストのメールアドレスだとfalseを返す" do
+    it "通常ユーザーはゲストではないと判定される" do
       expect(user.guest?).to be false
     end
 
-    it "ユーザのメールアドレス != ゲストのメールアドレスだとtrueを返す" do
+    it "ゲストユーザーはゲストであると判定される" do
       expect(guest_user.guest?).to be true
+    end
+  end
+
+  describe "#total_received_favorites" do
+    context "そのユーザの投稿がいいねされている時" do
+      let(:user) { create(:user) }
+      let(:post1) { create(:post, user: user) }
+      let(:post2) { create(:post, user: user) }
+      let!(:favorite1) { create_list(:favorite, 2, post: post1) }
+      let!(:favorite2) { create_list(:favorite, 3, post: post2) }
+
+      it "いいねされた合計数を正しく返す" do
+        expect(user.total_received_favorites).to eq 5
+      end
+    end
+
+    context "そのユーザが投稿していない時" do
+      let!(:user) { create(:user) }
+
+      it "いいねは0を返す" do
+        expect(user.total_received_favorites).to eq 0
+      end
+    end
+
+    context "他のユーザの投稿がいいねされている時" do
+      let(:user) { create(:user) }
+      let!(:post) { create(:post, user: user) }
+      let(:other_post) { create(:post) }
+      let!(:favorite) { create_list(:favorite, 2, post: post) }
+      let!(:other_favorite) { create(:favorite, post: other_post) }
+
+      it "他のユーザの投稿のいいねは、自分の投稿にカウントされない" do
+        expect(user.total_received_favorites).to eq 2
+      end
+    end
+  end
+
+  describe "#pluck_favorite_post_ids(posts)" do
+    context "そのユーザがいいねしている時" do
+      let(:user) { create(:user) }
+      let(:post) { create(:post) }
+      let(:myfavorited_post) { create(:post) }
+      let!(:favorite) { create(:favorite, post: post) }
+      let!(:myfavorite) { create(:favorite, user: user, post: myfavorited_post) }
+      let!(:posts) { [post, myfavorited_post] }
+
+      it "他人のいいねを除き、自分のいいねしている投稿のidを正しく返す" do
+        expect(user.pluck_favorite_post_ids(posts)).to match_array([myfavorited_post.id])
+      end
+    end
+
+    context "そのユーザがいいねしていない時" do
+      let(:user) { create(:user) }
+      let(:post) { create(:post) }
+      let!(:posts) { [post] }
+
+      it "投稿のidは返らない(0となる)" do
+        expect(user.pluck_favorite_post_ids(posts)).to be_empty
+      end
+    end
+
+    context "投稿が存在しない時" do
+      let!(:user) { create(:user) }
+      let!(:posts) { [] }
+
+      it "投稿のidは返らない(0となる)" do
+        expect(user.pluck_favorite_post_ids(posts)).to be_empty
+      end
+    end
+  end
+
+  describe "#pluck_favorite_post_ids_for_js(post)" do
+    context "そのユーザが投稿をいいねした時" do
+      let(:user) { create(:user) }
+      let(:post) { create(:post) }
+      let!(:favorite) { create(:favorite, user: user, post: post) }
+
+      it "いいねした投稿のidを返す" do
+        expect(user.pluck_favorite_post_ids_for_js(post)).to match_array([post.id])
+      end
+    end
+
+    context "そのユーザが投稿のいいねを解除した時" do
+      let(:user) { create(:user) }
+      let(:post) { create(:post) }
+
+      it "その投稿のidを返さない" do
+        expect(user.pluck_favorite_post_ids_for_js(post)).to be_empty
+      end
     end
   end
 

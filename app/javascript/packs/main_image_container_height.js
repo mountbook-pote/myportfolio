@@ -9,7 +9,7 @@
 }
 
 document.addEventListener('turbolinks:load', () => {
-  console.log('main_container_height loaded')
+  // console.log('main_container_height loaded')
   const image = document.querySelector('.center-column-image');
   const centerColumn = document.querySelector('.center-column');
 
