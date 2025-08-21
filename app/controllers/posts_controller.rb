@@ -10,11 +10,8 @@ class PostsController < ApplicationController
       includes(:favorites, :met_object, user: { image_attachment: :blob }).
       order(created_at: :desc)
 
-    @current_user_favorite_post_ids = if current_user
-      current_user.favorites.where(post_id: @posts.map(&:id)).pluck(:post_id)
-    else
-      []
-    end
+    @current_user_favorite_post_ids = current_user&.
+      pluck_favorite_post_ids(@posts) || []
   end
 
   def new

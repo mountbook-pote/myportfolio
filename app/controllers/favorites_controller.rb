@@ -9,9 +9,7 @@ class FavoritesController < ApplicationController
     @post.reload # postのいいね数(DB上)を反映させるために必要
 
     # 現在のユーザのいいねしているidのうち、この投稿分だけを新たに取得する。
-    @current_user_favorite_post_ids = current_user.favorites.
-      where(post_id: [@post.id]).
-      pluck(:post_id)
+    @current_user_favorite_post_ids = current_user.pluck_favorite_post_ids_for_js(@post)
 
     respond_to do |format|
       format.js  # HTMLのリダイレクトの代わりにcreate.js.erbを返す

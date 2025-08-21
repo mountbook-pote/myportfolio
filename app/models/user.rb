@@ -30,6 +30,14 @@ class User < ApplicationRecord
     Favorite.joins(:post).where(posts: { user_id: self.id }).count
   end
 
+  def pluck_favorite_post_ids(posts)
+    favorites.where(post_id: posts.map(&:id)).pluck(:post_id)
+  end
+
+  def pluck_favorite_post_ids_for_js(post)
+    favorites.where(post_id: [post.id]).pluck(:post_id)
+  end
+
   # アイコン画像用のコード
   has_one_attached :image
   validate :image_content_type

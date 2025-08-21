@@ -6,11 +6,8 @@ class HomesController < ApplicationController
       order(created_at: :desc).
       limit(FETCH_NUMBER)
 
-    @current_user_favorite_post_ids = if current_user
-      current_user.favorites.where(post_id: @posts.map(&:id)).pluck(:post_id)
-    else
-      []
-    end
+    @current_user_favorite_post_ids = current_user&.
+      pluck_favorite_post_ids(@posts) || []
   end
 
   def about
