@@ -77,9 +77,18 @@ workflows:
   version: 2
   run-tests:
     jobs:
-      - rspec
-      - rubocop
+      - rspec:
+          filters:
+            branches:
+              only: main
+      - rubocop:
+          filters:
+            branches:
+              only: main      
       - heroku_deploy:
           requires:
             - rspec
             - rubocop
+          filters:
+            branches:
+              only: main
