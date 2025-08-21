@@ -23,9 +23,7 @@ class FavoritesController < ApplicationController
     @post.reload
 
     # 現在のユーザのいいねしているidのうち、この投稿分だけを削除する。
-    @current_user_favorite_post_ids = current_user.favorites.
-      where(post_id: [@post.id]).
-      pluck(:post_id)
+    @current_user_favorite_post_ids = current_user.pluck_favorite_post_ids_for_js(@post)
 
     respond_to do |format|
       format.js  # HTMLのリダイレクトの代わりにdestroy.js.erbを返す
