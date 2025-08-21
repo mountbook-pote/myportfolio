@@ -5,7 +5,7 @@
     <div>アカウント作成日：<%= user.created_at.strftime("%Y/%m/%d") %></div>
     <div>投稿数：<%= user.posts.size %>件</div>
     <div>いいねした数：<%= user.favorite_posts.size %>件</div>
-    <div>いいねされた数：<%= favorited_by_users_count(user) %>件</div>
+    <div>いいねされた数：<%= user.total_received_favorites %>件</div> 
   </div>
 </div>
 <div class="mypage-selects-section">

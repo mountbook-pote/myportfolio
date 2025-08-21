@@ -25,6 +25,11 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  # データ取得用のコード
+  def total_received_favorites
+    Favorite.joins(:post).where(posts: { user_id: self.id }).count
+  end
+
   # アイコン画像用のコード
   has_one_attached :image
   validate :image_content_type

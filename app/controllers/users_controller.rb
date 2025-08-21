@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+
   def show
     @posts = @user.posts.
       includes(:favorites, :met_object, user: { image_attachment: :blob }).
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
       order(created_at: :desc)
     
     @current_user_favorite_post_ids = if current_user
-      current_user.favorites.where(post_id: @posts.map(&:id)).pluck(:post_id)
+      current_user.favorites.where(post_id: @favorite_posts.map(&:id)).pluck(:post_id)
     else
       []
     end

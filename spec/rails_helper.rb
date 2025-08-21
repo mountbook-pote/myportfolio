@@ -67,5 +67,4 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers # deviseのメソッドを使用するため追記
   include ApplicationHelper
   include PostsHelper
-  include UsersHelper
 end
