@@ -21,19 +21,19 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: bundle check || bundle install --jobs=8
-      - run:
-          name: Set up Node & Yarn
+          command: bundle check || bundle install --jobs=8 # -jobs=8は並列処理の数
+      
+      - run: #nodeなどのインストールはrspec内で行う
+          name: Setup Node.js and Yarn, install JS packages, precompile
           command: |
-            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            npm install --global yarn
-      - run:
-          name: Install JavaScript packages
-          command: yarn install
-      - run:
-          name: Precompile Webpacker
-          command: bundle exec rails webpacker:compile
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 22 # ver22はこのPCと同じ
+            nvm use 22
+            npm install -g yarn
+            yarn install
+            NODE_OPTIONS=--openssl-legacy-provider bundle exec rails webpacker:compile # 旧形式で使用(重要)
 
       - run:
           name: Create test database # テスト用DBを初期状態にする
