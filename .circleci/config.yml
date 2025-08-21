@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@2.0
+
 executors:
   ruby-executor:
     docker:
@@ -55,9 +58,25 @@ jobs:
             name: Run RuboCop
             command: bundle exec rubocop
 
+  heroku_deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          name: deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
+      - run:
+          name: run db migrate on heroku
+          command: heroku run bin/rails db:migrate -a $HEROKU_APP_NAME #-aはアプリ名を設定
+
 workflows:
   version: 2
   run-tests:
     jobs:
       - rspec
       - rubocop
+      - heroku_deploy:
+          requires:
+            - rspec
+            - rubocop
