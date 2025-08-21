@@ -1,0 +1,82 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@2.0
+
+executors:
+  ruby-executor:
+    docker:
+      - image: cimg/ruby:3.3.3 # 開発PCと同じ
+      - image: cimg/postgres:14.1
+        environment:
+          POSTGRES_USER: postgres #任意の名前
+          POSTGRES_PASSWORD: postgres # 任意のpassword
+          POSTGRES_DB: myportfolio_test # database.ymlと同じ
+    working_directory: ~/repo # 標準のworking_directory名
+
+jobs:
+  rspec:
+    executor: ruby-executor
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/myportfolio_test # 上のenvironment内容で決まる
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: bundle check || bundle install --jobs=8 # -jobs=8は並列処理の数
+      
+      - run: #nodeなどのインストールはrspec内で行う
+          name: Setup Node.js and Yarn, install JS packages, precompile
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 22 # ver22はこのPCと同じ
+            nvm use 22
+            npm install -g yarn
+            yarn install
+            NODE_OPTIONS=--openssl-legacy-provider bundle exec rails webpacker:compile # 旧形式で使用(重要)
+
+      - run:
+          name: Create test database # テスト用DBを初期状態にする
+          command: bin/rails db:create db:schema:load
+
+      - run:
+          name: Run RSpec
+          command: bundle exec rspec
+
+  rubocop:
+      executor: ruby-executor
+      steps:
+        - checkout
+        - run:
+            name: Install dependencies
+            command: bundle check || bundle install --jobs=8
+            
+        - run:
+            name: Run RuboCop
+            command: bundle exec rubocop
+
+  heroku_deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          name: deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
+      - run:
+          name: run db migrate on heroku
+          command: heroku run bin/rails db:migrate -a $HEROKU_APP_NAME #-aはアプリ名を設定
+
+workflows:
+  version: 2
+  run-tests:
+    jobs:
+      - rspec
+      - rubocop
+      - heroku_deploy:
+          requires:
+            - rspec
+            - rubocop
