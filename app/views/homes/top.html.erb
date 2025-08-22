@@ -2,7 +2,7 @@
   <div class="container">
     <div class="column-section">
       <div class="left-column">
-        <%= render 'shared/both_end_column', images: HomesHelper::LEFT_COLUMN_IMAGES %>
+        <%= render 'shared/homes/both_end_column', images: HomesHelper::LEFT_COLUMN_IMAGES %>
       </div>
       
       <div class="center-column">
@@ -20,7 +20,7 @@
       </div>
       
       <div class="right-column">
-        <%= render 'shared/both_end_column', images: HomesHelper::RIGHT_COLUMN_IMAGES %>
+        <%= render 'shared/homes/both_end_column', images: HomesHelper::RIGHT_COLUMN_IMAGES %>
       </div>
     </div>
       <%= render 'shared/list_of_posts', title: "新着投稿", posts: @posts,

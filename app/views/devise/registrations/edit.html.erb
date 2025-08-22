@@ -10,7 +10,7 @@
         <div>
           <div>アイコン</div>
           <div class="icon-form">
-            <%= render "shared/user_icon_attached",user: @user, size: 60 %>
+            <%= render "shared/users/user_icon_attached",user: @user, size: 60 %>
             <%= f.file_field :image %>
           </div>
           <% if @user.image.attached? %>

@@ -1,6 +1,6 @@
 <div class="mypage-section">
   <h2><%= user.name %>のマイページ</h2>
-  <div><%= render "shared/user_icon_attached", user: user, size: 100 %></div>
+  <div><%= render "shared/users/user_icon_attached", user: user, size: 100 %></div>
   <div class="mypage-info-space">
     <div>アカウント作成日：<%= user.created_at.strftime("%Y/%m/%d") %></div>
     <div>投稿数：<%= user.posts.size %>件</div>
