@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title)
-    base_title = "Side Gallery"
+    base_title = "SideGallery"
     if page_title.blank?
       base_title
     else

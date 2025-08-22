@@ -4,33 +4,41 @@
   <div class="department-selectbox-section">
     <%= render 'shared/department_selectbox' %>
   </div>
+
   <div class="artworks-section">
     <h1><%= ja_translated_name(@department_name) %></h1>
     <div><%= "作品が用意されていません" if @met_works.empty?%></div>
+
     <% @met_works.each do |work| %>
       <div>
         <%= link_to work.primary_image_small, target: "_blank", rel: "noopener" do %>
           <img src="<%= work.primary_image_small %>" alt="<%= work.title %>" class="artworks-image">
         <% end %>
       </div>
+
       <div class="artworks-description-space">
         <h4 class="artworks-description-space__title brand-font bold-font">
           <%= work.title %>
         </h4>
+
         <div class="artworks-description-space__description">
           <div class="artworks-description-space__sentence">
             <% if @department_name == "All Departments" %>
-              <div class="department_for_rspec"><%= ja_translated_name(work.department) %></div>
+              <div class="department_for_rspec">
+                <%= ja_translated_name(work.department) %>
+              </div>
             <% end %>
             <div>製作者: <%= work.artist_display_name.presence || '不明' %></div>
             <div>制作年: <%= work.object_date.presence || '不明' %></div>
           </div>
+
           <div class="artworks-description-space__met">
             <%= link_to work.object_url, target: "_blank", rel: "noopener", class: "link-default" do %>
               <i class="bi bi-bank" title="メトロポリタン美術館で見る"></i>
             <% end %>
           </div>
         </div>
+
         <div class="artworks-description-space__submit">
           <% if current_user %>
               <%= link_to 'この作品を投稿', new_post_path(met_object_id: work.id), 
@@ -45,6 +53,7 @@
       </div>
     <% end %>
   </div>
+  
   <div class="see-more-section">
     <%= link_to 'もっと見る',request.path, data: { turbolinks: false }, class: "btn btn-light" %>
   </div>

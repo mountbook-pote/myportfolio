@@ -1,4 +1,4 @@
-<!-- devise用意のエラー -->
+<% # devise用意のエラー %>
 <% if resource.errors.any? %>
     <% if defined?(attribute) && attribute %>
       <% resource.errors.full_messages_for(attribute).each do |message| %>

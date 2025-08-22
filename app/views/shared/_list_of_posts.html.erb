@@ -1,26 +1,24 @@
 <div class="post-section <%= controller.controller_name %> <%= controller.action_name %>">
   <h1><%= title %></h1>
   <div><%= "#{title}はありません" if posts.empty?%></div>
+
   <% posts.each_with_index do |post, index| %>
     <div class="post-container <%= 'add-top-border' if index == 0 %>">
       <div class="image-section">
-        <%= link_to post.met_object.primary_image_small, target: "_blank", rel: "noopener" do %>
-          <img src="<%= post.met_object.primary_image_small %>" alt="<%= post.met_object.title %>" width="300">
-        <% end %>
+        <%= render 'shared/posts/post_met_image', post: post %>
       </div>
+
       <div class="description-section">
         <div class="met-description-space">
-          <p>タイトル: <%= post.met_object.title %></p>
-          <p>制作者: <%= post.met_object.artist_display_name.presence || '不明' %></p>
-          <p>制作年: <%= post.met_object.object_date.presence || '不明' %></p>
-          <p>ジャンル: <%= ja_translated_name(post.met_object.department) %></p>
+          <%= render 'shared/posts/post_met_description', post: post %>
         </div>
   
         <div class="user-space">
           <%= link_to user_path(post.user), class: "link-default" do %>
-            <%= render "shared/user_icon_attached", user: post.user, size: 50 %>
+            <%= render "shared/users/user_icon_attached", user: post.user, size: 50 %>
             <span class="link-default link-user"><%= post.user.name %></span>
           <% end %>
+
           <p class="post-comment"><%= post.comment %></p>
         </div>
   
@@ -32,21 +30,29 @@
                   <i class="bi bi-pencil" title="編集"></i>
                 <% end %>
               </div>
+
               <div>
-                <%= link_to post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: "link-default" do %>
+                <%= link_to post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, 
+                  class: "link-default" do 
+                %>
                   <i class="bi bi-trash" title="削除"></i>
                 <% end %>
               </div>
             <% end %>
+
             <div>
-              <%= link_to post.met_object.object_url, target: "_blank", rel: "noopener", class: "link-default" do %>
+              <%= link_to post.met_object.object_url, target: "_blank", rel: "noopener", 
+                class: "link-default" do 
+              %>
                 <i class="bi bi-bank" title="メトロポリタン美術館で見る"></i>
               <% end %>
             </div>
-            <%= render "shared/favorite", post: post,
+
+            <%= render "shared/favorites/favorite", post: post,
               current_user_favorite_post_ids: current_user_favorite_post_ids 
             %>
           </div>
+
           <div class="posted-date">
             <span><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></span>
           </div>
@@ -54,6 +60,7 @@
       </div>
     </div>
   <% end %>
+
   <% if current_page?(root_path) %>
     <%= link_to '投稿をもっと見る', posts_path, data: { turbolinks: false }, class: "btn btn-light" %>
   <% end %>

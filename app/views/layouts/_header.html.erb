@@ -2,18 +2,26 @@
   <div class="header-container">
     <div class="navigationbar__menus">
       <div>
-        <%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, class: "app-name brand-font link-white" %>
+        <%= link_to HomesHelper::APP_TITLE, root_path, data: { turbolinks: false }, 
+          class: "app-name brand-font link-white" 
+        %>
       </div>
+
       <div>
-        <%= link_to "投稿", posts_path, data: { turbolinks: false }, class: "link-white content" %>
+        <%= link_to "投稿", posts_path, data: { turbolinks: false }, 
+          class: "link-white content"
+        %>
       </div>
+
       <div>
         <%= link_to "鑑賞", department_path(
           DepartmentsController::DEPARTMENT_IDS.key("All Departments")
-          ), data: { turbolinks: false }, class: "link-white content" 
+          ), data: { turbolinks: false }, 
+          class: "link-white content" 
         %>
       </div>
     </div>
+    
     <div class="navigationbar__users">
       <% if user_signed_in? %>
         <%= render "layouts/navigation_bar", user: user %>
@@ -24,6 +32,7 @@
             <div class="header-icon__title">ゲスト用</div>
           <% end %>
         </div>
+        
         <div>
           <%= link_to new_user_session_path, class: "header-icon link-white" do %>
             <i class="bi bi-person-up header-icon__size" title="ログイン"></i>

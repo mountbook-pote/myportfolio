@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/index'
   root 'homes#top'
 
   # home
@@ -22,13 +21,14 @@ Rails.application.routes.draw do
     end
   end
 
-  #departments
-  resources :departments, only: :show
-
-  #posts
+  # posts
+  get 'posts/index'
   resources :posts do
     resource :favorite, only: [:create, :destroy]
   end
+
+  # departments
+  resources :departments, only: :show
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
