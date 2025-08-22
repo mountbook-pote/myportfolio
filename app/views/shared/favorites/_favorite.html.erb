@@ -1,6 +1,7 @@
 <div id="favorite_buttons_<%= post.id %>" class="favorite-buttons">
   <% if current_user %>
-    <% # メモリ上で確認される %>
+
+    <% # include?はN+1対策 %>
     <% if current_user_favorite_post_ids.include?(post.id) %>
       <%= link_to post_favorite_path(post), method: :delete, remote: true, class: "link-default" do %>
         <i class="bi bi-balloon-heart-fill" title="いいね解除"></i>
@@ -10,6 +11,7 @@
         <i class="bi bi-balloon-heart" title="いいねする"></i>
       <% end %>
     <% end %>
+    
   <% else %>
     <%= link_to new_user_session_path(alert: 'アカウント登録もしくはログインしてください'),class: "link-default" do %>
       <i class="bi bi-balloon-heart" title="いいねする"></i>

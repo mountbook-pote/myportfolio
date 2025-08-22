@@ -9,26 +9,44 @@
       %>
         <div>
           <div><%= f.label :email %></div>
-          <div><%= f.email_field :email, placeholder: "メールアドレスを入力", autofocus: true, autocomplete: "email", class: "input" %></div>
+          <div>
+            <%= f.email_field :email, 
+              placeholder: "メールアドレスを入力", 
+              autofocus: true, 
+              autocomplete: "email", 
+              class: "input"
+            %>
+          </div>
         </div>
+
         <div>
           <div><%= f.label :password %></div>
-          <div><%= f.password_field :password, placeholder: "パスワードを入力", autocomplete: "current-password", class: "input" %></div>
+          <div>
+            <%= f.password_field :password, 
+              placeholder: "パスワードを入力", 
+              autocomplete: "current-password", 
+              class: "input"
+            %>
+          </div>
         </div>
+        
         <div class="remember-space">
           <div class="checkbox-color"><%= f.check_box :remember_me %></div>
           <div><%= f.label :remember_me %></div>
         </div>
+
         <div class="actions">
           <%= f.submit "ログイン", class: "btn btn-secondary" %>
         </div>
       <% end %>
     </div>
+
     <div class="login-guestlogin-space">
       <p>
         アカウントを作成する方は
         <%= link_to "新規登録", new_user_registration_path, class: "link-navy" %>してください。
       </p>
+      
       <p>
         アカウントが不要の方は
         <%= link_to "ゲストログイン", users_guest_login_path, method: :post, class: "link-navy" %>してください。

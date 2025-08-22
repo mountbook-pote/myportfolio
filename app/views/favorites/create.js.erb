@@ -1,3 +1,4 @@
+<% # 特定の投稿のいいねのボタン表示をajaxで更新する %>
 $('#favorite_buttons_<%= @post.id %>').html(
   "<%= j(render "shared/favorites/favorite", post: @post,
     current_user_favorite_post_ids: @current_user_favorite_post_ids)
