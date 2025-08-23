@@ -1,5 +1,12 @@
 # README
 
+SideGallery
+
+<img src="https://github.com/mountbook-pote/myportfolio/raw/README/docs/images/ER.png" alt="ER図" width="400">
+
+<img src="https://github.com/mountbook-pote/myportfolio/raw/README/docs/images/coverage.png" alt="coverage_result" width="400">
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
