@@ -89,18 +89,6 @@
           null
         ]
       },
-      "/Users/mountbook/potepan/portfolio/myportfolio/app/helpers/departments_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/mountbook/potepan/portfolio/myportfolio/app/helpers/favorites_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/Users/mountbook/potepan/portfolio/myportfolio/app/helpers/homes_helper.rb": {
         "lines": [
           1,
@@ -115,18 +103,6 @@
           1,
           null,
           null,
-          null
-        ]
-      },
-      "/Users/mountbook/potepan/portfolio/myportfolio/app/helpers/posts_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/mountbook/potepan/portfolio/myportfolio/app/helpers/users_helper.rb": {
-        "lines": [
-          1,
           null
         ]
       },
@@ -548,6 +524,6 @@
         ]
       }
     },
-    "timestamp": 1755907635
+    "timestamp": 1755984210
   }
 }
