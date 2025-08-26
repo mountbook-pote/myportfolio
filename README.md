@@ -45,7 +45,6 @@ APIを使用したアプリのアイデアを考えていた時に、メトロ�
 | ---- | ---- |
 | [<img src="docs/images/use/index.jpg" alt="index" width="300">](docs/images/use/index.jpg) | [<img src="docs/images/use/mypage.jpg" alt="mypage" width="300">](docs/images/use/mypage.jpg) |
 | 投稿一覧では、<br>投稿者や作品のジャンルを選択して<br>投稿内容を検索することができます。<br><br>投稿のユーザ欄をクリックすると、<br>そのユーザのマイページに遷移します。<br><br>気に入った投稿は![icon_favorite](./docs/images/icons/favorite.jpg)を押して<br>いいねをすることが可能です。<br><br>自ユーザの投稿には、<br>編集と削除ボタンが表示され<br>投稿の編集や削除ができます。 | マイページでは、そのユーザの投稿数、いいね数、<br>いいねされた数が表示されます。<br><br>また、そのユーザの投稿内容や<br>いいねした投稿を見ることもできます。<br><br>マイページでは自ユーザのページに限り、<br>ユーザの設定ボタンが表示されます。<br>(ゲストの場合は表示されません。) |
-<br><br>
 
 ## 4. 機能まとめ
 
@@ -77,7 +76,6 @@ APIを使用したアプリのアイデアを考えていた時に、メトロ�
 | 開発環境 / 開発ツール | Git / GitHub(バージョンの管理)<br>RSpec(テストのフレームワーク)<br>SimpleCov（テストカバレッジ計測）<br>Rubocop(コードの静的解析)<br>Bullet（N+1クエリの検出） |
 | CI/CD | CircleCI<br>（RSpec・Rubocopの自動実行、Herokuへの自動デプロイ） |
 | API | The Metropolitan Museum of Art Collection API |
-<br><br>
 
 ## 6. ER図
 
